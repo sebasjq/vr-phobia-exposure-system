@@ -758,7 +758,7 @@ MonoBehaviour:
   _maxSelectingInteractors: -1
   _data: {fileID: 0}
   _pointableElement: {fileID: 6622953555619987069}
-  _surface: {fileID: 7351546568100476419}
+  _surface: {fileID: 4885959576263186615}
   _selectSurface: {fileID: 0}
   _movementProvider: {fileID: 0}
   _tiebreakerScore: 0
@@ -1915,6 +1915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 515843936504556613}
   - component: {fileID: 337994576712551425}
+  - component: {fileID: 4885959576263186615}
   m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
@@ -1959,6 +1960,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &4885959576263186615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342126236954249688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2140d2b457bea84881488302059889b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.Surfaces.ColliderSurface
+  _collider: {fileID: 337994576712551425}
 --- !u!1 &6421798145512981480
 GameObject:
   m_ObjectHideFlags: 0
