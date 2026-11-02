@@ -1,2 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+Assets/ACROFOBIA_ASSETS/NIVEL1/AllSkyFree/Cold[[:space:]]Sunset/Cold[[:space:]]Sunset[[:space:]]Equirect.png filter=lfs diff=lfs merge=lfs -text
+Assets/ACROFOBIA_ASSETS/NIVEL1/mirador/WatchTower.fbx filter=lfs diff=lfs merge=lfs -text
