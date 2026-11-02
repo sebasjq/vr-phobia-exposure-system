@@ -679,7 +679,7 @@ MonoBehaviour:
   _dimensionsDriveMode: 0
   _resolution: {x: 2048, y: 1152}
   _generateMipMaps: 0
-  _pixelsPerUnit: 2048
+  _pixelsPerUnit: 512
   _renderingLayers:
     serializedVersion: 2
     m_Bits: 32
