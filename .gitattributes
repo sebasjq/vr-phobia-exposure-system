@@ -6,3 +6,4 @@ Assets/_Project/Fobias/Acrofobia/Assets_Nivel_1/Mirador/WatchTower.fbx filter=lf
 Assets/_Project/Fobias/Acrofobia/Assets_Nivel_1/AllSkyFree/Cold[[:space:]]Sunset/Cold[[:space:]]Sunset[[:space:]]Equirect.png filter=lfs diff=lfs merge=lfs -text
 Assets/NIVEL2/Versatile[[:space:]]Studio[[:space:]]Assets/Demo[[:space:]]City[[:space:]]By[[:space:]]Versatile[[:space:]]Studio/Scenes/demo_city_night/LightingData.asset filter=lfs diff=lfs merge=lfs -text
 Assets/_Project/Fobias/Acrofobia/Assets_Nivel_2/Scenes/demo_city_night/LightingData.asset filter=lfs diff=lfs merge=lfs -text
+Packages/com.fmod.fmod-for-unity.v204/platforms/mac/lib/**/Info.plist text eol=lf
