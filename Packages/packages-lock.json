@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.fmod.fmod-for-unity.v204": {
+      "version": "file:com.fmod.fmod-for-unity.v204",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.gasgiant.markupattributes": {
       "version": "https://github.com/gasgiant/Markup-Attributes.git#upm",
       "depth": 0,
