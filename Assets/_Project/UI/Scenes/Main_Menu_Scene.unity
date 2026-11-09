@@ -1222,11 +1222,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   ambienceEvent:
     Guid:
-      Data1: -1943404949
-      Data2: 1142450394
-      Data3: -1247895657
-      Data4: 1079386468
-    Path: event:/Ambience/MENU_AMBIENCE
+      Data1: -201959494
+      Data2: 1247637562
+      Data3: 1021703578
+      Data4: 951324635
+    Path: event:/Music_Main
 --- !u!114 &2107438747
 MonoBehaviour:
   m_ObjectHideFlags: 0
