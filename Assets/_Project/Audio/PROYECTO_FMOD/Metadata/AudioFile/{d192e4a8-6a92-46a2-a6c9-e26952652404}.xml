@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.04.00">
+	<object class="AudioFile" id="{d192e4a8-6a92-46a2-a6c9-e26952652404}">
+		<property name="assetPath">
+			<value>Ambience/Forest/amb_forest_rain_drop_1.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.100000000000001</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.16</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ecffb85d-bf22-4e65-a764-bbd4bc3a14f0}</destination>
+		</relationship>
+	</object>
+</objects>

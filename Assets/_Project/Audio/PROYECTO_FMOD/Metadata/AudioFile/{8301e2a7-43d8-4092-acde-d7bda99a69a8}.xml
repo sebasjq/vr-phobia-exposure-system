@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.04.00">
+	<object class="AudioFile" id="{8301e2a7-43d8-4092-acde-d7bda99a69a8}">
+		<property name="assetPath">
+			<value>Vehicles/Car Engine/veh_car_engine_190E_03845.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.07725</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ecffb85d-bf22-4e65-a764-bbd4bc3a14f0}</destination>
+		</relationship>
+	</object>
+</objects>

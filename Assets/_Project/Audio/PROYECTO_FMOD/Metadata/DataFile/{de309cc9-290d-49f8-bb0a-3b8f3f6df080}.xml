@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.04.00">
+	<object class="DataFile" id="{de309cc9-290d-49f8-bb0a-3b8f3f6df080}">
+		<property name="assetPath">
+			<value>Haptics/knapsack_open.haptic</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ecffb85d-bf22-4e65-a764-bbd4bc3a14f0}</destination>
+		</relationship>
+	</object>
+</objects>

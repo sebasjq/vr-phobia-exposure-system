@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.04.00">
+	<object class="ParameterPreset" id="{ea96c19b-37dd-4781-9c4b-4e211d4a5e0e}">
+		<property name="name">
+			<value>Walla</value>
+		</property>
+		<relationship name="folder">
+			<destination>{b312de8b-a9ee-416a-b781-7a24294e703d}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{1c16e6f9-0616-41b0-9845-55b159c7c36b}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{1c16e6f9-0616-41b0-9845-55b159c7c36b}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
