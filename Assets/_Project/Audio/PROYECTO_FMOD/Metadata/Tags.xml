@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.04.00">
+	<object class="MasterTagFolder" id="{ae516391-21b8-4c88-9110-012e80aad5ef}">
+		<property name="name">
+			<value>Master</value>
+		</property>
+		<relationship name="items">
+			<destination>{ed84a789-9a01-4edf-840a-887a5c85b93d}</destination>
+			<destination>{2e419e5f-c6d0-4abd-871f-41d0600a0ac2}</destination>
+			<destination>{25f1d46e-a7fa-4d75-8540-7258d93bc3e4}</destination>
+			<destination>{7866a61e-eaba-4979-9358-9948b88a947f}</destination>
+			<destination>{30afc683-2f76-4013-8e56-9a64222da127}</destination>
+			<destination>{0c7f8f10-f9b1-4e56-9a2d-4d1c322a125b}</destination>
+			<destination>{771f4712-6819-4c77-be95-6ab976623a18}</destination>
+			<destination>{3c753b6c-06ce-446a-9b8e-7f90e1a6475a}</destination>
+			<destination>{9f4f6f7c-e400-4601-bfa6-79195d7068f8}</destination>
+			<destination>{b0caeb54-83ea-4349-b1ee-3a6a63f5a8f4}</destination>
+			<destination>{702eac05-cd0d-4cb1-bf08-fcea8c15bc24}</destination>
+			<destination>{db5133b0-e8de-4a84-900f-20c516d46fe8}</destination>
+			<destination>{781a09f4-95f5-42cd-b22d-2625576ca9c7}</destination>
+			<destination>{7e832f9d-4b9d-4db8-b7c3-5765951121c4}</destination>
+			<destination>{435300f1-11ff-4657-af98-83137222e17d}</destination>
+			<destination>{98b53a5f-1c97-42b0-a56d-9b0da2e9ebcf}</destination>
+			<destination>{18163f58-dff2-4fde-8180-19d131a0f8e9}</destination>
+		</relationship>
+	</object>
+	<object class="Tag" id="{ed84a789-9a01-4edf-840a-887a5c85b93d}">
+		<property name="name">
+			<value>ahdsr-modulator</value>
+		</property>
+	</object>
+	<object class="Tag" id="{2e419e5f-c6d0-4abd-871f-41d0600a0ac2}">
+		<property name="name">
+			<value>async</value>
+		</property>
+	</object>
+	<object class="Tag" id="{25f1d46e-a7fa-4d75-8540-7258d93bc3e4}">
+		<property name="name">
+			<value>automation</value>
+		</property>
+	</object>
+	<object class="Tag" id="{7866a61e-eaba-4979-9358-9948b88a947f}">
+		<property name="name">
+			<value>built-in-parameter</value>
+		</property>
+	</object>
+	<object class="Tag" id="{30afc683-2f76-4013-8e56-9a64222da127}">
+		<property name="name">
+			<value>loop-instrument</value>
+		</property>
+	</object>
+	<object class="Tag" id="{0c7f8f10-f9b1-4e56-9a2d-4d1c322a125b}">
+		<property name="name">
+			<value>parameter</value>
+		</property>
+	</object>
+	<object class="Tag" id="{771f4712-6819-4c77-be95-6ab976623a18}">
+		<property name="name">
+			<value>scatterer-instrument</value>
+		</property>
+	</object>
+	<object class="Tag" id="{3c753b6c-06ce-446a-9b8e-7f90e1a6475a}">
+		<property name="name">
+			<value>seek-speed</value>
+		</property>
+	</object>
+	<object class="Tag" id="{9f4f6f7c-e400-4601-bfa6-79195d7068f8}">
+		<property name="name">
+			<value>single-instrument</value>
+		</property>
+	</object>
+	<object class="Tag" id="{b0caeb54-83ea-4349-b1ee-3a6a63f5a8f4}">
+		<property name="name">
+			<value>labeled-parameter</value>
+		</property>
+	</object>
+	<object class="Tag" id="{702eac05-cd0d-4cb1-bf08-fcea8c15bc24}">
+		<property name="name">
+			<value>persistent</value>
+		</property>
+	</object>
+	<object class="Tag" id="{db5133b0-e8de-4a84-900f-20c516d46fe8}">
+		<property name="name">
+			<value>parameter-condition</value>
+		</property>
+	</object>
+	<object class="Tag" id="{781a09f4-95f5-42cd-b22d-2625576ca9c7}">
+		<property name="name">
+			<value>random-modulator</value>
+		</property>
+	</object>
+	<object class="Tag" id="{7e832f9d-4b9d-4db8-b7c3-5765951121c4}">
+		<property name="name">
+			<value>sidechain-effect</value>
+		</property>
+	</object>
+	<object class="Tag" id="{435300f1-11ff-4657-af98-83137222e17d}">
+		<property name="name">
+			<value>sidechain-modulator</value>
+		</property>
+	</object>
+	<object class="Tag" id="{98b53a5f-1c97-42b0-a56d-9b0da2e9ebcf}">
+		<property name="name">
+			<value>track-colors</value>
+		</property>
+	</object>
+	<object class="Tag" id="{18163f58-dff2-4fde-8180-19d131a0f8e9}">
+		<property name="name">
+			<value>track-routing</value>
+		</property>
+	</object>
+</objects>

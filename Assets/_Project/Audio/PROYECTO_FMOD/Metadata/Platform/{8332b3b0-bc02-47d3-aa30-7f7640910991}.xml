@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.04.00">
+	<object class="Platform" id="{8332b3b0-bc02-47d3-aa30-7f7640910991}">
+		<property name="hardwareType">
+			<value>0</value>
+		</property>
+		<property name="name">
+			<value>Desktop</value>
+		</property>
+		<property name="subDirectory">
+			<value>C:/Users/User/Desktop/UMNG/DISEÑOIII/proyecto/clonado/vr-phobia-exposure-system/Assets/_Project/Fobias/Acrofobia/Audio_built</value>
+		</property>
+		<property name="speakerFormat">
+			<value>6</value>
+		</property>
+	</object>
+</objects>

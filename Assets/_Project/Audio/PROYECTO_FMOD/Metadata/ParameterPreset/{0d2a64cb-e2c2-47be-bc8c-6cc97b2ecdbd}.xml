@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.04.00">
+	<object class="ParameterPreset" id="{0d2a64cb-e2c2-47be-bc8c-6cc97b2ecdbd}">
+		<property name="name">
+			<value>Traffic</value>
+		</property>
+		<relationship name="folder">
+			<destination>{b312de8b-a9ee-416a-b781-7a24294e703d}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{7ead5c3e-493b-438f-a06a-856ea2f242a9}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{7ead5c3e-493b-438f-a06a-856ea2f242a9}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

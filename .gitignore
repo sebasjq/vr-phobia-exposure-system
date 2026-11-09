@@ -73,3 +73,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+/Assets/_Project/Audio/PROYECTO_FMOD/.cache/
+/Assets/_Project/Audio/PROYECTO_FMOD/.unsaved/
+/Assets/_Project/Audio/PROYECTO_FMOD/.user/
