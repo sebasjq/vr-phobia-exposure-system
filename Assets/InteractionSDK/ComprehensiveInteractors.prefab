@@ -8,9 +8,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 869292908155155766, guid: fac1b34d244291e409464389de307e81, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 923251314889547317, guid: fac1b34d244291e409464389de307e81, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 946622112655768908, guid: fac1b34d244291e409464389de307e81, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000721253119399503, guid: fac1b34d244291e409464389de307e81, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2450054681989548838, guid: fac1b34d244291e409464389de307e81, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590493541788690527, guid: fac1b34d244291e409464389de307e81, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3803868617766131176, guid: fac1b34d244291e409464389de307e81, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835116059136095889, guid: fac1b34d244291e409464389de307e81, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5247372791575799207, guid: fac1b34d244291e409464389de307e81, type: 3}
       propertyPath: m_Name
       value: ComprehensiveInteractors
+      objectReference: {fileID: 0}
+    - target: {fileID: 7063594441774483155, guid: fac1b34d244291e409464389de307e81, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202929665871406506, guid: fac1b34d244291e409464389de307e81, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8385387909072294223, guid: fac1b34d244291e409464389de307e81, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479712975250993718, guid: fac1b34d244291e409464389de307e81, type: 3}
+      propertyPath: _audioSource
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8945518246439380565, guid: fac1b34d244291e409464389de307e81, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,7 +100,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7084575826153646212, guid: fac1b34d244291e409464389de307e81, type: 3}
+    - {fileID: 7179414880530861053, guid: fac1b34d244291e409464389de307e81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
