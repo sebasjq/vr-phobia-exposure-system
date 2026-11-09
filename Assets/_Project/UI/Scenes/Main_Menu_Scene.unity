@@ -1657,6 +1657,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af9ea683544b184083cef283557012d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &573449838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+  m_PrefabInstance: {fileID: 1382958847}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &573704511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2338,6 +2343,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6564704582325264091, guid: 5d8a9ef230738fe4cb4c74b8b3f76152, type: 3}
   m_PrefabInstance: {fileID: 842901963}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &937818640 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5568758620461634119, guid: 46fdef3df9a5a354caf7692f85e5eff2, type: 3}
+  m_PrefabInstance: {fileID: 131808398}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &993391659
 GameObject:
   m_ObjectHideFlags: 0
@@ -2740,6 +2750,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 219996514}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1616923231}
     - targetCorrespondingSourceObject: {fileID: 100006, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1382958859}
@@ -2755,7 +2768,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11400010, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
   m_PrefabInstance: {fileID: 1382958847}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 573449838}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df9f338034892c44ebb62d97894772f1, type: 3}
@@ -4143,6 +4156,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1678554349857304353, guid: 34a22dd67c1e5344591237fdd61e78ec, type: 3}
   m_PrefabInstance: {fileID: 1562808979}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1616923231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573449838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b728c9d09977845a016431eacd3e2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  pasosEvent:
+    Guid:
+      Data1: -991884041
+      Data2: 1210102373
+      Data3: 436297646
+      Data4: -1525222402
+    Path: event:/Player/Pasos_Menu
+  jugador: {fileID: 937818640}
+  velocidadMinima: 0.1
+  intervaloPasos: 0.5
+  volumen: 1000
 --- !u!1001 &1953670531
 PrefabInstance:
   m_ObjectHideFlags: 0
