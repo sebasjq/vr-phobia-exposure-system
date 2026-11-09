@@ -2424,7 +2424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 849066654}
   m_Layer: 0
-  m_Name: puente
+  m_Name: Puente
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4320,7 +4320,7 @@ GameObject:
   - component: {fileID: 1648720374}
   - component: {fileID: 1648720373}
   m_Layer: 0
-  m_Name: SNOW
+  m_Name: Snow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
