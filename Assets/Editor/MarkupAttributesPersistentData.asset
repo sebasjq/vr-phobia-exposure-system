@@ -25,4 +25,12 @@ MonoBehaviour:
     value: 1
   - key: Ocean/Ocean/Tabs/Surface/Reflection Mask
     value: 1
+  - key: OceanSystem.OceanSimulationInputsProvider/Main
+    value: 1
+  - key: OceanSystem.OceanSimulationInputsProvider/ShowIfScaleMode/Local Waves
+    value: 1
+  - key: OceanSystem.SwellPreset/Spectrum
+    value: 1
+  - key: OceanSystem.SwellPreset/Others
+    value: 1
   serializedIntEntries: []
