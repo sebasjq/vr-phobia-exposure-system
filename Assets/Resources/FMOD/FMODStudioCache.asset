@@ -83,6 +83,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-8664465405223967257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Talasofobia/Ambiente_Mar
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Talasofobia/Ambiente_Mar
+  Guid:
+    Data1: 1852408418
+    Data2: 1279422128
+    Data3: -1633907824
+    Data4: -763280059
+  Banks:
+  - {fileID: -399351140577063031}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 246116932358694773}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 34500
 --- !u!114 &-8509222064217715986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +224,25 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639297717454134563
+  lastModified: 639297749085548293
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-5697159320949366252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.assets.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.assets.bank
+  Name: Master.assets
+  StudioPath: bank:/Master.assets
+  lastModified: 639297749085231990
   FileSizes: []
   Exists: 1
 --- !u!114 &-3859453862234970383
@@ -250,6 +296,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 500
+--- !u!114 &-2799786436674958356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.assets.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/SFX.assets.bank
+  Name: SFX.assets
+  StudioPath: bank:/SFX.assets
+  lastModified: 639297749087638348
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-2039584692698515971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +345,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-399351140577063031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Talasofobia.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Talasofobia.bank
+  Name: Talasofobia
+  StudioPath: bank:/Talasofobia
+  lastModified: 639297756593227570
+  FileSizes: []
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +381,12 @@ MonoBehaviour:
   - {fileID: 5416424811239250363}
   - {fileID: -5980511869545600505}
   - {fileID: 5493472049265852564}
+  - {fileID: -399351140577063031}
+  - {fileID: 878117685466956770}
+  - {fileID: -5697159320949366252}
+  - {fileID: 4979697266829405423}
+  - {fileID: -2799786436674958356}
+  - {fileID: 7023523181253697978}
   EditorEvents:
   - {fileID: 2084155131099666547}
   - {fileID: -2039584692698515971}
@@ -310,30 +398,67 @@ MonoBehaviour:
   - {fileID: -8673608965580204378}
   - {fileID: 6291071543583888007}
   - {fileID: 4058965779018919423}
+  - {fileID: 8450702566158695904}
+  - {fileID: -8664465405223967257}
+  - {fileID: 2769907705520982302}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5416424811239250363}
   StringsBanks:
   - {fileID: 4185358967552020388}
   cacheVersion: 132096
-  cacheTime: 639297717468819676
+  cacheTime: 639297756597349630
   SerializableEventsDict:
-  - key: event:/Player/Pasos_pasto
+  - key: event:/Ambience/MENU_AMBIENCE
     index: 0
-  - key: event:/Interfaz/Interfaz_giro
+  - key: event:/Ambience/Forest
     index: 1
-  - key: event:/Interfaz/Interfaz_seleccion
+  - key: event:/Ambience/Country
     index: 2
-  - key: event:/Player/Pasos_Madera
+  - key: event:/Music_Main
     index: 3
-  - key: event:/Player/Pasos_Menu
+  - key: event:/Player/Pasos_pasto
     index: 4
-  - key: event:/nivel_1
+  - key: event:/Nivel_2/City
     index: 5
-  - key: event:/nivel2
+  - key: event:/Interfaz/Interfaz_giro
     index: 6
-  - key: event:/nivel_3
+  - key: event:/Interfaz/Interfaz_seleccion
     index: 7
+  - key: event:/Player/Pasos_Madera
+    index: 8
+  - key: event:/Player/Pasos_Menu
+    index: 9
+  - key: event:/Talasofobia/Salir_Agua
+    index: 10
+  - key: event:/Talasofobia/Ambiente_Mar
+    index: 11
+  - key: event:/Talasofobia/Entrar_Agua
+    index: 12
+--- !u!114 &246116932358694773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Ambiente_Mar/Profundidad
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Profundidad
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2937174356
+    data2: 738787369
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &378921699674724381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,6 +550,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &878117685466956770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Ambience.assets.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Ambience.assets.bank
+  Name: Ambience.assets
+  StudioPath: bank:/Ambience.assets
+  lastModified: 639297749085159234
+  FileSizes: []
+  Exists: 1
 --- !u!114 &1221764955359279102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,6 +646,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &2769907705520982302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Talasofobia/Entrar_Agua
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Talasofobia/Entrar_Agua
+  Guid:
+    Data1: 515546492
+    Data2: 1167228171
+    Data3: 599202452
+    Data4: 1645988630
+  Banks:
+  - {fileID: -399351140577063031}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4300
 --- !u!114 &3878278381283860015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,10 +742,10 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639297717449927769
+  lastModified: 639297749085247248
   FileSizes:
   - Name: 
-    Value: 1736
+    Value: 2226
   Exists: 1
 --- !u!114 &4619399656256460695
 MonoBehaviour:
@@ -597,6 +767,24 @@ MonoBehaviour:
   - Name: Desktop
     Value: 2110
   Exists: 1
+--- !u!114 &4979697266829405423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.assets.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Music.assets.bank
+  Name: Music.assets
+  StudioPath: bank:/Music.assets
+  lastModified: 639297749085722056
+  FileSizes: []
+  Exists: 1
 --- !u!114 &5416424811239250363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,7 +800,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639297717449909589
+  lastModified: 639297749085219780
   FileSizes: []
   Exists: 1
 --- !u!114 &5448997459144794396
@@ -659,7 +847,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639297717468819676
+  lastModified: 639297749086325934
   FileSizes: []
   Exists: 1
 --- !u!114 &5566886103220240607
@@ -677,7 +865,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 639297717449817314
+  lastModified: 639297749083924871
   FileSizes: []
   Exists: 1
 --- !u!114 &5817866552606499441
@@ -758,6 +946,24 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &7023523181253697978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Talasofobia.assets.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Talasofobia.assets.bank
+  Name: Talasofobia.assets
+  StudioPath: bank:/Talasofobia.assets
+  lastModified: 639297756597349630
+  FileSizes: []
+  Exists: 1
 --- !u!114 &7243782670711493627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,6 +1038,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1026
+--- !u!114 &8450702566158695904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Talasofobia/Salir_Agua
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Talasofobia/Salir_Agua
+  Guid:
+    Data1: -261797344
+    Data2: 1265746288
+    Data3: 814312355
+    Data4: 1696736613
+  Banks:
+  - {fileID: -399351140577063031}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3883
 --- !u!114 &8726505005649375085
 MonoBehaviour:
   m_ObjectHideFlags: 0
