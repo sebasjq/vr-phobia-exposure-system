@@ -563,9 +563,14 @@ MonoBehaviour:
   - Master
   Banks:
   - Ambience
+  - Ambience.assets
+  - Master.assets
   - Music
+  - Music.assets
   - SFX
+  - SFX.assets
   - Talasofobia
+  - Talasofobia.assets
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

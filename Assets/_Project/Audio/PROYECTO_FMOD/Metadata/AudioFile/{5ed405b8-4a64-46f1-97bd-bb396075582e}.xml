@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.04.00">
 	<object class="AudioFile" id="{5ed405b8-4a64-46f1-97bd-bb396075582e}">
 		<property name="assetPath">
-			<value>Ruido_Rosa.wav</value>
+			<value>Talasofobia/Ruido_Rosa.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
