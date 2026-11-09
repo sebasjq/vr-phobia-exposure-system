@@ -30,7 +30,7 @@ public class CircularMenu : MonoBehaviour
     private float[] targetAngles = { 0f, 120f, -120f };
 
     [SerializeField]
-    private MenuView[] views = new MenuView[3];
+    private MenuView[] views = new MenuView[4];
 
     private static readonly int FadeId = Shader.PropertyToID("_Fade");
 
@@ -38,9 +38,37 @@ public class CircularMenu : MonoBehaviour
     private int currentView;
     private bool isMoving;
 
+    // La cuarta vista será el menú de niveles.
+    private const int ExposureIndex = 3;
+
+    [Header("Transición al menú de exposición")]
+    [SerializeField] private Transform viewer;
+
+    [SerializeField, Min(0f)]
+    private float entryDistance = 1f;
+
+    private Vector3 exposureFinalPosition;
+    private bool exposureOpen;
+
     private void Start()
     {
         initialRotation = transform.localRotation;
+
+        Vector3 startPosition = views[ExposureIndex].root.position;
+
+        Vector3 direction = viewer != null
+            ? startPosition - viewer.position
+            : transform.forward;
+
+        direction.y = 0f;
+
+        if (direction.sqrMagnitude < 0.0001f)
+            direction = Vector3.forward;
+
+        direction.Normalize();
+
+        // La posición final queda más cerca del usuario.
+        exposureFinalPosition = startPosition - direction * entryDistance;
 
         // Guarda los estados originales antes de bloquear cualquier menú.
         foreach (MenuView view in views)
@@ -70,6 +98,7 @@ public class CircularMenu : MonoBehaviour
     public void GoTo(int viewIndex)
     {
         if (isMoving ||
+            exposureOpen ||
             viewIndex < 0 ||
             viewIndex >= views.Length ||
             viewIndex >= targetAngles.Length ||
@@ -164,6 +193,123 @@ public class CircularMenu : MonoBehaviour
             SetVisibility(i, i == currentView ? 1f : 0f);
             SetInteraction(i, i == currentView);
         }
+
+        isMoving = false;
+    }
+
+
+    // Se conecta al OnClick de la tarjeta de la fobia.
+    public void OpenExposure()
+    {
+        if (isMoving || exposureOpen)
+            return;
+
+        StartCoroutine(TransitionExposure(true));
+    }
+
+    // Se conecta al OnClick del botón Volver.
+    public void CloseExposure()
+    {
+        if (isMoving || !exposureOpen)
+            return;
+
+        StartCoroutine(TransitionExposure(false));
+    }
+
+    private IEnumerator TransitionExposure(bool opening)
+    {
+        isMoving = true;
+
+        for (int i = 0; i < views.Length; i++)
+        {
+            SetInteraction(i, false);
+        }
+
+        Transform exposureRoot = views[ExposureIndex].root;
+
+        Vector3 direction = viewer != null
+            ? exposureFinalPosition - viewer.position
+            : transform.forward;
+
+        direction.y = 0f;
+
+        if (direction.sqrMagnitude < 0.0001f)
+            direction = Vector3.forward;
+
+        direction.Normalize();
+
+        Vector3 farPosition =
+            exposureFinalPosition + direction * entryDistance;
+
+        int outgoingIndex = opening ? currentView : ExposureIndex;
+        int incomingIndex = opening ? ExposureIndex : currentView;
+
+        for (int i = 0; i < views.Length; i++)
+        {
+            SetVisibility(i, i == outgoingIndex ? 1f : 0f);
+        }
+
+        exposureRoot.position = opening
+            ? farPosition
+            : exposureFinalPosition;
+
+        // El siguiente menú empieza cuando el fade lleva un 35 %.
+        float delay = duration * 0.35f;
+        float totalDuration = duration + delay;
+        float elapsed = 0f;
+
+        while (elapsed < totalDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+
+            // El menú actual comienza a desaparecer inmediatamente.
+            float outgoingProgress =
+                Mathf.Clamp01(elapsed / duration);
+
+            float outgoingEased =
+                Mathf.SmoothStep(0f, 1f, outgoingProgress);
+
+            // El siguiente comienza a aparecer un poco después.
+            float incomingProgress =
+                Mathf.Clamp01((elapsed - delay) / duration);
+
+            float incomingEased =
+                Mathf.SmoothStep(0f, 1f, incomingProgress);
+
+            SetVisibility(outgoingIndex, 1f - outgoingEased);
+            SetVisibility(incomingIndex, incomingEased);
+
+            if (opening)
+            {
+                // Los niveles aparecen acercándose.
+                exposureRoot.position = Vector3.Lerp(
+                    farPosition,
+                    exposureFinalPosition,
+                    incomingEased
+                );
+            }
+            else
+            {
+                // Al volver, los niveles retroceden y desaparecen.
+                exposureRoot.position = Vector3.Lerp(
+                    exposureFinalPosition,
+                    farPosition,
+                    outgoingEased
+                );
+            }
+
+            yield return null;
+        }
+
+        SetVisibility(outgoingIndex, 0f);
+        SetVisibility(incomingIndex, 1f);
+
+        // Restablece la posición después de ocultarlo al volver.
+        exposureRoot.position = exposureFinalPosition;
+
+        exposureOpen = opening;
+
+        SetInteraction(incomingIndex, true);
 
         isMoving = false;
     }
