@@ -1605,7 +1605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1028560672}
   m_Layer: 0
-  m_Name: SPAWN
+  m_Name: Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2246,7 +2246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1713123142}
   m_Layer: 0
-  m_Name: SOUND
+  m_Name: Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
