@@ -207238,7 +207238,7 @@ MonoBehaviour:
       Data2: 1340501930
       Data3: 345057439
       Data4: 1751448483
-    Path: event:/nivel_2/City
+    Path: event:/Nivel_2/City
 --- !u!1001 &1870478788
 PrefabInstance:
   m_ObjectHideFlags: 0
