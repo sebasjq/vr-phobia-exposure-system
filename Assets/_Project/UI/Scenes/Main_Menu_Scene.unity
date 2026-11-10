@@ -603,50 +603,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1376332137}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1883933262
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1883933263}
-  - component: {fileID: 1883933264}
-  m_Layer: 0
-  m_Name: Controlador_Escenas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1883933263
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1883933262}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.43865, y: 1.52426, z: 3.16028}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1883933264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1883933262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 937e15365e6360448b38e6314a3b165a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CargarEscena
 --- !u!1 &1958371439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,7 +1294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 956685354683386947, guid: bb571ad37a3461c4ebbcece6c304ef31, type: 3}
       propertyPath: m_Name
-      value: Menu_Niveles_de_Exposicion
+      value: Menu_Nivel_Exposicion_Talasofobia
       objectReference: {fileID: 0}
     - target: {fileID: 956685354683386947, guid: bb571ad37a3461c4ebbcece6c304ef31, type: 3}
       propertyPath: m_IsActive
@@ -1479,18 +1435,18 @@ PrefabInstance:
     - target: {fileID: 3497468054919724008, guid: bb571ad37a3461c4ebbcece6c304ef31, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1883933264}
+      objectReference: {fileID: 1496469460}
     - target: {fileID: 3497468054919724008, guid: bb571ad37a3461c4ebbcece6c304ef31, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3497468054919724008, guid: bb571ad37a3461c4ebbcece6c304ef31, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Cargar
+      value: LoadExperience
       objectReference: {fileID: 0}
     - target: {fileID: 3497468054919724008, guid: bb571ad37a3461c4ebbcece6c304ef31, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CargarEscena, Assembly-CSharp
+      value: CircularMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3497468054919724008, guid: bb571ad37a3461c4ebbcece6c304ef31, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -6372,4 +6328,3 @@ SceneRoots:
   - {fileID: 240667498}
   - {fileID: 3603686281524023502}
   - {fileID: 2119923778}
-  - {fileID: 1883933263}
