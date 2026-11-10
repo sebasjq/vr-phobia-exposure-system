@@ -360,7 +360,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Talasofobia.bank
   Name: Talasofobia
   StudioPath: bank:/Talasofobia
-  lastModified: 639297756593227570
+  lastModified: 639298508232072001
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -407,7 +407,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 4185358967552020388}
   cacheVersion: 132096
-  cacheTime: 639297756597349630
+  cacheTime: 639298508232253903
   SerializableEventsDict:
   - key: event:/Ambience/MENU_AMBIENCE
     index: 0
@@ -672,7 +672,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 4300
+  Length: 4050
 --- !u!114 &3878278381283860015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,7 +961,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Talasofobia.assets.bank
   Name: Talasofobia.assets
   StudioPath: bank:/Talasofobia.assets
-  lastModified: 639297756597349630
+  lastModified: 639298508232253903
   FileSizes: []
   Exists: 1
 --- !u!114 &7243782670711493627
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 3883
+  Length: 3633
 --- !u!114 &8726505005649375085
 MonoBehaviour:
   m_ObjectHideFlags: 0
