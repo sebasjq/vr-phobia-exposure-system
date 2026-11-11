@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.04.00">
-	<object class="AudioFile" id="{9b337457-bad7-47ef-aa35-a1c81d1e8d4d}">
+	<object class="AudioFile" id="{c8cf5b75-4229-4f40-a529-6ee4faf7f02d}">
 		<property name="assetPath">
-			<value>UI/ui_okay.ogg</value>
+			<value>UI/Hover.wav</value>
 		</property>
 		<property name="frequencyInKHz">
-			<value>48</value>
+			<value>44.100000000000001</value>
 		</property>
 		<property name="channelCount">
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>0.9175416666666667</value>
+			<value>1.5</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{ecffb85d-bf22-4e65-a764-bbd4bc3a14f0}</destination>
