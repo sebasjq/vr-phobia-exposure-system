@@ -40,7 +40,7 @@ https://wingless-seraph.net</value>
 			<value>6</value>
 		</property>
 		<relationship name="folder">
-			<destination>{db336e39-13b6-4f74-b0cd-5a6ead12686d}</destination>
+			<destination>{11aedda8-8068-45ca-9e8c-2a18f3e6e7a1}</destination>
 		</relationship>
 		<relationship name="tags">
 			<destination>{ed84a789-9a01-4edf-840a-887a5c85b93d}</destination>

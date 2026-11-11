@@ -1,88 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8999485108035036483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Nivel_2/City
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Nivel_2/City
-  Guid:
-    Data1: -256525196
-    Data2: 1340501930
-    Data3: 345057439
-    Data4: 1751448483
-  Banks:
-  - {fileID: 5493472049265852564}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 378921699674724381}
-  - {fileID: 8726505005649375085}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-8713486806710971444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Interfaz/Interfaz_giro
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Interfaz/Interfaz_giro
-  Guid:
-    Data1: 185243842
-    Data2: 1166726695
-    Data3: -1045827147
-    Data4: 1715857545
-  Banks:
-  - {fileID: 5493472049265852564}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1026
---- !u!114 &-8673608965580204378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Interfaz/Interfaz_seleccion
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Interfaz/Interfaz_seleccion
-  Guid:
-    Data1: 2101094354
-    Data2: 1329359057
-    Data3: -1954539118
-    Data4: 875133923
-  Banks:
-  - {fileID: 5493472049265852564}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &-8664465405223967257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +141,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639299004644137090
+  lastModified: 639300158353325434
   FileSizes: []
   Exists: 1
 --- !u!114 &-5697159320949366252
@@ -242,10 +159,83 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.assets.bank
   Name: Master.assets
   StudioPath: bank:/Master.assets
-  lastModified: 639299004644006496
+  lastModified: 639300100799224000
   FileSizes: []
   Exists: 1
---- !u!114 &-3859453862234970383
+--- !u!114 &-5069954045726984518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/UI.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/UI.bank
+  Name: UI
+  StudioPath: bank:/UI
+  lastModified: 639300158354385766
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-4169831667181437243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/UI_Rotate
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/UI/UI_Rotate
+  Guid:
+    Data1: 327728746
+    Data2: 1330423578
+    Data3: -966637160
+    Data4: -1142156639
+  Banks:
+  - {fileID: -5069954045726984518}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-4015562940145688896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Music_Main
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Ambience/Music_Main
+  Guid:
+    Data1: -201959494
+    Data2: 1247637562
+    Data3: 1021703578
+    Data4: 951324635
+  Banks:
+  - {fileID: -5980511869545600505}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -3084693737841511012}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 22500
+--- !u!114 &-3511670278482209532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,16 +245,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Music_Main/Parameter 1
+  m_Name: parameter:/City/Walla
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Parameter 1
+  Name: Walla
   StudioPath: 
   Min: 0
   Max: 1
   Default: 0
   ID:
-    data1: 2543835687
-    data2: 618184535
+    data1: 3612610357
+    data2: 231366481
   Type: 0
   IsGlobal: 0
   Labels: []
@@ -296,6 +286,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 500
+--- !u!114 &-3084693737841511012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music_Main/Parameter 1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Parameter 1
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2543835687
+    data2: 618184535
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-2799786436674958356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,9 +325,36 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/SFX.assets.bank
   Name: SFX.assets
   StudioPath: bank:/SFX.assets
-  lastModified: 639299004645007107
+  lastModified: 639300100803040504
   FileSizes: []
   Exists: 1
+--- !u!114 &-2193951187420517882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/UI_Hover
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/UI/UI_Hover
+  Guid:
+    Data1: -84677258
+    Data2: 1237350032
+    Data3: -1718948193
+    Data4: -1628068819
+  Banks:
+  - {fileID: -5069954045726984518}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-2039584692698515971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +401,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Talasofobia.bank
   Name: Talasofobia
   StudioPath: bank:/Talasofobia
-  lastModified: 639299004645130829
+  lastModified: 639300100803397659
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -387,54 +428,62 @@ MonoBehaviour:
   - {fileID: 4979697266829405423}
   - {fileID: -2799786436674958356}
   - {fileID: 7023523181253697978}
+  - {fileID: 5738589923279836506}
+  - {fileID: -5069954045726984518}
   EditorEvents:
-  - {fileID: 2084155131099666547}
   - {fileID: -2039584692698515971}
   - {fileID: 5448997459144794396}
-  - {fileID: 8901944734516342092}
   - {fileID: -3482156280255101039}
-  - {fileID: -8999485108035036483}
-  - {fileID: -8713486806710971444}
-  - {fileID: -8673608965580204378}
   - {fileID: 6291071543583888007}
   - {fileID: 4058965779018919423}
   - {fileID: 8450702566158695904}
   - {fileID: -8664465405223967257}
   - {fileID: 2769907705520982302}
+  - {fileID: -4015562940145688896}
+  - {fileID: 803039665027294424}
+  - {fileID: 7799333404658173318}
+  - {fileID: -4169831667181437243}
+  - {fileID: -2193951187420517882}
+  - {fileID: 3643089202331108535}
+  - {fileID: 2580483314952194604}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5416424811239250363}
   StringsBanks:
   - {fileID: 4185358967552020388}
   cacheVersion: 132096
-  cacheTime: 639299004645130829
+  cacheTime: 639300158357431699
   SerializableEventsDict:
-  - key: event:/Ambience/MENU_AMBIENCE
-    index: 0
   - key: event:/Ambience/Forest
-    index: 1
+    index: 0
   - key: event:/Ambience/Country
-    index: 2
-  - key: event:/Music_Main
-    index: 3
+    index: 1
   - key: event:/Player/Pasos_pasto
-    index: 4
-  - key: event:/Nivel_2/City
-    index: 5
-  - key: event:/Interfaz/Interfaz_giro
-    index: 6
-  - key: event:/Interfaz/Interfaz_seleccion
-    index: 7
+    index: 2
   - key: event:/Player/Pasos_Madera
-    index: 8
+    index: 3
   - key: event:/Player/Pasos_Menu
-    index: 9
+    index: 4
   - key: event:/Talasofobia/Salir_Agua
-    index: 10
+    index: 5
   - key: event:/Talasofobia/Ambiente_Mar
-    index: 11
+    index: 6
   - key: event:/Talasofobia/Entrar_Agua
+    index: 7
+  - key: event:/Ambience/Music_Main
+    index: 8
+  - key: event:/Ambience/City
+    index: 9
+  - key: event:/UI/UI_Click
+    index: 10
+  - key: event:/UI/UI_Rotate
+    index: 11
+  - key: event:/UI/UI_Hover
     index: 12
+  - key: event:/UI/UI_Confirm
+    index: 13
+  - key: event:/UI/UI_Back
+    index: 14
 --- !u!114 &246116932358694773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,30 +504,6 @@ MonoBehaviour:
   ID:
     data1: 2937174356
     data2: 738787369
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &378921699674724381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/City/Traffic
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Traffic
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2539786319
-    data2: 1798499264
   Type: 0
   IsGlobal: 0
   Labels: []
@@ -523,6 +548,35 @@ MonoBehaviour:
   - Name: Desktop
     Value: 60576
   Exists: 1
+--- !u!114 &803039665027294424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/City
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Ambience/City
+  Guid:
+    Data1: -256525196
+    Data2: 1340501930
+    Data3: 345057439
+    Data4: 1751448483
+  Banks:
+  - {fileID: 5493472049265852564}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 7001371682896449442}
+  - {fileID: -3511670278482209532}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &855732334074254401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,7 +619,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Ambience.assets.bank
   Name: Ambience.assets
   StudioPath: bank:/Ambience.assets
-  lastModified: 639299004643912328
+  lastModified: 639300100798898187
   FileSizes: []
   Exists: 1
 --- !u!114 &1221764955359279102
@@ -592,33 +646,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &2084155131099666547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambience/MENU_AMBIENCE
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Ambience/MENU_AMBIENCE
-  Guid:
-    Data1: -1943404949
-    Data2: 1142450394
-    Data3: -1247895657
-    Data4: 1079386468
-  Banks:
-  - {fileID: 5566886103220240607}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 378229
 --- !u!114 &2257766990608132269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,6 +666,33 @@ MonoBehaviour:
     Data4: 1621004466
   Banks:
   - {fileID: 4619399656256460695}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &2580483314952194604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/UI_Back
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/UI/UI_Back
+  Guid:
+    Data1: 423839909
+    Data2: 1181806719
+    Data3: -1136150126
+    Data4: -1905870801
+  Banks:
+  - {fileID: -5069954045726984518}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -673,6 +727,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 4050
+--- !u!114 &3643089202331108535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/UI_Confirm
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/UI/UI_Confirm
+  Guid:
+    Data1: 357957540
+    Data2: 1330800861
+    Data3: -1517939786
+    Data4: -1169099775
+  Banks:
+  - {fileID: -5069954045726984518}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &3878278381283860015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,10 +823,10 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639299004644036498
+  lastModified: 639300100799265060
   FileSizes:
   - Name: 
-    Value: 2226
+    Value: 2374
   Exists: 1
 --- !u!114 &4619399656256460695
 MonoBehaviour:
@@ -782,7 +863,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Music.assets.bank
   Name: Music.assets
   StudioPath: bank:/Music.assets
-  lastModified: 639299004644117073
+  lastModified: 639300158353801317
   FileSizes: []
   Exists: 1
 --- !u!114 &5416424811239250363
@@ -800,7 +881,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639299004644026497
+  lastModified: 639300100799187729
   FileSizes: []
   Exists: 1
 --- !u!114 &5448997459144794396
@@ -847,7 +928,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639299004645045767
+  lastModified: 639300100800908504
   FileSizes: []
   Exists: 1
 --- !u!114 &5566886103220240607
@@ -865,7 +946,25 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 639299004643956453
+  lastModified: 639300100796780071
+  FileSizes: []
+  Exists: 1
+--- !u!114 &5738589923279836506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/UI.assets.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/UI.assets.bank
+  Name: UI.assets
+  StudioPath: bank:/UI.assets
+  lastModified: 639300158357431699
   FileSizes: []
   Exists: 1
 --- !u!114 &5817866552606499441
@@ -946,6 +1045,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &7001371682896449442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/City/Traffic
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Traffic
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2539786319
+    data2: 1798499264
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &7023523181253697978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,7 +1084,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Talasofobia.assets.bank
   Name: Talasofobia.assets
   StudioPath: bank:/Talasofobia.assets
-  lastModified: 639299004645111831
+  lastModified: 639300100808653895
   FileSizes: []
   Exists: 1
 --- !u!114 &7243782670711493627
@@ -1004,6 +1127,33 @@ MonoBehaviour:
     Data4: -213836920
   Banks:
   - {fileID: 4619399656256460695}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &7799333404658173318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/UI_Click
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/UI/UI_Click
+  Guid:
+    Data1: -1485968623
+    Data2: 1260020301
+    Data3: 2019699598
+    Data4: -420971178
+  Banks:
+  - {fileID: -5069954045726984518}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1065,58 +1215,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3633
---- !u!114 &8726505005649375085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/City/Walla
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Walla
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3612610357
-    data2: 231366481
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &8901944734516342092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music_Main
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Music_Main
-  Guid:
-    Data1: -201959494
-    Data2: 1247637562
-    Data3: 1021703578
-    Data4: 951324635
-  Banks:
-  - {fileID: -5980511869545600505}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -3859453862234970383}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 22500
 --- !u!114 &9152028924476981061
 MonoBehaviour:
   m_ObjectHideFlags: 0
