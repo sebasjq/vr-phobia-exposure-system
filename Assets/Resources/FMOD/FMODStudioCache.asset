@@ -224,7 +224,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639297749085548293
+  lastModified: 639298639081458118
   FileSizes: []
   Exists: 1
 --- !u!114 &-5697159320949366252
@@ -242,7 +242,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.assets.bank
   Name: Master.assets
   StudioPath: bank:/Master.assets
-  lastModified: 639297749085231990
+  lastModified: 639298639081325684
   FileSizes: []
   Exists: 1
 --- !u!114 &-3859453862234970383
@@ -311,7 +311,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/SFX.assets.bank
   Name: SFX.assets
   StudioPath: bank:/SFX.assets
-  lastModified: 639297749087638348
+  lastModified: 639298639082441266
   FileSizes: []
   Exists: 1
 --- !u!114 &-2039584692698515971
@@ -360,7 +360,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Talasofobia.bank
   Name: Talasofobia
   StudioPath: bank:/Talasofobia
-  lastModified: 639298508232072001
+  lastModified: 639298639082597894
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -407,7 +407,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 4185358967552020388}
   cacheVersion: 132096
-  cacheTime: 639298508232253903
+  cacheTime: 639298639082597894
   SerializableEventsDict:
   - key: event:/Ambience/MENU_AMBIENCE
     index: 0
@@ -565,7 +565,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Ambience.assets.bank
   Name: Ambience.assets
   StudioPath: bank:/Ambience.assets
-  lastModified: 639297749085159234
+  lastModified: 639298639081197382
   FileSizes: []
   Exists: 1
 --- !u!114 &1221764955359279102
@@ -742,7 +742,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639297749085247248
+  lastModified: 639298639081325684
   FileSizes:
   - Name: 
     Value: 2226
@@ -782,7 +782,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Music.assets.bank
   Name: Music.assets
   StudioPath: bank:/Music.assets
-  lastModified: 639297749085722056
+  lastModified: 639298639081356201
   FileSizes: []
   Exists: 1
 --- !u!114 &5416424811239250363
@@ -800,7 +800,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639297749085219780
+  lastModified: 639298639081325684
   FileSizes: []
   Exists: 1
 --- !u!114 &5448997459144794396
@@ -847,7 +847,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639297749086325934
+  lastModified: 639298639082547131
   FileSizes: []
   Exists: 1
 --- !u!114 &5566886103220240607
@@ -865,7 +865,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 639297749083924871
+  lastModified: 639298639081197382
   FileSizes: []
   Exists: 1
 --- !u!114 &5817866552606499441
@@ -961,7 +961,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Talasofobia.assets.bank
   Name: Talasofobia.assets
   StudioPath: bank:/Talasofobia.assets
-  lastModified: 639298508232253903
+  lastModified: 639298639082597894
   FileSizes: []
   Exists: 1
 --- !u!114 &7243782670711493627
