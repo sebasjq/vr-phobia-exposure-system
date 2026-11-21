@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/_Project/Fobias/Aracnofobia/Scenes/Aracnofobia_RA.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/_Project/Fobias/Talasofobia/Scenes/Thalassophobia_1st_Level.unity
+    guid: d21d40a552554c64c90bc83b47f24738
+  - enabled: 1
+    path: Assets/_Project/Fobias/Talasofobia/Scenes/Thalassophobia_2nd_Level.unity
+    guid: 965a97b16fc00f146aeb85d14dd92a0e
+  - enabled: 1
     path: Assets/_Project/Fobias/Talasofobia/Scenes/Thalassophobia_3rd_Level.unity
     guid: 46169402dab0c124d973b1f74d720d93
   - enabled: 1
