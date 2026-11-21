@@ -11,15 +11,15 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b414b497f4292d4ab7fc53a67464cb7, type: 3}
   m_Name: DevAgentSettings
-  m_EditorClassIdentifier: Meta.XR.ImmersiveDebugger.DevAgent::Meta.XR.ImmersiveDebugger.DevAgent.RuntimeSettings
+  m_EditorClassIdentifier: 
   enabled: 0
-  serverAddress: 192.168.1.16
+  serverAddress: 192.168.80.17
   serverPort: 48735
-  mcpServerPort: 48736
+  useVoiceSdkForInput: 0
   witConfiguration: {fileID: 0}
   witClientAccessToken: 
   pushToTalkButton: 1
   handPushToTalkGesture: 0
   enableDelayedRelease: 1
   releaseDelay: 0.8
-  accessToken: c2560ddb5a50429e9b04c0607521bef0
+  accessToken: 66a17a5bcbed4194974e11dc22f495df

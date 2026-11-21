@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1500354080170800907
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -3910990755373119420, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.71
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.11877343
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9929214
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -166.357
+      objectReference: {fileID: 0}
+    - target: {fileID: -3910990755373119420, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2272193907538426981, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+      propertyPath: m_Animation
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771091787928289351, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+      propertyPath: m_Name
+      value: "Ara\xF1a"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8771091787928289351, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1855284296396138625}
+    - targetCorrespondingSourceObject: {fileID: 8771091787928289351, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 367077324798150567}
+  m_SourcePrefab: {fileID: -4161369568681901532, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+--- !u!1 &7884529252260689740 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8771091787928289351, guid: eb522f2ca4680f547821c0c6fc81c2ca, type: 3}
+  m_PrefabInstance: {fileID: 1500354080170800907}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1855284296396138625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7884529252260689740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a7cf189022bf5449496c2c0723856d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jugador: {fileID: 0}
+  agente: {fileID: 0}
+  animator: {fileID: 0}
+  frecuenciaActualizacion: 0.2
+  distanciaMuestreo: 2
+  distanciaAtaque: 1.2
+  intervaloAtaque: 4
+  distanciaDetencion: 1.5
+  radioRodeo: 1.8
+  velocidadRodeo: 0.5
+  intervaloRodeo: 2
+  tiempoEspera: 1.5
+--- !u!195 &367077324798150567
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7884529252260689740}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 0.5
+  m_Acceleration: 2
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0.5
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

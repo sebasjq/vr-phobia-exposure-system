@@ -6,14 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Project/UI/Scenes/Main_Menu_Scene.unity
+    path: Assets/_Project/Fobias/Aracnofobia/Scenes/Aracnofobia_RA.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/_Project/Fobias/Talasofobia/Scenes/Thalassophobia_3rd_Level.unity
     guid: 46169402dab0c124d973b1f74d720d93
+  - enabled: 1
+    path: Assets/_Project/Fobias/Acrofobia/Scenes/Acrofobia_1.unity
+    guid: a1f40ec80ca8cd145a8de3db97a9e55b
+  - enabled: 1
+    path: Assets/_Project/Fobias/Acrofobia/Scenes/Acrofobia_2.unity
+    guid: 3dd6985d248a2724291b46a30456112a
+  - enabled: 1
+    path: Assets/_Project/Fobias/Acrofobia/Scenes/Acrofobia_3.unity
+    guid: b2380b3cd25ba6448b7ff95b34fab297
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 97c3652010a55684d943ea594acd2d65, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1d632c154683d5a41aba7172605c012c, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d690be545b4da2547ad88f7107af5845, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: eea9e57cf2c2fd44abdd59a95c8f0946, type: 2}
   m_UseUCBPForAssetBundles: 0
