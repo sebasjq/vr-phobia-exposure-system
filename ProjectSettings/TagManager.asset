@@ -26,11 +26,11 @@ TagManager:
   - SamplesInfoPanel
   - QDSUIToggleCheckboxRadio
   - QDSUIToggleThumbnail
+  - PassThroughButton
+  - PassThrough
   - Locomotion
   - LocoButton
   - LocoText
-  - PassThroughButton
-  - PassThrough
   layers:
   - Default
   - TransparentFX
