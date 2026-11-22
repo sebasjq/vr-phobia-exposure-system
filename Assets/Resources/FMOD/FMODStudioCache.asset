@@ -410,7 +410,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/SFX.assets.bank
   Name: SFX.assets
   StudioPath: bank:/SFX.assets
-  lastModified: 639308829362548631
+  lastModified: 639309096105021386
   FileSizes: []
   Exists: 1
 --- !u!114 &-2193951187420517882
@@ -507,7 +507,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 4185358967552020388}
   cacheVersion: 132096
-  cacheTime: 639308829562194294
+  cacheTime: 639309096105021386
   SerializableEventsDict:
   - key: event:/Player/Pasos_pasto
     index: 0
@@ -647,7 +647,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Ambience.assets.bank
   Name: Ambience.assets
   StudioPath: bank:/Ambience.assets
-  lastModified: 639308829359307927
+  lastModified: 639309096103102196
   FileSizes: []
   Exists: 1
 --- !u!114 &1078545099023989943
@@ -1027,7 +1027,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639308829361297404
+  lastModified: 639309096103879157
   FileSizes: []
   Exists: 1
 --- !u!114 &5566886103220240607
@@ -1045,7 +1045,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 639308829357918643
+  lastModified: 639309096102430376
   FileSizes: []
   Exists: 1
 --- !u!114 &5738589923279836506

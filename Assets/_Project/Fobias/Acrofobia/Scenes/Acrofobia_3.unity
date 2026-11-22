@@ -11750,11 +11750,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   ambienceEvent:
     Guid:
-      Data1: -256525196
-      Data2: 1340501930
-      Data3: 345057439
-      Data4: 1751448483
-    Path: event:/Acrofobia/City
+      Data1: -2133516680
+      Data2: 1174192708
+      Data3: -1243388537
+      Data4: 1495133818
+    Path: event:/Acrofobia/Monte
+  rain: 0.05
+  wind: 0.25
+  cover: 0
 --- !u!114 &1616919244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13644,7 +13647,7 @@ ParticleSystem:
     z:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: -25
       minScalar: 0
       maxCurve:
         serializedVersion: 2

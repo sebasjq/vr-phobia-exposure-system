@@ -441,6 +441,9 @@ Rain recordings provided by Xue Qiao of BB Studio, Chongqing Qiaoya Music and Cu
 		<property name="color">
 			<value>Blue</value>
 		</property>
+		<property name="volume">
+			<value>-60</value>
+		</property>
 		<property name="name">
 			<value>Rain Drops</value>
 		</property>
@@ -1144,7 +1147,7 @@ Rain recordings provided by Xue Qiao of BB Studio, Chongqing Qiaoya Music and Cu
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>-16.0000019</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{c6559558-2ac3-4415-b07a-6f424ae455e1}">
@@ -1152,7 +1155,7 @@ Rain recordings provided by Xue Qiao of BB Studio, Chongqing Qiaoya Music and Cu
 			<value>0.1509433946513257</value>
 		</property>
 		<property name="value">
-			<value>3.81469727e-06</value>
+			<value>-15.9999981</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{4046a56b-492a-497f-bf29-6d97f70a3ca6}">
@@ -1160,7 +1163,7 @@ Rain recordings provided by Xue Qiao of BB Studio, Chongqing Qiaoya Music and Cu
 			<value>0.3297785031578031</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>-16.0000019</value>
 		</property>
 		<property name="curveShape">
 			<value>1</value>
@@ -1171,7 +1174,7 @@ Rain recordings provided by Xue Qiao of BB Studio, Chongqing Qiaoya Music and Cu
 			<value>0.42986054142739943</value>
 		</property>
 		<property name="value">
-			<value>-18.0999985</value>
+			<value>-45.2499962</value>
 		</property>
 		<property name="curveShape">
 			<value>1</value>
