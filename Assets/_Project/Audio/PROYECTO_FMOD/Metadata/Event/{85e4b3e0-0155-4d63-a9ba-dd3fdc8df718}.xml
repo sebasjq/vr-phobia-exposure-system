@@ -41,7 +41,7 @@ Rain recordings provided by Xue Qiao of BB Studio, Chongqing Qiaoya Music and Cu
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{11aedda8-8068-45ca-9e8c-2a18f3e6e7a1}</destination>
+			<destination>{f5d38815-a58e-45ab-b5a6-2337652319be}</destination>
 		</relationship>
 		<relationship name="tags">
 			<destination>{ed84a789-9a01-4edf-840a-887a5c85b93d}</destination>
