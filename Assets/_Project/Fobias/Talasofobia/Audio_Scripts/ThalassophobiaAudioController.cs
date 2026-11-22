@@ -22,6 +22,10 @@ public class ThalassophobiaAudioController : MonoBehaviour
     [Tooltip("Origen del ambiente 3D. Vacio: sigue la posicion de la cabeza.")]
     [SerializeField] private Transform origenAmbiente;
 
+    [Header("Emisores adicionales (opcional)")]
+    [Tooltip("Arrastra Audio_Orilla. Sus emisores conservaran sus posiciones y recibiran el parametro local Profundidad. Vacio: comportamiento original.")]
+    [SerializeField] private Transform raizEmisoresMar;
+
     [Header("Agua y profundidad")]
     [Tooltip("Altura base de la superficie en coordenadas del mundo.")]
     [SerializeField] private float nivelMar = 0f;
@@ -45,6 +49,7 @@ public class ThalassophobiaAudioController : MonoBehaviour
     private bool estadoInicializado;
     private bool iniciado;
     private float velocidadSuavizado;
+    private StudioEventEmitter[] emisoresMar = new StudioEventEmitter[0];
 
     private void Start()
     {
@@ -62,6 +67,11 @@ public class ThalassophobiaAudioController : MonoBehaviour
     {
         if (ambiente.isValid())
             return;
+
+        // Solo recoger emisores de la raiz asignada en esta escena.
+        emisoresMar = raizEmisoresMar != null
+            ? raizEmisoresMar.GetComponentsInChildren<StudioEventEmitter>(true)
+            : new StudioEventEmitter[0];
 
         if (cabeza == null || ambienteMar.IsNull)
         {
@@ -165,6 +175,22 @@ public class ThalassophobiaAudioController : MonoBehaviour
         }
 
         ambiente.setParameterByID(profundidadId, profundidadActual);
+        ActualizarProfundidadEmisores();
+    }
+
+    private void ActualizarProfundidadEmisores()
+    {
+        foreach (StudioEventEmitter emisor in emisoresMar)
+        {
+            if (emisor == null || !emisor.isActiveAndEnabled)
+                continue;
+
+            // El emisor conserva la gestion de su instancia y de su posicion.
+            // SetParameter tambien actualiza la cache si FMOD ha detenido
+            // una instancia por estar fuera de su distancia maxima.
+            // El suavizado ya lo aplica este controlador.
+            emisor.SetParameter("Profundidad", profundidadActual, true);
+        }
     }
 
     private void ActualizarPosicion()
@@ -203,4 +229,5 @@ public class ThalassophobiaAudioController : MonoBehaviour
         estadoInicializado = false;
     }
 }
+
 
