@@ -6926,6 +6926,91 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1001 &877785744
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4062586963224773537, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.26995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062586963224773537, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062586963224773537, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.04667
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062586963224773537, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062586963224773537, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062586963224773537, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062586963224773537, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062586963224773537, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062586963224773537, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062586963224773537, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426994511877286455, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: cabeza
+      value: 
+      objectReference: {fileID: 856134052}
+    - target: {fileID: 5426994511877286455, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: ambienteMar.Path
+      value: event:/Talasofobia/Ambiente_Mar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426994511877286455, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: simulacionOceano
+      value: 
+      objectReference: {fileID: 957101586}
+    - target: {fileID: 5426994511877286455, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: ambienteMar.Guid.Data1
+      value: 1852408418
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426994511877286455, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: ambienteMar.Guid.Data2
+      value: 1279422128
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426994511877286455, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: ambienteMar.Guid.Data3
+      value: -1633907824
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426994511877286455, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: ambienteMar.Guid.Data4
+      value: -763280059
+      objectReference: {fileID: 0}
+    - target: {fileID: 8522568107412269204, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: m_Name
+      value: Audio_Talasofobia
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
 --- !u!114 &957101586 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8867403138163205470, guid: c6cecdbe56163e543bcdb5346906d3df, type: 3}
@@ -7051,80 +7136,6 @@ Transform:
   - {fileID: 836513469}
   m_Father: {fileID: 856134054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1078186974
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1078186975}
-  - component: {fileID: 1078186976}
-  m_Layer: 0
-  m_Name: Audio_Talasofobia
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1078186975
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078186974}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 63.73395, y: -0, z: 11.41418}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1078186976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078186974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 993b9c6b6360423468d5c0a11a159fd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ThalassophobiaAudioController
-  ambienteMar:
-    Guid:
-      Data1: 1852408418
-      Data2: 1279422128
-      Data3: -1633907824
-      Data4: -763280059
-    Path: event:/Talasofobia/Ambiente_Mar
-  entrarAgua:
-    Guid:
-      Data1: 515546492
-      Data2: 1167228171
-      Data3: 599202452
-      Data4: 1645988630
-    Path: event:/Talasofobia/Entrar_Agua
-  salirAgua:
-    Guid:
-      Data1: -261797344
-      Data2: 1265746288
-      Data3: 814312355
-      Data4: 1696736613
-    Path: event:/Talasofobia/Salir_Agua
-  cabeza: {fileID: 856134052}
-  simulacionOceano: {fileID: 957101586}
-  origenAmbiente: {fileID: 0}
-  nivelMar: 0
-  profundidadMaxima: 0.25
-  margenCruce: 0
-  suavizado: 0.05
-  profundidadActual: 0
-  bajoAgua: 0
 --- !u!1001 &1140097612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8640,5 +8651,5 @@ SceneRoots:
   - {fileID: 856095950}
   - {fileID: 504091501}
   - {fileID: 856134047}
-  - {fileID: 1078186975}
   - {fileID: 156706287}
+  - {fileID: 877785744}
