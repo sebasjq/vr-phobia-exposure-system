@@ -22,6 +22,10 @@
 			<destination>{435300f1-11ff-4657-af98-83137222e17d}</destination>
 			<destination>{98b53a5f-1c97-42b0-a56d-9b0da2e9ebcf}</destination>
 			<destination>{18163f58-dff2-4fde-8180-19d131a0f8e9}</destination>
+			<destination>{fcbfbe7c-7991-43aa-860a-af63cb827781}</destination>
+			<destination>{3e5db1bc-d38d-49d0-ab0d-6609dec7fdd3}</destination>
+			<destination>{14b96e17-d1d5-45ba-85ee-cdc872e93b68}</destination>
+			<destination>{5bc3db43-c2c7-468e-8baa-40c024472097}</destination>
 		</relationship>
 	</object>
 	<object class="Tag" id="{ed84a789-9a01-4edf-840a-887a5c85b93d}">
@@ -107,6 +111,26 @@
 	<object class="Tag" id="{18163f58-dff2-4fde-8180-19d131a0f8e9}">
 		<property name="name">
 			<value>track-routing</value>
+		</property>
+	</object>
+	<object class="Tag" id="{fcbfbe7c-7991-43aa-860a-af63cb827781}">
+		<property name="name">
+			<value>autopitch-modulator</value>
+		</property>
+	</object>
+	<object class="Tag" id="{3e5db1bc-d38d-49d0-ab0d-6609dec7fdd3}">
+		<property name="name">
+			<value>fade</value>
+		</property>
+	</object>
+	<object class="Tag" id="{14b96e17-d1d5-45ba-85ee-cdc872e93b68}">
+		<property name="name">
+			<value>send</value>
+		</property>
+	</object>
+	<object class="Tag" id="{5bc3db43-c2c7-468e-8baa-40c024472097}">
+		<property name="name">
+			<value>spatializer</value>
 		</property>
 	</object>
 </objects>

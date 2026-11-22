@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8522568107412269204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4062586963224773537}
+  - component: {fileID: 5426994511877286455}
+  m_Layer: 0
+  m_Name: Audio_Talasofobia
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4062586963224773537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8522568107412269204}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 63.73395, y: -0, z: 11.41418}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5426994511877286455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8522568107412269204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 993b9c6b6360423468d5c0a11a159fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThalassophobiaAudioController
+  ambienteMar:
+    Guid:
+      Data1: 1498272749
+      Data2: 1150989832
+      Data3: -1539969658
+      Data4: 1073231304
+    Path: event:/Talasofobia/Ambiente_Playa
+  entrarAgua:
+    Guid:
+      Data1: 515546492
+      Data2: 1167228171
+      Data3: 599202452
+      Data4: 1645988630
+    Path: event:/Talasofobia/Entrar_Agua
+  salirAgua:
+    Guid:
+      Data1: -261797344
+      Data2: 1265746288
+      Data3: 814312355
+      Data4: 1696736613
+    Path: event:/Talasofobia/Salir_Agua
+  cabeza: {fileID: 0}
+  simulacionOceano: {fileID: 0}
+  origenAmbiente: {fileID: 0}
+  raizEmisoresMar: {fileID: 0}
+  nivelMar: 0
+  profundidadMaxima: 1
+  margenCruce: 0.05
+  suavizado: 0.2
+  profundidadActual: 0
+  bajoAgua: 0

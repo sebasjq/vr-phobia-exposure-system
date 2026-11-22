@@ -2,7 +2,8 @@
   "dependencies": {
     "com.fmod.fmod-for-unity.v204": "file:C:/Users/User/Downloads/fmodstudio20400.tgz",
     "com.gasgiant.markupattributes": "https://github.com/gasgiant/Markup-Attributes.git#upm",
-    "com.meta.xr.sdk.interaction.ovr": "205.0.0",
+    "com.meta.xr.mrutilitykit": "209.0.0",
+    "com.meta.xr.sdk.interaction.ovr": "209.0.0",
     "com.unity.ai.navigation": "2.0.10",
     "com.unity.cloud.gltfast": "6.21.0",
     "com.unity.collab-proxy": "2.11.3",
