@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8949636494778946239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Acrofobia/Monte
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Acrofobia/Monte
+  Guid:
+    Data1: -2133516680
+    Data2: 1174192708
+    Data3: -1243388537
+    Data4: 1495133818
+  Banks:
+  - {fileID: 5566886103220240607}
+  - {fileID: 5493472049265852564}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -4788976236830700100}
+  - {fileID: -6100708351447279250}
+  - {fileID: -4692800564932139017}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-8664465405223967257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,6 +59,37 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 34500
+--- !u!114 &-8516243952189816685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Acrofobia/Forest
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Acrofobia/Forest
+  Guid:
+    Data1: -2048609312
+    Data2: 1298334037
+    Data3: 1071495849
+    Data4: 418876892
+  Banks:
+  - {fileID: 5566886103220240607}
+  - {fileID: 5493472049265852564}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 8289391674339038644}
+  - {fileID: -3082657421370146384}
+  - {fileID: 1399436110397222997}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-8509222064217715986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,30 +117,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 147
---- !u!114 &-7672411890637283154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Forest/Wind
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Wind
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2574423847
-    data2: 220643996
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &-7478042157640402683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +136,30 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 1262
+  Exists: 1
+--- !u!114 &-7428135869539796316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/City/Traffic
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Traffic
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2539786319
+    data2: 1798499264
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &-7368903477567448719
 MonoBehaviour:
@@ -153,6 +215,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-6100708351447279250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Monte/Cover
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Cover
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1239376746
+    data2: 3759388303
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-5980511869545600505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +254,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639300201603858124
+  lastModified: 639308852636452199
   FileSizes: []
   Exists: 1
 --- !u!114 &-5697159320949366252
@@ -207,6 +293,85 @@ MonoBehaviour:
   lastModified: 639300203361081611
   FileSizes: []
   Exists: 1
+--- !u!114 &-4788976236830700100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Monte/Wind
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Wind
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2574423847
+    data2: 220643996
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-4692800564932139017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Monte/Rain
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Rain
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4170443663
+    data2: 3823836218
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-4277290799069521615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Acrofobia/Forest
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Acrofobia/Forest
+  Guid:
+    Data1: -2048609312
+    Data2: 1298334037
+    Data3: 1071495849
+    Data4: 418876892
+  Banks:
+  - {fileID: 5566886103220240607}
+  - {fileID: 5493472049265852564}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 340688273772969791}
+  - {fileID: 471641767913860809}
+  - {fileID: 3267417843507546253}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-4169831667181437243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,58 +399,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-4015562940145688896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambience/Music_Main
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Ambience/Music_Main
-  Guid:
-    Data1: -201959494
-    Data2: 1247637562
-    Data3: 1021703578
-    Data4: 951324635
-  Banks:
-  - {fileID: -5980511869545600505}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -3084693737841511012}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 22500
---- !u!114 &-3511670278482209532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/City/Walla
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Walla
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3612610357
-    data2: 231366481
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &-3482156280255101039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,7 +426,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 500
---- !u!114 &-3084693737841511012
+--- !u!114 &-3082657421370146384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -323,16 +436,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Music_Main/Parameter 1
+  m_Name: parameter:/Forest/Cover
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Parameter 1
+  Name: Cover
   StudioPath: 
   Min: 0
   Max: 1
   Default: 0
   ID:
-    data1: 2543835687
-    data2: 618184535
+    data1: 1239376746
+    data2: 3759388303
   Type: 0
   IsGlobal: 0
   Labels: []
@@ -352,7 +465,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/SFX.assets.bank
   Name: SFX.assets
   StudioPath: bank:/SFX.assets
-  lastModified: 639300201605900572
+  lastModified: 639308852636712478
   FileSizes: []
   Exists: 1
 --- !u!114 &-2193951187420517882
@@ -382,7 +495,31 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-2039584692698515971
+--- !u!114 &-1332342804992151825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Monte/Wind
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Wind
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2574423847
+    data2: 220643996
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-1218652537157451136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -392,27 +529,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambience/Forest
+  m_Name: event:/Acrofobia/Music_Main
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Ambience/Forest
+  Path: event:/Acrofobia/Music_Main
   Guid:
-    Data1: -2048609312
-    Data2: 1298334037
-    Data3: 1071495849
-    Data4: 418876892
+    Data1: -201959494
+    Data2: 1247637562
+    Data3: 1021703578
+    Data4: 951324635
   Banks:
-  - {fileID: 5566886103220240607}
-  - {fileID: 5493472049265852564}
-  IsStream: 1
+  - {fileID: -5980511869545600505}
+  IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 6356808133394155549}
-  - {fileID: 1221764955359279102}
-  - {fileID: -7672411890637283154}
+  - {fileID: 8004941248207526173}
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 22500
 --- !u!114 &-399351140577063031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,61 +592,61 @@ MonoBehaviour:
   - {fileID: 5738589923279836506}
   - {fileID: -5069954045726984518}
   EditorEvents:
-  - {fileID: -2039584692698515971}
-  - {fileID: 5448997459144794396}
   - {fileID: -3482156280255101039}
   - {fileID: 6291071543583888007}
   - {fileID: 4058965779018919423}
   - {fileID: 8450702566158695904}
   - {fileID: -8664465405223967257}
   - {fileID: 2769907705520982302}
-  - {fileID: -4015562940145688896}
-  - {fileID: 803039665027294424}
   - {fileID: 7799333404658173318}
   - {fileID: -4169831667181437243}
   - {fileID: -2193951187420517882}
   - {fileID: 3643089202331108535}
   - {fileID: 2580483314952194604}
   - {fileID: -7368903477567448719}
+  - {fileID: 4401495883180498542}
+  - {fileID: -4277290799069521615}
+  - {fileID: -1218652537157451136}
+  - {fileID: 7982950255441449003}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5416424811239250363}
   StringsBanks:
   - {fileID: 4185358967552020388}
   cacheVersion: 132096
-  cacheTime: 639300203361845133
+  cacheTime: 639308852636738131
   SerializableEventsDict:
-  - key: event:/Ambience/Forest
-    index: 0
-  - key: event:/Ambience/Country
-    index: 1
   - key: event:/Player/Pasos_pasto
-    index: 2
+    index: 0
   - key: event:/Player/Pasos_Madera
-    index: 3
+    index: 1
   - key: event:/Player/Pasos_Menu
-    index: 4
+    index: 2
   - key: event:/Talasofobia/Salir_Agua
-    index: 5
+    index: 3
   - key: event:/Talasofobia/Ambiente_Mar
-    index: 6
+    index: 4
   - key: event:/Talasofobia/Entrar_Agua
-    index: 7
-  - key: event:/Ambience/Music_Main
-    index: 8
-  - key: event:/Ambience/City
-    index: 9
+    index: 5
   - key: event:/UI/UI_Click
-    index: 10
+    index: 6
   - key: event:/UI/UI_Rotate
-    index: 11
+    index: 7
   - key: event:/UI/UI_Hover
-    index: 12
+    index: 8
   - key: event:/UI/UI_Confirm
-    index: 13
+    index: 9
   - key: event:/UI/UI_Back
-    index: 14
+    index: 10
   - key: event:/UI/UI_MainMenu_Song
+    index: 11
+  - key: event:/Acrofobia/Monte
+    index: 12
+  - key: event:/Acrofobia/Forest
+    index: 13
+  - key: event:/Acrofobia/Music_Main
+    index: 14
+  - key: event:/Acrofobia/City
     index: 15
 --- !u!114 &246116932358694773
 MonoBehaviour:
@@ -538,6 +672,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &340688273772969791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Forest/Rain
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Rain
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4170443663
+    data2: 3823836218
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &386982058529204602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,6 +715,30 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 1090
+  Exists: 1
+--- !u!114 &471641767913860809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Forest/Cover
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Cover
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1239376746
+    data2: 3759388303
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &711714209628320068
 MonoBehaviour:
@@ -578,35 +760,6 @@ MonoBehaviour:
   - Name: Desktop
     Value: 60576
   Exists: 1
---- !u!114 &803039665027294424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambience/City
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Ambience/City
-  Guid:
-    Data1: -256525196
-    Data2: 1340501930
-    Data3: 345057439
-    Data4: 1751448483
-  Banks:
-  - {fileID: 5493472049265852564}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 7001371682896449442}
-  - {fileID: -3511670278482209532}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &855732334074254401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,10 +802,10 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Ambience.assets.bank
   Name: Ambience.assets
   StudioPath: bank:/Ambience.assets
-  lastModified: 639300201603526753
+  lastModified: 639308852636395909
   FileSizes: []
   Exists: 1
---- !u!114 &1221764955359279102
+--- !u!114 &1078545099023989943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -662,7 +815,83 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Forest/Cover
+  m_Name: parameter:/Music_Main/Parameter 1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Parameter 1
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2543835687
+    data2: 618184535
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &1090331447937551507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Acrofobia/Music_Main
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Acrofobia/Music_Main
+  Guid:
+    Data1: -201959494
+    Data2: 1247637562
+    Data3: 1021703578
+    Data4: 951324635
+  Banks:
+  - {fileID: -5980511869545600505}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 1078545099023989943}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 22500
+--- !u!114 &1399436110397222997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Forest/Wind
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Wind
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2574423847
+    data2: 220643996
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &2172940304449105016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Monte/Cover
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: Cover
   StudioPath: 
@@ -757,6 +986,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 4050
+--- !u!114 &3267417843507546253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Forest/Wind
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Wind
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2574423847
+    data2: 220643996
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &3643089202331108535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -784,6 +1037,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &3648632881520312225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/City/Walla
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Walla
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3612610357
+    data2: 231366481
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &3878278381283860015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,10 +1130,89 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639300201603622113
+  lastModified: 639308852636426672
   FileSizes:
   - Name: 
-    Value: 2418
+    Value: 2566
+  Exists: 1
+--- !u!114 &4401495883180498542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Acrofobia/Monte
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Acrofobia/Monte
+  Guid:
+    Data1: -2133516680
+    Data2: 1174192708
+    Data3: -1243388537
+    Data4: 1495133818
+  Banks:
+  - {fileID: 5566886103220240607}
+  - {fileID: 5493472049265852564}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -1332342804992151825}
+  - {fileID: 2172940304449105016}
+  - {fileID: 6942981687048391373}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &4417669153484283190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/City/Walla
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Walla
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3612610357
+    data2: 231366481
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &4499726593887138871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/City/Traffic
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Traffic
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2539786319
+    data2: 1798499264
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &4619399656256460695
 MonoBehaviour:
@@ -911,38 +1267,9 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639300201603591568
+  lastModified: 639308852636426672
   FileSizes: []
   Exists: 1
---- !u!114 &5448997459144794396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambience/Country
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Ambience/Country
-  Guid:
-    Data1: 1453953788
-    Data2: 1180459884
-    Data3: 423359151
-    Data4: -1393696958
-  Banks:
-  - {fileID: 5566886103220240607}
-  - {fileID: 5493472049265852564}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 9152028924476981061}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &5493472049265852564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,7 +1285,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639300201604660816
+  lastModified: 639308852636738131
   FileSizes: []
   Exists: 1
 --- !u!114 &5566886103220240607
@@ -976,7 +1303,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 639300201602379080
+  lastModified: 639308852636405909
   FileSizes: []
   Exists: 1
 --- !u!114 &5738589923279836506
@@ -1051,7 +1378,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 501
---- !u!114 &6356808133394155549
+--- !u!114 &6942981687048391373
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1061,7 +1388,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Forest/Rain
+  m_Name: parameter:/Monte/Rain
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
   Name: Rain
   StudioPath: 
@@ -1071,30 +1398,6 @@ MonoBehaviour:
   ID:
     data1: 4170443663
     data2: 3823836218
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &7001371682896449442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/City/Traffic
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Traffic
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2539786319
-    data2: 1798499264
   Type: 0
   IsGlobal: 0
   Labels: []
@@ -1117,6 +1420,35 @@ MonoBehaviour:
   lastModified: 639298508232253903
   FileSizes: []
   Exists: 1
+--- !u!114 &7093489095486159454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Acrofobia/City
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Acrofobia/City
+  Guid:
+    Data1: -256525196
+    Data2: 1340501930
+    Data3: 345057439
+    Data4: 1751448483
+  Banks:
+  - {fileID: 5493472049265852564}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 4499726593887138871}
+  - {fileID: 3648632881520312225}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &7243782670711493627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1191,6 +1523,59 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &7982950255441449003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Acrofobia/City
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Acrofobia/City
+  Guid:
+    Data1: -256525196
+    Data2: 1340501930
+    Data3: 345057439
+    Data4: 1751448483
+  Banks:
+  - {fileID: 5493472049265852564}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -7428135869539796316}
+  - {fileID: 4417669153484283190}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &8004941248207526173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music_Main/Parameter 1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Parameter 1
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2543835687
+    data2: 618184535
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &8138428001754325143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1218,6 +1603,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1026
+--- !u!114 &8289391674339038644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Forest/Rain
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Rain
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4170443663
+    data2: 3823836218
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &8450702566158695904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1245,31 +1654,3 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3633
---- !u!114 &9152028924476981061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Country/Hour
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Hour
-  StudioPath: 
-  Min: 0
-  Max: 3
-  Default: 0
-  ID:
-    data1: 2476869907
-    data2: 2218576490
-  Type: 2
-  IsGlobal: 0
-  Labels:
-  - Night
-  - Morning
-  - Noon
-  - Evening
-  Exists: 1
