@@ -254,7 +254,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639308852636452199
+  lastModified: 639308977531893850
   FileSizes: []
   Exists: 1
 --- !u!114 &-5697159320949366252
@@ -272,7 +272,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.assets.bank
   Name: Master.assets
   StudioPath: bank:/Master.assets
-  lastModified: 639300201603611813
+  lastModified: 639308977531601641
   FileSizes: []
   Exists: 1
 --- !u!114 &-5069954045726984518
@@ -465,7 +465,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/SFX.assets.bank
   Name: SFX.assets
   StudioPath: bank:/SFX.assets
-  lastModified: 639308852636712478
+  lastModified: 639308977533350695
   FileSizes: []
   Exists: 1
 --- !u!114 &-2193951187420517882
@@ -562,7 +562,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Talasofobia.bank
   Name: Talasofobia
   StudioPath: bank:/Talasofobia
-  lastModified: 639298508232072001
+  lastModified: 639309047424330620
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -608,13 +608,14 @@ MonoBehaviour:
   - {fileID: -4277290799069521615}
   - {fileID: -1218652537157451136}
   - {fileID: 7982950255441449003}
+  - {fileID: 8196745184647426371}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5416424811239250363}
   StringsBanks:
   - {fileID: 4185358967552020388}
   cacheVersion: 132096
-  cacheTime: 639308852636738131
+  cacheTime: 639309047640769112
   SerializableEventsDict:
   - key: event:/Player/Pasos_pasto
     index: 0
@@ -648,6 +649,8 @@ MonoBehaviour:
     index: 14
   - key: event:/Acrofobia/City
     index: 15
+  - key: event:/Talasofobia/Ambiente_Playa
+    index: 16
 --- !u!114 &246116932358694773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,7 +805,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Ambience.assets.bank
   Name: Ambience.assets
   StudioPath: bank:/Ambience.assets
-  lastModified: 639308852636395909
+  lastModified: 639308977531498896
   FileSizes: []
   Exists: 1
 --- !u!114 &1078545099023989943
@@ -901,6 +904,30 @@ MonoBehaviour:
   ID:
     data1: 1239376746
     data2: 3759388303
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &2253420748637064227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Ambiente_Playa/Profundidad
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Profundidad
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2937174356
+    data2: 738787369
   Type: 0
   IsGlobal: 0
   Labels: []
@@ -1130,10 +1157,10 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639308852636426672
+  lastModified: 639308977531614290
   FileSizes:
   - Name: 
-    Value: 2566
+    Value: 2614
   Exists: 1
 --- !u!114 &4401495883180498542
 MonoBehaviour:
@@ -1249,7 +1276,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Music.assets.bank
   Name: Music.assets
   StudioPath: bank:/Music.assets
-  lastModified: 639300201604027401
+  lastModified: 639308977532055798
   FileSizes: []
   Exists: 1
 --- !u!114 &5416424811239250363
@@ -1267,7 +1294,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639308852636426672
+  lastModified: 639308977531586546
   FileSizes: []
   Exists: 1
 --- !u!114 &5493472049265852564
@@ -1285,7 +1312,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639308852636738131
+  lastModified: 639308977532569009
   FileSizes: []
   Exists: 1
 --- !u!114 &5566886103220240607
@@ -1303,7 +1330,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 639308852636405909
+  lastModified: 639308977530950372
   FileSizes: []
   Exists: 1
 --- !u!114 &5738589923279836506
@@ -1417,7 +1444,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Talasofobia.assets.bank
   Name: Talasofobia.assets
   StudioPath: bank:/Talasofobia.assets
-  lastModified: 639298508232253903
+  lastModified: 639309047640769112
   FileSizes: []
   Exists: 1
 --- !u!114 &7093489095486159454
@@ -1603,6 +1630,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1026
+--- !u!114 &8196745184647426371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Talasofobia/Ambiente_Playa
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Talasofobia/Ambiente_Playa
+  Guid:
+    Data1: 1498272749
+    Data2: 1150989832
+    Data3: -1539969658
+    Data4: 1073231304
+  Banks:
+  - {fileID: -399351140577063031}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 2253420748637064227}
+  MinDistance: 1
+  MaxDistance: 10
+  Length: 81000
 --- !u!114 &8289391674339038644
 MonoBehaviour:
   m_ObjectHideFlags: 0
