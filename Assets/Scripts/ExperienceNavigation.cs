@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// Session state shared across scenes. No persistent GameObject is required.
+// Session state shared across scenes; the transition renderer owns the persistent GameObject.
 public static class ExperienceNavigation
 {
     public static string MenuScene { get; private set; }
@@ -9,6 +9,33 @@ public static class ExperienceNavigation
     public static string ExposureId { get; private set; }
     public static float? MenuEyeHeight { get; private set; }
     private static bool returnRequested;
+
+    private struct SessionSnapshot
+    {
+        public string scene;
+        public int view;
+        public string exposure;
+        public float? eyeHeight;
+        public bool returning;
+    }
+
+    private static SessionSnapshot Capture()
+    {
+        return new SessionSnapshot
+        {
+            scene = MenuScene, view = MenuView, exposure = ExposureId,
+            eyeHeight = MenuEyeHeight, returning = returnRequested
+        };
+    }
+
+    private static void Restore(SessionSnapshot snapshot)
+    {
+        MenuScene = snapshot.scene;
+        MenuView = snapshot.view;
+        ExposureId = snapshot.exposure;
+        MenuEyeHeight = snapshot.eyeHeight;
+        returnRequested = snapshot.returning;
+    }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     private static void ResetSession()
@@ -28,24 +55,29 @@ public static class ExperienceNavigation
         return false;
     }
 
+    // Signature preserved: existing CircularMenu buttons keep their current connections.
     public static void Enter(string experienceScene, string menuScene, int menuView, string exposureId,
         float? menuEyeHeight = null)
     {
-        if (!CanLoad(experienceScene) || !CanLoad(menuScene)) return;
+        if (ExperienceTransition.IsBusy || !CanLoad(experienceScene) || !CanLoad(menuScene)) return;
+        SessionSnapshot previous = Capture();
         MenuScene = menuScene;
         MenuView = menuView;
         ExposureId = exposureId ?? "";
         MenuEyeHeight = menuEyeHeight;
         returnRequested = false;
         Time.timeScale = 1f;
-        SceneManager.LoadScene(experienceScene);
+        if (!ExperienceTransition.TryLoad(experienceScene, true, () => Restore(previous)))
+            Restore(previous);
     }
 
     public static bool ReturnToMenu(string fallbackScene, string fallbackExposureId)
     {
+        if (ExperienceTransition.IsBusy) return false;
         bool hasOrigin = !string.IsNullOrEmpty(MenuScene);
         string destination = hasOrigin ? MenuScene : fallbackScene;
         if (!CanLoad(destination)) return false;
+        SessionSnapshot previous = Capture();
         if (!hasOrigin)
         {
             MenuScene = destination;
@@ -55,8 +87,10 @@ public static class ExperienceNavigation
         }
         returnRequested = true;
         Time.timeScale = 1f;
-        SceneManager.LoadScene(destination);
-        return true;
+        if (ExperienceTransition.TryLoad(destination, false, () => Restore(previous)))
+            return true;
+        Restore(previous);
+        return false;
     }
 
     public static bool ConsumeReturn(Scene menuScene)

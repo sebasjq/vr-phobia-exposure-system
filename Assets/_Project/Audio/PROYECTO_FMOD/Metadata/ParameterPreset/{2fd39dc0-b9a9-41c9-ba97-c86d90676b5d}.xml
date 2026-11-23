@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.04.00">
+	<object class="ParameterPreset" id="{2fd39dc0-b9a9-41c9-ba97-c86d90676b5d}">
+		<property name="name">
+			<value>Load</value>
+		</property>
+		<relationship name="folder">
+			<destination>{74278412-9f54-469b-8a33-ee84f5e1b5bb}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{7eeb34c9-4511-4a99-891f-3483e9654e13}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{7eeb34c9-4511-4a99-891f-3483e9654e13}">
+		<property name="minimum">
+			<value>-1</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>

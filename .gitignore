@@ -76,3 +76,7 @@ crashlytics-build.properties
 /Assets/_Project/Audio/PROYECTO_FMOD/.cache/
 /Assets/_Project/Audio/PROYECTO_FMOD/.unsaved/
 /Assets/_Project/Audio/PROYECTO_FMOD/.user/
+
+# Cache generada por FMOD para Unity
+/Assets/Resources/FMOD/FMODStudioCache.asset
+/Assets/Resources/FMOD/FMODStudioCache.asset.meta
