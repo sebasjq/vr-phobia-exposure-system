@@ -231,7 +231,7 @@ PrefabInstance:
     - target: {fileID: 7674354425736482116, guid: c6cecdbe56163e543bcdb5346906d3df, type: 3}
       propertyPath: _viewer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 798634963}
     - target: {fileID: 8867403138163205470, guid: c6cecdbe56163e543bcdb5346906d3df, type: 3}
       propertyPath: _windForce01
       value: 1
@@ -1928,7 +1928,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 1
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1

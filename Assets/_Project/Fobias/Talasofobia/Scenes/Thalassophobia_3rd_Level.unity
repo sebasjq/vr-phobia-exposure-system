@@ -7041,7 +7041,7 @@ PrefabInstance:
     - target: {fileID: 7674354425736482116, guid: c6cecdbe56163e543bcdb5346906d3df, type: 3}
       propertyPath: _viewer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2123220568}
     - target: {fileID: 8867403138163205470, guid: c6cecdbe56163e543bcdb5346906d3df, type: 3}
       propertyPath: _swellDirection
       value: 360
@@ -7188,7 +7188,7 @@ PrefabInstance:
     - target: {fileID: 5426994511877286455, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
       propertyPath: cabeza
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2123220568}
     - target: {fileID: 5426994511877286455, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
       propertyPath: margenCruce
       value: 0
@@ -8232,7 +8232,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 1
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
