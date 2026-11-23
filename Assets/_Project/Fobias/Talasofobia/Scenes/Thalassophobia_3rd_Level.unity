@@ -6979,6 +6979,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 856134052}
     - target: {fileID: 5426994511877286455, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: margenCruce
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426994511877286455, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
       propertyPath: ambienteMar.Path
       value: event:/Talasofobia/Ambiente_Mar
       objectReference: {fileID: 0}
@@ -6986,6 +6990,10 @@ PrefabInstance:
       propertyPath: simulacionOceano
       value: 
       objectReference: {fileID: 957101586}
+    - target: {fileID: 5426994511877286455, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
+      propertyPath: profundidadMaxima
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 5426994511877286455, guid: 9164727b57d4e334686d43bbf07f8214, type: 3}
       propertyPath: ambienteMar.Guid.Data1
       value: 1852408418
