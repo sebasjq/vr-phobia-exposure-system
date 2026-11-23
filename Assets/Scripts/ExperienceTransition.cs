@@ -2,8 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using Unity.Collections;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.RenderGraphModule;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -13,8 +17,13 @@ using UnityEngine.UI;
 [DefaultExecutionOrder(10000)]
 public sealed class ExperienceTransition : MonoBehaviour
 {
+    // Never add the shared UI layer to the headset camera: Meta uses it for flat source canvases.
+    private int transitionUiLayer = -1;
+    private int transitionUiMask;
     [Header("Fundidos (segundos)")]
     [SerializeField, Min(0f)] private float fadeOutDuration = 0.65f;
+    [Tooltip("Fundido desde el clic del nivel, sin esperar a que termine el audio de UI.")]
+    [SerializeField, Range(0.05f, 0.3f)] private float entryFadeOutDuration = 0.15f;
     [SerializeField, Min(0f)] private float fadeInDuration = 0.8f;
     [SerializeField, Min(0f)] private float cancelDuration = 0.15f;
     [Tooltip("Tiempo mínimo total de la pantalla de carga, además de sus fases de progreso.")]
@@ -45,9 +54,13 @@ public sealed class ExperienceTransition : MonoBehaviour
     [Header("Audio de UI antes de cargar")]
     [Tooltip("Opcional. Si está vacío, busca UIAudioManager automáticamente.")]
     [SerializeField] private MonoBehaviour uiAudioManager;
-    [Tooltip("Espera fija desde la selección antes de silenciar o detener audio. Permite oír el clic completo.")]
+    [Tooltip("Deja terminar el clic sin retrasar el fade visual. Los demás sonidos salientes se detienen y la escena nueva se carga después en silencio.")]
     [FormerlySerializedAs("uiAudioFinishTimeout")]
     [SerializeField, Range(1f, 3f)] private float uiClickGraceDuration = 2f;
+
+    [Header("Audio de la escena visible")]
+    [Tooltip("Subida del ambiente después de retirar por completo el negro y renderizar la escena visible. Nunca suena durante la barra o la pausa negra.")]
+    [SerializeField, Min(0.1f)] private float sceneAudioFadeInDuration = 0.25f;
 
     [Header("Aspecto")]
     [SerializeField] private Color barColor = new Color(0.85f, 0.85f, 0.85f, 1f);
@@ -55,10 +68,15 @@ public sealed class ExperienceTransition : MonoBehaviour
     [SerializeField] private string leavingText = "Abandonando Experiencia...";
     [SerializeField, Min(0.6f)] private float panelDistance = 1f;
 
+    [Header("Mandos durante la transición")]
+    [Tooltip("Mantiene visibles los modelos de manos y mandos sobre el fondo negro y las barras. Requiere URP.")]
+    [SerializeField] private bool showControllersOverBlack = true;
+    [Tooltip("Opcional: raíces de modelos de mandos fuera del rig. La detección de OVRCameraRig y ControllerVisual es automática.")]
+    [SerializeField] private Transform[] controllerVisualRoots = new Transform[0];
+
     private enum State { Idle, Holding, Loading }
     private static ExperienceTransition instance;
-    public static bool IsBusy => instance != null && instance.state == State.Loading &&
-        !instance.waitingForClickGrace;
+    public static bool IsBusy => instance != null && instance.state == State.Loading;
 
     private State state;
     private Canvas canvas;
@@ -74,18 +92,48 @@ public sealed class ExperienceTransition : MonoBehaviour
     private float nextViewerSearchTime;
     private Coroutine cancelRoutine;
     private bool keepPreparationBlack;
+    private bool renderSceneForPreparation;
     private bool audioHeld;
     private bool revealingAudio;
-    private bool waitingForClickGrace;
+    private int viewerRenderedFrames;
+    private int lastViewerRenderedFrame = -1;
+    private int fullyVisibleRenderedFrames;
+    private bool awaitingSceneVisibility;
     private float savedListenerVolume;
     private FMOD.Studio.Bus masterAudioBus;
     private bool fmodAudioCaptured;
     private float savedFmodVolume;
     private bool savedFmodMuted;
     private float nextFmodCaptureTime;
+    private FMOD.ChannelGroup coreMasterAudio;
+    private bool coreMasterCaptured;
+    private float savedCoreVolume;
+    private bool savedCoreMuted;
+    private float nextCoreCaptureTime;
+    private float nextVisualRootDiscovery;
+    private readonly List<Transform> detectedVisualRoots = new List<Transform>();
+    private readonly List<Renderer> visualRendererBuffer = new List<Renderer>();
+    private readonly Dictionary<Renderer, uint> savedControllerRenderingLayers = new Dictionary<Renderer, uint>();
+    private uint controllerRenderingLayer;
+    private uint controllerObjectLayers;
+    private ControllerOverlayPass controllerOverlayPass;
+    private bool controllerLayerWarningShown;
+    private readonly Dictionary<Camera, CameraVisualState> savedCameraVisuals =
+        new Dictionary<Camera, CameraVisualState>();
+
+    private struct CameraVisualState
+    {
+        public int cullingMask;
+        public CameraClearFlags clearFlags;
+        public Color backgroundColor;
+        public UniversalAdditionalCameraData urpData;
+        public bool renderPostProcessing;
+    }
     private readonly List<FMOD.Studio.EventDescription> uiAudioEvents =
         new List<FMOD.Studio.EventDescription>();
     private readonly List<AudioSource> uiAudioSources = new List<AudioSource>();
+    private readonly List<FMOD.Studio.EventDescription> outgoingAudioEvents = new List<FMOD.Studio.EventDescription>();
+    private readonly List<AudioSource> outgoingAudioSources = new List<AudioSource>();
 
     private struct AudioBypassState
     {
@@ -131,6 +179,9 @@ public sealed class ExperienceTransition : MonoBehaviour
     private void OnDestroy()
     {
         RestoreAudio();
+        RestoreControllerRenderingLayers();
+        controllerOverlayPass?.Dispose();
+        RestoreCameraVisuals();
         SceneManager.sceneLoaded -= OnSceneLoaded;
         Application.onBeforeRender -= FollowCamera;
         RenderPipelineManager.beginCameraRendering -= OnBeginCameraRendering;
@@ -150,6 +201,8 @@ public sealed class ExperienceTransition : MonoBehaviour
         transition.canvas.enabled = true;
         // Always opaque black. Ignore any gray/alpha settings saved by older versions.
         transition.SetOpaqueBlack();
+        transition.CacheUiAudioIfNeeded();
+        transition.HoldAudioForLoading();
         transition.content.SetActive(true);
         transition.title.text = transition.leavingText;
         transition.SetProgress(progress);
@@ -172,8 +225,7 @@ public sealed class ExperienceTransition : MonoBehaviour
         transition.StopCancellation();
         bool wasHolding = transition.state == State.Holding;
         transition.state = State.Loading;
-        // Feedback remains allowed during the grace period; the private latch rejects duplicate loads.
-        transition.waitingForClickGrace = showLoadingBar;
+        // Lock menu navigation now; the existing click-audio callback can still complete.
         transition.canvas.enabled = true;
         // Lock synchronously, before the first coroutine frame, to reject repeated clicks.
         transition.StartCoroutine(transition.LoadScene(scene, showLoadingBar, wasHolding, onFailure));
@@ -184,14 +236,21 @@ public sealed class ExperienceTransition : MonoBehaviour
     {
         float selectedAt = Time.unscaledTime;
         CacheUiAudio();
+        if (showLoadingBar)
+        {
+            CacheOutgoingAudioExceptUi();
+            StopOutgoingAudioExceptUi();
+        }
         if (wasHolding)
         {
             SetProgress(1f);
             yield return null;
         }
         content.SetActive(false);
-        yield return FadeBackground(Color.black, fadeOutDuration);
+        float blackoutDuration = showLoadingBar ? Mathf.Clamp(entryFadeOutDuration, 0.05f, 0.3f) : fadeOutDuration;
+        yield return FadeBackground(Color.black, blackoutDuration);
         keepPreparationBlack = true;
+        SetOpaqueBlack();
         if (showLoadingBar)
             yield return FinishOutgoingUiAudio(selectedAt);
         HoldAudioForLoading();
@@ -221,11 +280,7 @@ public sealed class ExperienceTransition : MonoBehaviour
         {
             Debug.LogError("No se pudo cargar '" + scene + "'. " + failure, this);
             onFailure?.Invoke();
-            content.SetActive(false);
-            keepPreparationBlack = false;
-            BeginAudioReveal();
-            yield return FadeBackground(Color.clear, fadeInDuration, true);
-            Hide();
+            yield return RevealPreparedScene(showLoadingBar);
             yield break;
         }
 
@@ -256,7 +311,12 @@ public sealed class ExperienceTransition : MonoBehaviour
         viewerCamera = null;
         viewerRig = null;
         viewerAnchor = null;
+        // Temporarily draw the destination for shader/texture preparation under the opaque UI.
+        renderSceneForPreparation = true;
+        FollowCamera();
         yield return WaitForScenePreparation();
+        renderSceneForPreparation = false;
+        FollowCamera();
         if (showLoadingBar)
         {
             while (Time.unscaledTime - loadingStarted < Mathf.Max(0f, minimumLoadingDuration))
@@ -265,14 +325,26 @@ public sealed class ExperienceTransition : MonoBehaviour
             yield return WaitUnscaled(completedBarHoldDuration);
             content.SetActive(false);
         }
-        // The destination is already active and prepared. Remove all loading UI first,
-        // but keep both audio engines silent until this plain-black phase has finished.
-        background.color = Color.black;
-        yield return null;
-        yield return WaitUnscaled(showLoadingBar ? entryBlackPause : exitBlackPause);
+        yield return RevealPreparedScene(showLoadingBar);
+    }
+
+    private IEnumerator RevealPreparedScene(bool enteringExperience)
+    {
+        // The destination is already active and prepared. Remove all loading UI first.
+        content.SetActive(false);
+        keepPreparationBlack = true;
+        SetOpaqueBlack();
+        FollowCamera();
+        // Wait for actual headset-camera frames before lifting the curtain.
+        yield return WaitForViewerFrames(2);
+        yield return WaitUnscaled(enteringExperience ? entryBlackPause : exitBlackPause);
         keepPreparationBlack = false;
-        BeginAudioReveal();
+        awaitingSceneVisibility = true;
+        fullyVisibleRenderedFrames = 0;
         yield return FadeBackground(Color.clear, fadeInDuration, true);
+        yield return WaitForVisibleScene();
+        BeginAudioReveal();
+        yield return FadeSceneAudioIn();
         Hide();
     }
 
@@ -344,12 +416,49 @@ public sealed class ExperienceTransition : MonoBehaviour
         }
     }
 
+    private IEnumerator WaitForViewerFrames(int count)
+    {
+        int firstFrame = viewerRenderedFrames;
+        while (viewerRenderedFrames - firstFrame < count)
+            yield return null;
+    }
+
+    private IEnumerator WaitForVisibleScene()
+    {
+        while (fullyVisibleRenderedFrames < 2)
+            yield return null;
+    }
+
+    private IEnumerator FadeSceneAudioIn()
+    {
+        if (!audioHeld || !revealingAudio) yield break;
+        float elapsed = 0f;
+        float duration = Mathf.Max(0.1f, sceneAudioFadeInDuration);
+        while (elapsed < duration)
+        {
+            elapsed += Mathf.Min(Time.unscaledDeltaTime, 0.05f);
+            SetAudioRevealGain(Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / duration)));
+            yield return WaitForViewerFrames(1);
+        }
+        RestoreAudio();
+    }
+
     private IEnumerator CancelHold()
     {
         // Wait one frame so even a duration of zero leaves a cancellable coroutine handle.
         yield return null;
         content.SetActive(false);
+        keepPreparationBlack = true;
+        SetOpaqueBlack();
+        FollowCamera();
+        yield return WaitForViewerFrames(2);
+        keepPreparationBlack = false;
+        awaitingSceneVisibility = true;
+        fullyVisibleRenderedFrames = 0;
         yield return FadeBackground(Color.clear, cancelDuration);
+        yield return WaitForVisibleScene();
+        BeginAudioReveal();
+        yield return FadeSceneAudioIn();
         Hide();
         cancelRoutine = null;
     }
@@ -361,33 +470,41 @@ public sealed class ExperienceTransition : MonoBehaviour
         cancelRoutine = null;
     }
 
-    private IEnumerator FadeBackground(Color target, float seconds, bool revealAudio = false)
+    private IEnumerator FadeBackground(Color target, float seconds, bool waitForRenderedReveal = false)
     {
         Color start = background.color;
-        if (seconds > 0f)
+        // A prepared scene must be revealed gradually, even if an old Inspector value was zero.
+        float duration = waitForRenderedReveal ? Mathf.Max(0.6f, seconds) : Mathf.Max(0f, seconds);
+        if (duration > 0f)
         {
             float elapsed = 0f;
-            while (elapsed < seconds)
+            while (elapsed < duration)
             {
-                elapsed += Time.unscaledDeltaTime;
-                float t = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / seconds));
+                // Shader/scene warmup can produce a long frame. Do not finish the fade in one step.
+                elapsed += waitForRenderedReveal ? Mathf.Min(Time.unscaledDeltaTime, 0.05f) : Time.unscaledDeltaTime;
+                float t = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / duration));
                 background.color = Color.Lerp(start, target, t);
-                if (revealAudio) SetAudioRevealGain(t);
-                yield return null;
+                // Audio stays muted throughout the visual fade. It is released separately afterward.
+                if (waitForRenderedReveal) yield return WaitForViewerFrames(1);
+                else yield return null;
             }
         }
         background.color = target;
-        if (revealAudio) RestoreAudio();
     }
 
     private void Hide()
     {
         keepPreparationBlack = false;
+        renderSceneForPreparation = false;
         content.SetActive(false);
         background.color = Color.clear;
         canvas.enabled = false;
         state = State.Idle;
-        waitingForClickGrace = false;
+        awaitingSceneVisibility = false;
+        fullyVisibleRenderedFrames = 0;
+        RestoreControllerRenderingLayers();
+        controllerOverlayPass?.Dispose();
+        RestoreCameraVisuals();
     }
 
     private void SetProgress(float value)
@@ -404,13 +521,174 @@ public sealed class ExperienceTransition : MonoBehaviour
     private void SetOpaqueBlack()
     {
         background.color = new Color(0f, 0f, 0f, 1f);
+        background.canvasRenderer.SetColor(Color.white);
         background.canvasRenderer.SetAlpha(1f);
     }
 
-    private void OnDisable() { RestoreAudio(); }
+    private void OnDisable()
+    {
+        renderSceneForPreparation = false;
+        RestoreAudio();
+        RestoreControllerRenderingLayers();
+        controllerOverlayPass?.Dispose();
+        RestoreCameraVisuals();
+    }
+
+    private bool IsViewerRenderCamera(Camera camera)
+    {
+        return IsUsableCamera(camera) && (camera == viewerCamera ||
+            (viewerRig != null && camera.GetComponentInParent<OVRCameraRig>() == viewerRig));
+    }
+
+    private void MaintainCameraVisuals()
+    {
+        if (!Ready || state == State.Idle) return;
+        bool exitHold = state == State.Holding && cancelRoutine == null;
+        bool renderBlackOnly = exitHold || (keepPreparationBlack && !renderSceneForPreparation);
+        bool opaqueBlack = background.color.a >= 0.999f;
+        foreach (Camera camera in Camera.allCameras)
+        {
+            if (!IsViewerRenderCamera(camera)) continue;
+            CameraVisualState saved;
+            if (!savedCameraVisuals.TryGetValue(camera, out saved))
+            {
+                UniversalAdditionalCameraData urp = camera.GetComponent<UniversalAdditionalCameraData>();
+                saved = new CameraVisualState
+                {
+                    cullingMask = camera.cullingMask,
+                    clearFlags = camera.clearFlags,
+                    backgroundColor = camera.backgroundColor,
+                    urpData = urp,
+                    renderPostProcessing = urp != null && urp.renderPostProcessing
+                };
+                savedCameraVisuals.Add(camera, saved);
+            }
+
+            // Keep the world excluded in every black pause, including after either bar completes.
+            // Only the bounded preparation stage draws the destination under the opaque overlay.
+            camera.cullingMask = renderBlackOnly ? transitionUiMask : saved.cullingMask | transitionUiMask;
+            camera.clearFlags = renderBlackOnly ? CameraClearFlags.SolidColor : saved.clearFlags;
+            camera.backgroundColor = renderBlackOnly ? Color.black : saved.backgroundColor;
+            // Lens flares/bloom must not add bright pixels over a fully black screen.
+            if (saved.urpData != null)
+                saved.urpData.renderPostProcessing = opaqueBlack ? false : saved.renderPostProcessing;
+        }
+    }
+
+    private void RestoreCameraVisuals()
+    {
+        foreach (KeyValuePair<Camera, CameraVisualState> entry in savedCameraVisuals)
+        {
+            if (entry.Key == null) continue;
+            entry.Key.cullingMask = entry.Value.cullingMask;
+            entry.Key.clearFlags = entry.Value.clearFlags;
+            entry.Key.backgroundColor = entry.Value.backgroundColor;
+            if (entry.Value.urpData != null)
+                entry.Value.urpData.renderPostProcessing = entry.Value.renderPostProcessing;
+        }
+        savedCameraVisuals.Clear();
+    }
+
+    private void DiscoverControllerVisualRoots()
+    {
+        detectedVisualRoots.Clear();
+        foreach (Transform root in controllerVisualRoots) AddControllerVisualRoot(root);
+        foreach (OVRCameraRig rig in FindObjectsByType<OVRCameraRig>(
+            FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            AddControllerVisualRoot(rig.leftHandAnchor);
+            AddControllerVisualRoot(rig.rightHandAnchor);
+        }
+
+        // Some Meta Interaction visual models live outside the hand anchors.
+        foreach (MonoBehaviour component in FindObjectsByType<MonoBehaviour>(
+            FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            if (component == null) continue;
+            string typeName = component.GetType().Name;
+            if (typeName == "ControllerVisual" || typeName == "HandVisual" ||
+                typeName == "OVRControllerHelper" || typeName == "OVRHand" ||
+                typeName == "OVRCustomHand")
+                AddControllerVisualRoot(component.transform);
+        }
+        nextVisualRootDiscovery = Time.unscaledTime + 0.25f;
+    }
+
+    private void AddControllerVisualRoot(Transform root)
+    {
+        if (root != null && !detectedVisualRoots.Contains(root)) detectedVisualRoots.Add(root);
+    }
+
+    private void MaintainControllerVisuals()
+    {
+        if (!showControllersOverBlack)
+        {
+            RestoreControllerRenderingLayers();
+            return;
+        }
+        if (Time.unscaledTime < nextVisualRootDiscovery) return;
+        DiscoverControllerVisualRoots();
+        if (controllerRenderingLayer == 0)
+        {
+            // Reserve a currently unused rendering bit, without changing GameObject/physics layers.
+            uint occupied = 0;
+            foreach (Renderer model in FindObjectsByType<Renderer>(
+                FindObjectsInactive.Include, FindObjectsSortMode.None))
+                occupied |= model.renderingLayerMask;
+            for (int bit = 31; bit > 0; bit--)
+            {
+                uint candidate = 1u << bit;
+                if ((occupied & candidate) != 0) continue;
+                controllerRenderingLayer = candidate;
+                break;
+            }
+            if (controllerRenderingLayer == 0)
+            {
+                if (!controllerLayerWarningShown)
+                    Debug.LogWarning("No hay un bit de Rendering Layer libre para dibujar los mandos " +
+                        "sobre el negro. Revisa las Rendering Layers de los Renderer de esta escena.", this);
+                controllerLayerWarningShown = true;
+                return;
+            }
+        }
+        controllerObjectLayers = 0;
+        foreach (Transform root in detectedVisualRoots)
+        {
+            if (root == null) continue;
+            visualRendererBuffer.Clear();
+            root.GetComponentsInChildren<Renderer>(true, visualRendererBuffer);
+            foreach (Renderer model in visualRendererBuffer)
+            {
+                if (model == null) continue;
+                if (!savedControllerRenderingLayers.ContainsKey(model))
+                    savedControllerRenderingLayers.Add(model, model.renderingLayerMask);
+                model.renderingLayerMask |= controllerRenderingLayer;
+                controllerObjectLayers |= 1u << model.gameObject.layer;
+            }
+        }
+    }
+
+    private void RestoreControllerRenderingLayers()
+    {
+        foreach (KeyValuePair<Renderer, uint> saved in savedControllerRenderingLayers)
+        {
+            if (saved.Key == null) continue;
+            // Restore only our bit; preserve changes made by other components to other bits.
+            saved.Key.renderingLayerMask = (saved.Key.renderingLayerMask & ~controllerRenderingLayer) |
+                (saved.Value & controllerRenderingLayer);
+        }
+        savedControllerRenderingLayers.Clear();
+        detectedVisualRoots.Clear();
+        visualRendererBuffer.Clear();
+        controllerRenderingLayer = 0;
+        controllerObjectLayers = 0;
+        nextVisualRootDiscovery = 0f;
+        controllerLayerWarningShown = false;
+    }
 
     private void HoldAudioForLoading()
     {
+        bool firstHold = !audioHeld;
         if (!audioHeld)
         {
             savedListenerVolume = AudioListener.volume;
@@ -418,8 +696,16 @@ public sealed class ExperienceTransition : MonoBehaviour
             revealingAudio = false;
             fmodAudioCaptured = false;
             nextFmodCaptureTime = 0f;
+            coreMasterCaptured = false;
+            nextCoreCaptureTime = 0f;
         }
+        revealingAudio = false;
+        awaitingSceneVisibility = false;
+        fullyVisibleRenderedFrames = 0;
         MaintainLoadingSilence();
+        // Commit the mute before any destination Start/OnEnable can start its events.
+        if (firstHold && FMODUnity.RuntimeManager.IsInitialized)
+            FMODUnity.RuntimeManager.StudioSystem.flushCommands();
     }
 
     private IEnumerator FinishOutgoingUiAudio(float selectedAt)
@@ -428,10 +714,45 @@ public sealed class ExperienceTransition : MonoBehaviour
         yield return null;
         float duration = Mathf.Clamp(uiClickGraceDuration, 1f, 3f);
         while (Time.unscaledTime - selectedAt < duration)
+        {
+            StopOutgoingAudioExceptUi();
             yield return null;
-        waitingForClickGrace = false;
+        }
         // A fixed grace period avoids racing FMOD's asynchronous playback-state queries.
         StopUiAudio();
+    }
+
+    private void CacheOutgoingAudioExceptUi()
+    {
+        outgoingAudioEvents.Clear();
+        outgoingAudioSources.Clear();
+        foreach (AudioSource source in FindObjectsByType<AudioSource>(
+            FindObjectsInactive.Include, FindObjectsSortMode.None))
+            if (!uiAudioSources.Contains(source)) outgoingAudioSources.Add(source);
+        if (!FMODUnity.RuntimeManager.IsInitialized) return;
+        FMOD.Studio.Bank[] banks;
+        if (FMODUnity.RuntimeManager.StudioSystem.getBankList(out banks) != FMOD.RESULT.OK) return;
+        foreach (FMOD.Studio.Bank bank in banks)
+        {
+            FMOD.Studio.EventDescription[] events;
+            if (!bank.isValid() || bank.getEventList(out events) != FMOD.RESULT.OK) continue;
+            foreach (FMOD.Studio.EventDescription description in events)
+                if (!uiAudioEvents.Contains(description) && !outgoingAudioEvents.Contains(description))
+                    outgoingAudioEvents.Add(description);
+        }
+    }
+
+    private void StopOutgoingAudioExceptUi()
+    {
+        foreach (AudioSource source in outgoingAudioSources)
+            if (source != null) source.Stop();
+        foreach (FMOD.Studio.EventDescription description in outgoingAudioEvents)
+        {
+            FMOD.Studio.EventInstance[] voices;
+            if (!description.isValid() || description.getInstanceList(out voices) != FMOD.RESULT.OK) continue;
+            foreach (FMOD.Studio.EventInstance voice in voices)
+                if (voice.isValid()) voice.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
     }
 
     private void StopOutgoingSceneAudio()
@@ -456,6 +777,8 @@ public sealed class ExperienceTransition : MonoBehaviour
     {
         uiAudioEvents.Clear();
         uiAudioSources.Clear();
+        outgoingAudioEvents.Clear();
+        outgoingAudioSources.Clear();
         if (uiAudioManager != null) CacheUiAudioFrom(uiAudioManager);
         foreach (MonoBehaviour component in FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None))
         {
@@ -464,6 +787,11 @@ public sealed class ExperienceTransition : MonoBehaviour
             if (typeName == "UIAudioManager" || typeName == "UI_AudioManager")
                 CacheUiAudioFrom(component);
         }
+    }
+
+    private void CacheUiAudioIfNeeded()
+    {
+        if (!audioHeld) CacheUiAudio();
     }
 
     private void CacheUiAudioFrom(MonoBehaviour manager)
@@ -544,7 +872,14 @@ public sealed class ExperienceTransition : MonoBehaviour
         CaptureFmodAudio();
         if (fmodAudioCaptured && masterAudioBus.isValid())
         {
+            masterAudioBus.setVolume(0f);
             masterAudioBus.setMute(true);
+        }
+        CaptureCoreAudio();
+        if (coreMasterCaptured && coreMasterAudio.hasHandle())
+        {
+            coreMasterAudio.setVolume(0f);
+            coreMasterAudio.setMute(true);
         }
     }
 
@@ -570,25 +905,53 @@ public sealed class ExperienceTransition : MonoBehaviour
 
     private void BeginAudioReveal()
     {
-        if (!audioHeld) return;
+        if (!audioHeld || fullyVisibleRenderedFrames < 2 || keepPreparationBlack ||
+            background.color.a > 0f) return;
         StopUiAudio();
         CaptureFmodAudio();
+        CaptureCoreAudio();
         revealingAudio = true;
-        // Recover output gain along with the visual fade, without reviving stopped voices.
+        // The fully uncovered scene has already rendered; only now allow an audio fade-in.
         AudioListener.volume = 0f;
+        if (coreMasterCaptured && coreMasterAudio.hasHandle())
+        {
+            coreMasterAudio.setVolume(0f);
+            coreMasterAudio.setMute(savedCoreMuted);
+        }
         if (fmodAudioCaptured && masterAudioBus.isValid())
         {
-            masterAudioBus.setVolume(0f);
+            masterAudioBus.setVolume(coreMasterCaptured ? savedFmodVolume : 0f);
             masterAudioBus.setMute(savedFmodMuted);
         }
     }
 
+    private void CaptureCoreAudio()
+    {
+        if (coreMasterCaptured && coreMasterAudio.hasHandle()) return;
+        if (Time.unscaledTime < nextCoreCaptureTime) return;
+        nextCoreCaptureTime = Time.unscaledTime + 0.1f;
+        if (!FMODUnity.RuntimeManager.IsInitialized) return;
+        FMOD.ChannelGroup group;
+        if (FMODUnity.RuntimeManager.CoreSystem.getMasterChannelGroup(out group) != FMOD.RESULT.OK ||
+            !group.hasHandle()) return;
+        float volume;
+        bool muted;
+        if (group.getVolume(out volume) != FMOD.RESULT.OK ||
+            group.getMute(out muted) != FMOD.RESULT.OK) return;
+        coreMasterAudio = group;
+        savedCoreVolume = volume;
+        savedCoreMuted = muted;
+        coreMasterCaptured = true;
+    }
+
     private void SetAudioRevealGain(float gain)
     {
-        if (!audioHeld) return;
+        if (!audioHeld || !revealingAudio || fullyVisibleRenderedFrames < 2) return;
         gain = Mathf.Clamp01(gain);
         AudioListener.volume = savedListenerVolume * gain;
-        if (fmodAudioCaptured && masterAudioBus.isValid())
+        if (coreMasterCaptured && coreMasterAudio.hasHandle())
+            coreMasterAudio.setVolume(savedCoreVolume * gain);
+        else if (fmodAudioCaptured && masterAudioBus.isValid())
             masterAudioBus.setVolume(savedFmodVolume * gain);
     }
 
@@ -601,6 +964,11 @@ public sealed class ExperienceTransition : MonoBehaviour
             masterAudioBus.setVolume(savedFmodVolume);
             masterAudioBus.setMute(savedFmodMuted);
         }
+        if (coreMasterCaptured && coreMasterAudio.hasHandle())
+        {
+            coreMasterAudio.setVolume(savedCoreVolume);
+            coreMasterAudio.setMute(savedCoreMuted);
+        }
         foreach (KeyValuePair<AudioSource, AudioBypassState> saved in audioBypassStates)
         {
             if (saved.Key == null) continue;
@@ -609,14 +977,19 @@ public sealed class ExperienceTransition : MonoBehaviour
         audioBypassStates.Clear();
         uiAudioEvents.Clear();
         uiAudioSources.Clear();
+        outgoingAudioEvents.Clear();
+        outgoingAudioSources.Clear();
         audioHeld = false;
         revealingAudio = false;
         fmodAudioCaptured = false;
+        coreMasterCaptured = false;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (audioHeld && !revealingAudio) MaintainLoadingSilence();
+        RestoreControllerRenderingLayers();
+        SelectTransitionUiLayer();
         viewerCamera = null;
         viewerRig = null;
         viewerAnchor = null;
@@ -626,6 +999,7 @@ public sealed class ExperienceTransition : MonoBehaviour
     private void FollowCamera()
     {
         if (!Ready || state == State.Idle) return;
+        if (audioHeld && !revealingAudio) MaintainLoadingSilence();
         // Reassert black before rendering, while allowing the cancellation fade to work.
         if (keepPreparationBlack || (state == State.Holding && cancelRoutine == null))
             SetOpaqueBlack();
@@ -636,20 +1010,15 @@ public sealed class ExperienceTransition : MonoBehaviour
             ResolveViewer();
             if (viewerCamera == null) return;
             canvas.worldCamera = viewerCamera;
-            // Use a layer already included in this camera, without editing its culling mask.
-            int layer = 5;
-            if ((viewerCamera.cullingMask & (1 << layer)) == 0)
-            {
-                for (layer = 0; layer < 32; layer++)
-                    if ((viewerCamera.cullingMask & (1 << layer)) != 0) break;
-                if (layer == 32) layer = 0;
-            }
+            // Keep transition graphics isolated from ocean/world geometry.
             foreach (Transform child in canvasRect.GetComponentsInChildren<Transform>(true))
-                child.gameObject.layer = layer;
+                child.gameObject.layer = transitionUiLayer;
         }
         Transform eye = viewerAnchor;
         float distance = Mathf.Max(panelDistance, viewerCamera.nearClipPlane + 0.2f);
         canvasRect.SetPositionAndRotation(eye.position + eye.forward * distance, eye.rotation);
+        MaintainControllerVisuals();
+        MaintainCameraVisuals();
     }
 
     private static bool IsUsableCamera(Camera candidate)
@@ -705,9 +1074,7 @@ public sealed class ExperienceTransition : MonoBehaviour
     {
         if (!Ready || state == State.Idle) return;
         FollowCamera();
-        bool trackedEye = viewerRig != null && renderingCamera != null &&
-            renderingCamera.GetComponentInParent<OVRCameraRig>() == viewerRig;
-        canvas.enabled = renderingCamera == viewerCamera || trackedEye;
+        canvas.enabled = IsViewerRenderCamera(renderingCamera);
     }
 
     private void RestoreCanvasVisibility()
@@ -718,10 +1085,25 @@ public sealed class ExperienceTransition : MonoBehaviour
     private void OnBeginCameraRendering(ScriptableRenderContext context, Camera renderingCamera)
     {
         SetVisibilityForCamera(renderingCamera);
+        if (!isActiveAndEnabled || !Ready || state == State.Idle || !showControllersOverBlack ||
+            !IsViewerRenderCamera(renderingCamera) || background.color.a <= 0f ||
+            controllerRenderingLayer == 0 || controllerObjectLayers == 0) return;
+        UniversalAdditionalCameraData urp = renderingCamera.GetComponent<UniversalAdditionalCameraData>();
+        if (urp == null || urp.scriptableRenderer == null) return;
+        ScriptableCullingParameters parameters;
+        if (!renderingCamera.TryGetCullingParameters(renderingCamera.stereoEnabled, out parameters)) return;
+        // The normal camera can remain UI-only during exit; this cull is used only for the models.
+        parameters.cullingMask = controllerObjectLayers;
+        parameters.cullingOptions &= ~CullingOptions.OcclusionCull;
+        if (controllerOverlayPass == null) controllerOverlayPass = new ControllerOverlayPass();
+        controllerOverlayPass.Prepare(context.Cull(ref parameters), controllerRenderingLayer,
+            urp.scriptableRenderer);
+        urp.scriptableRenderer.EnqueuePass(controllerOverlayPass);
     }
 
     private void OnEndCameraRendering(ScriptableRenderContext context, Camera renderingCamera)
     {
+        RecordViewerFrame(renderingCamera);
         RestoreCanvasVisibility();
     }
 
@@ -732,7 +1114,180 @@ public sealed class ExperienceTransition : MonoBehaviour
 
     private void OnLegacyCameraPostRender(Camera renderingCamera)
     {
-        if (GraphicsSettings.currentRenderPipeline == null) RestoreCanvasVisibility();
+        if (GraphicsSettings.currentRenderPipeline != null) return;
+        RecordViewerFrame(renderingCamera);
+        RestoreCanvasVisibility();
+    }
+
+    private void RecordViewerFrame(Camera renderingCamera)
+    {
+        if (state == State.Idle || !IsViewerRenderCamera(renderingCamera) || !canvas.enabled) return;
+        // Multiple eye cameras/passes count as one preparation frame.
+        if (lastViewerRenderedFrame != Time.frameCount)
+        {
+            lastViewerRenderedFrame = Time.frameCount;
+            viewerRenderedFrames++;
+            if (awaitingSceneVisibility && !keepPreparationBlack && background.color.a <= 0f)
+                fullyVisibleRenderedFrames++;
+            else
+                fullyVisibleRenderedFrames = 0;
+        }
+    }
+
+    
+
+    
+
+    // Draw only tagged controller renderers after the world-space transition Canvas.
+    // Separate depth preserves the models' own occlusion without clearing scene depth.
+    private sealed class ControllerOverlayPass : ScriptableRenderPass
+    {
+        private readonly List<ShaderTagId> shaderTags = new List<ShaderTagId>
+        {
+            new ShaderTagId("UniversalForward"),
+            new ShaderTagId("UniversalForwardOnly"),
+            new ShaderTagId("SRPDefaultUnlit")
+        };
+        private CullingResults modelCulling;
+        private uint modelRenderingLayer;
+        private ScriptableRenderer targetRenderer;
+        private RTHandle compatibilityDepth;
+
+        private sealed class PassData
+        {
+            public RendererListHandle opaque;
+            public RendererListHandle transparent;
+        }
+
+        public ControllerOverlayPass()
+        {
+            renderPassEvent = RenderPassEvent.AfterRenderingTransparents;
+            profilingSampler = new ProfilingSampler("Transition controller models");
+        }
+
+        public void Prepare(CullingResults culling, uint renderingLayer, ScriptableRenderer renderer)
+        {
+            modelCulling = culling;
+            modelRenderingLayer = renderingLayer;
+            targetRenderer = renderer;
+        }
+
+        private FilteringSettings Filter(RenderQueueRange range)
+        {
+            return new FilteringSettings(range, -1, modelRenderingLayer);
+        }
+
+        private void MatchLightIndices(CullingResults sceneCulling)
+        {
+            // URP remaps visible-light indices for per-object lighting. Reuse that mapping.
+            var sceneMap = sceneCulling.GetLightIndexMap(Allocator.Temp);
+            var modelMap = modelCulling.GetLightIndexMap(Allocator.Temp);
+            var sceneLights = sceneCulling.visibleLights;
+            var modelLights = modelCulling.visibleLights;
+            for (int i = 0; i < modelMap.Length; i++)
+            {
+                modelMap[i] = -1;
+                if (modelLights[i].light == null) continue;
+                for (int j = 0; j < sceneMap.Length; j++)
+                {
+                    if (modelLights[i].light != sceneLights[j].light) continue;
+                    modelMap[i] = sceneMap[j];
+                    break;
+                }
+            }
+            modelCulling.SetLightIndexMap(modelMap);
+            modelMap.Dispose();
+            sceneMap.Dispose();
+        }
+
+        public override void RecordRenderGraph(RenderGraph renderGraph, ContextContainer frameData)
+        {
+            UniversalResourceData resources = frameData.Get<UniversalResourceData>();
+            if (!resources.activeColorTexture.IsValid() || !resources.activeDepthTexture.IsValid()) return;
+            UniversalRenderingData rendering = frameData.Get<UniversalRenderingData>();
+            UniversalCameraData cameraData = frameData.Get<UniversalCameraData>();
+            UniversalLightData lights = frameData.Get<UniversalLightData>();
+            MatchLightIndices(rendering.cullResults);
+            DrawingSettings opaque = RenderingUtils.CreateDrawingSettings(shaderTags, rendering,
+                cameraData, lights, SortingCriteria.CommonOpaque);
+            DrawingSettings transparent = RenderingUtils.CreateDrawingSettings(shaderTags, rendering,
+                cameraData, lights, SortingCriteria.CommonTransparent);
+            TextureDesc depth = renderGraph.GetTextureDesc(resources.activeDepthTexture);
+            depth.name = "Transition controller depth";
+            depth.clearBuffer = true;
+
+            using (var builder = renderGraph.AddRasterRenderPass<PassData>(
+                "Transition controller models", out var data, profilingSampler))
+            {
+                data.opaque = renderGraph.CreateRendererList(new RendererListParams(
+                    modelCulling, opaque, Filter(RenderQueueRange.opaque)));
+                data.transparent = renderGraph.CreateRendererList(new RendererListParams(
+                    modelCulling, transparent, Filter(RenderQueueRange.transparent)));
+                builder.UseRendererList(data.opaque);
+                builder.UseRendererList(data.transparent);
+                builder.SetRenderAttachment(resources.activeColorTexture, 0, AccessFlags.ReadWrite);
+                builder.SetRenderAttachmentDepth(renderGraph.CreateTexture(depth), AccessFlags.ReadWrite);
+                if (resources.mainShadowsTexture.IsValid())
+                    builder.UseTexture(resources.mainShadowsTexture, AccessFlags.Read);
+                if (resources.additionalShadowsTexture.IsValid())
+                    builder.UseTexture(resources.additionalShadowsTexture, AccessFlags.Read);
+                if (resources.ssaoTexture.IsValid())
+                    builder.UseTexture(resources.ssaoTexture, AccessFlags.Read);
+                foreach (TextureHandle texture in resources.dBuffer)
+                    if (texture.IsValid()) builder.UseTexture(texture, AccessFlags.Read);
+                builder.AllowPassCulling(false);
+                if (cameraData.xr.enabled)
+                    builder.EnableFoveatedRasterization(cameraData.xr.supportsFoveatedRendering &&
+                        resources.isActiveTargetBackBuffer);
+                builder.SetRenderFunc((PassData pass, RasterGraphContext context) =>
+                {
+                    context.cmd.DrawRendererList(pass.opaque);
+                    context.cmd.DrawRendererList(pass.transparent);
+                });
+            }
+        }
+
+#pragma warning disable CS0618, CS0672 // URP compatibility-mode callbacks.
+        public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData renderingData)
+        {
+            RenderTextureDescriptor descriptor = renderingData.cameraData.cameraTargetDescriptor;
+            descriptor.graphicsFormat = GraphicsFormat.None;
+            descriptor.depthStencilFormat = SystemInfo.GetGraphicsFormat(DefaultFormat.DepthStencil);
+            descriptor.useMipMap = false;
+            descriptor.autoGenerateMips = false;
+            descriptor.enableRandomWrite = false;
+            RenderingUtils.ReAllocateIfNeeded(ref compatibilityDepth, descriptor,
+                FilterMode.Point, TextureWrapMode.Clamp, name: "Transition controller depth");
+            ConfigureTarget(targetRenderer.cameraColorTargetHandle, compatibilityDepth);
+            ConfigureClear(ClearFlag.Depth, Color.clear);
+        }
+
+        public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
+        {
+            MatchLightIndices(renderingData.cullResults);
+            DrawingSettings opaque = RenderingUtils.CreateDrawingSettings(shaderTags,
+                ref renderingData, SortingCriteria.CommonOpaque);
+            DrawingSettings transparent = RenderingUtils.CreateDrawingSettings(shaderTags,
+                ref renderingData, SortingCriteria.CommonTransparent);
+            var opaqueParameters = new RendererListParams(
+                modelCulling, opaque, Filter(RenderQueueRange.opaque));
+            var transparentParameters = new RendererListParams(
+                modelCulling, transparent, Filter(RenderQueueRange.transparent));
+            var opaqueList = context.CreateRendererList(ref opaqueParameters);
+            var transparentList = context.CreateRendererList(ref transparentParameters);
+            CommandBuffer cmd = CommandBufferPool.Get("Transition controller models");
+            cmd.DrawRendererList(opaqueList);
+            cmd.DrawRendererList(transparentList);
+            context.ExecuteCommandBuffer(cmd);
+            CommandBufferPool.Release(cmd);
+        }
+#pragma warning restore CS0618, CS0672
+
+        public void Dispose()
+        {
+            compatibilityDepth?.Release();
+            compatibilityDepth = null;
+        }
     }
 
     private void BuildUI()
@@ -744,6 +1299,7 @@ public sealed class ExperienceTransition : MonoBehaviour
             Debug.LogError("Falta Assets/Resources/ExperienceTransitionOverlay.shader.", this);
             return;
         }
+        if (!SelectTransitionUiLayer()) return;
         overlayMaterial = new Material(shader) { name = "Experience transition overlay", renderQueue = 5000 };
         canvasRect = NewRect("TransitionCanvas", transform, new Vector2(1200f, 800f));
         canvasRect.localScale = Vector3.one * 0.001f;
@@ -783,9 +1339,47 @@ public sealed class ExperienceTransition : MonoBehaviour
         Hide();
     }
 
-    private static RectTransform NewRect(string name, Transform parent, Vector2 size)
+    private bool SelectTransitionUiLayer()
+    {
+        uint occupied = 0;
+        foreach (Transform item in FindObjectsByType<Transform>(
+            FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            if (canvasRect != null && item.IsChildOf(canvasRect)) continue;
+            occupied |= 1u << item.gameObject.layer;
+        }
+        // Reuse our slot when the destination has not started using it for something else.
+        int chosen = -1;
+        if (transitionUiLayer >= 8 && transitionUiLayer <= 30 &&
+            string.IsNullOrEmpty(LayerMask.LayerToName(transitionUiLayer)) &&
+            (occupied & (1u << transitionUiLayer)) == 0)
+            chosen = transitionUiLayer;
+        else
+            for (int layer = 30; layer >= 8; layer--)
+            {
+                if (!string.IsNullOrEmpty(LayerMask.LayerToName(layer)) ||
+                    (occupied & (1u << layer)) != 0) continue;
+                chosen = layer;
+                break;
+            }
+        if (chosen < 0)
+        {
+            Debug.LogError("La transición necesita una capa de usuario sin nombre y sin objetos. " +
+                "Libera una capa entre 8 y 30. No se usará la capa UI de los Canvas planos.", this);
+            return false;
+        }
+        transitionUiLayer = chosen;
+        transitionUiMask = 1 << chosen;
+        if (canvasRect != null)
+            foreach (Transform item in canvasRect.GetComponentsInChildren<Transform>(true))
+                item.gameObject.layer = chosen;
+        return true;
+    }
+
+    private RectTransform NewRect(string name, Transform parent, Vector2 size)
     {
         var rect = new GameObject(name, typeof(RectTransform)).GetComponent<RectTransform>();
+        rect.gameObject.layer = transitionUiLayer;
         rect.SetParent(parent, false);
         rect.sizeDelta = size;
         return rect;
