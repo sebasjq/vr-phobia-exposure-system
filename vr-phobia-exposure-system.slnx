@@ -5,6 +5,7 @@
   <Project Path="Oculus.Interaction.Editor.csproj" />
   <Project Path="FMODUnity.csproj" />
   <Project Path="gasgiant.OceanSystem.Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
