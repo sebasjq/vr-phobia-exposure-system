@@ -5,13 +5,10 @@
   <Project Path="Oculus.Interaction.Editor.csproj" />
   <Project Path="FMODUnity.csproj" />
   <Project Path="gasgiant.OceanSystem.Editor.csproj" />
-  <Project Path="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj" />
-<<<<<<< Updated upstream
-  <Project Path="FMODUnityResonanceEditor.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
-=======
->>>>>>> Stashed changes
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="FMODUnityResonanceEditor.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator.csproj" />
   <Project Path="FMODUnityHaptics.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.csproj" />

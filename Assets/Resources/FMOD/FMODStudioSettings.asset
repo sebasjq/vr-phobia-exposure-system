@@ -536,7 +536,7 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 0
   HasPlatforms: 0
-  sourceProjectPath: Assets/_Project/Audio/PROYECTO_FMOD/Assets/aracnofobia/audios/audios.fspro
+  sourceProjectPath: Assets/_Project/Audio/PROYECTO_FMOD/PROYECTO_FMOD.fspro
   sourceBankPath: Assets/_Project/Audio/PROYECTO_FMOD/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
@@ -772,7 +772,7 @@ MonoBehaviour:
       Value: 0
       HasValue: 0
     Overlay:
-      Value: 0
+      Value: 1
       HasValue: 1
     OverlayPosition:
       Value: 0

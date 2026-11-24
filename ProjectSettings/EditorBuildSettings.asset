@@ -29,6 +29,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Fobias/Acrofobia/Scenes/Acrofobia_3.unity
     guid: b2380b3cd25ba6448b7ff95b34fab297
+  - enabled: 1
+    path: Assets/_Project/Fobias/Claustrofobia/Scenes/Nivel 01 - Ascensor.unity
+    guid: 77e2eb02b94dcb84ba9e0c66eacf7b2f
+  - enabled: 1
+    path: Assets/_Project/Fobias/Claustrofobia/Scenes/Nivel 02 - Caverna.unity
+    guid: 0b0c1048a93159b4a994458aee90aa8e
+  - enabled: 1
+    path: "Assets/_Project/Fobias/Claustrofobia/Scenes/Nivel 03 - Ata\xFAd.unity"
+    guid: 5d5b6b04bd13b134a8a98b2e0548dee4
+  - enabled: 1
+    path: Assets/_Project/UI/Scenes/Main_Menu_Scene.unity
+    guid: 582d7be7d47c88d42981aba1cd451979
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 97c3652010a55684d943ea594acd2d65, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
