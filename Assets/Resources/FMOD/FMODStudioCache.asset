@@ -808,6 +808,24 @@ MonoBehaviour:
   lastModified: 639301033361565627
   FileSizes: []
   Exists: 1
+--- !u!114 &-5010965091754810780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/aracnofobia.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/aracnofobia.bank
+  Name: aracnofobia
+  StudioPath: bank:/aracnofobia
+  lastModified: 639310759252884853
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-4880371880561777599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,10 +894,10 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639310753089341354
+  lastModified: 639310759252591293
   FileSizes:
   - Name: 
-    Value: 3018
+    Value: 3120
   Exists: 1
 --- !u!114 &-4169831667181437243
 MonoBehaviour:
@@ -1433,6 +1451,7 @@ MonoBehaviour:
     Data3: -832215372
     Data4: -55936406
   Banks:
+  - {fileID: -5010965091754810780}
   - {fileID: 8421698317041521986}
   IsStream: 0
   Is3D: 1
@@ -1485,6 +1504,7 @@ MonoBehaviour:
     Data3: 2011028145
     Data4: -1736513628
   Banks:
+  - {fileID: -5010965091754810780}
   - {fileID: 8421698317041521986}
   IsStream: 0
   Is3D: 1
@@ -1588,6 +1608,8 @@ MonoBehaviour:
   - {fileID: 6008114735354826870}
   - {fileID: 1944256684963811810}
   - {fileID: -2814763009980062638}
+  - {fileID: 5009890360835132418}
+  - {fileID: -5010965091754810780}
   EditorEvents:
   - {fileID: 6931139708948470573}
   - {fileID: -5204866155363994845}
@@ -1620,7 +1642,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -4329947758296782381}
   cacheVersion: 132096
-  cacheTime: 639310753510544901
+  cacheTime: 639310759253094323
   SerializableEventsDict:
   - key: event:/Acrofobia/Monte
     index: 0
@@ -1731,6 +1753,7 @@ MonoBehaviour:
     Data3: -1835206493
     Data4: -263901439
   Banks:
+  - {fileID: -5010965091754810780}
   - {fileID: 8421698317041521986}
   IsStream: 1
   Is3D: 1
@@ -1798,7 +1821,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.assets.bank
   Name: Master.assets
   StudioPath: bank:/Master.assets
-  lastModified: 639310753089321173
+  lastModified: 639310759252576232
   FileSizes: []
   Exists: 1
 --- !u!114 &688856406188746055
@@ -2187,6 +2210,7 @@ MonoBehaviour:
     Data3: 1922319526
     Data4: -601734658
   Banks:
+  - {fileID: -5010965091754810780}
   - {fileID: 8421698317041521986}
   IsStream: 1
   Is3D: 1
@@ -2567,6 +2591,24 @@ MonoBehaviour:
   lastModified: 639301033359199452
   FileSizes: []
   Exists: 1
+--- !u!114 &5009890360835132418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/aracnofobia.assets.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/aracnofobia.assets.bank
+  Name: aracnofobia.assets
+  StudioPath: bank:/aracnofobia.assets
+  lastModified: 639310759253094323
+  FileSizes: []
+  Exists: 1
 --- !u!114 &5416424811239250363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2933,6 +2975,7 @@ MonoBehaviour:
     Data3: 282457988
     Data4: -1547328149
   Banks:
+  - {fileID: -5010965091754810780}
   - {fileID: 8421698317041521986}
   IsStream: 0
   Is3D: 1
@@ -3179,7 +3222,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639310753083874038
+  lastModified: 639310759252371542
   FileSizes: []
   Exists: 1
 --- !u!114 &8450702566158695904

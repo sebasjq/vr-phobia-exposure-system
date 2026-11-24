@@ -559,8 +559,22 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
-  Banks: []
+  MasterBanks:
+  - Master
+  Banks:
+  - Ambience
+  - Ambience.assets
+  - aracnofobia
+  - aracnofobia.assets
+  - Master.assets
+  - Music
+  - Music.assets
+  - SFX
+  - SFX.assets
+  - Talasofobia
+  - Talasofobia.assets
+  - UI
+  - UI.assets
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
