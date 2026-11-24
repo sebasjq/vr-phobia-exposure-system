@@ -823,7 +823,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/aracnofobia.bank
   Name: aracnofobia
   StudioPath: bank:/aracnofobia
-  lastModified: 639311349419992677
+  lastModified: 639311354039340711
   FileSizes: []
   Exists: 1
 --- !u!114 &-4880371880561777599
@@ -894,7 +894,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639311349424449710
+  lastModified: 639311354039828596
   FileSizes:
   - Name: 
     Value: 3120
@@ -1642,7 +1642,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -4329947758296782381}
   cacheVersion: 132096
-  cacheTime: 639311349806262675
+  cacheTime: 639311354039828596
   SerializableEventsDict:
   - key: event:/Acrofobia/Monte
     index: 0
@@ -1821,7 +1821,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.assets.bank
   Name: Master.assets
   StudioPath: bank:/Master.assets
-  lastModified: 639311349424429535
+  lastModified: 639311354039815785
   FileSizes: []
   Exists: 1
 --- !u!114 &688856406188746055
@@ -2606,7 +2606,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/aracnofobia.assets.bank
   Name: aracnofobia.assets
   StudioPath: bank:/aracnofobia.assets
-  lastModified: 639311349424145182
+  lastModified: 639311354039528766
   FileSizes: []
   Exists: 1
 --- !u!114 &5416424811239250363
@@ -3222,7 +3222,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639311349424264751
+  lastModified: 639311354039646939
   FileSizes: []
   Exists: 1
 --- !u!114 &8450702566158695904
