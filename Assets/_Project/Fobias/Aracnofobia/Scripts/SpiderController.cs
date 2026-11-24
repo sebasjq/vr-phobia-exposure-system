@@ -75,11 +75,11 @@ public class SpiderController : MonoBehaviour
     [SerializeField] bool useAnimationEvent = false;
     [SerializeField] float biteDelay = 0.8f;
 
-    [Header("Sonido de pasos (opcional, para cuando llegue FMOD)")]
-    [SerializeField] string footstepEventPath = "";
-
     public UnityEvent onBite;
     public UnityEvent onFootstep;
+
+    /// <summary>Se dispara cada vez que cambia el estado (Idle, Walk, Run, Attack). Lo usa SpiderAudio.</summary>
+    public event System.Action<SpiderState> StateChanged;
 
     public SpiderState State { get; private set; } = SpiderState.Hidden;
     public bool IsVisible { get; private set; }
@@ -166,7 +166,6 @@ public class SpiderController : MonoBehaviour
     public void AnimEvent_Footstep()
     {
         onFootstep.Invoke();
-        AudioBridge.PlayOneShot(footstepEventPath, transform.position);
     }
 
     // ---------------------------------------------------------------- Update
@@ -330,6 +329,7 @@ public class SpiderController : MonoBehaviour
     {
         if (state == State) return;
         State = state;
+        StateChanged?.Invoke(state);
 
         if (animator == null) return;
         string name = state switch

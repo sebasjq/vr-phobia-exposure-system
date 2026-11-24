@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.04.00">
+	<object class="Platform" id="{a6c938fa-a396-4f98-8a5a-16f6d00cb569}">
+		<property name="hardwareType">
+			<value>0</value>
+		</property>
+		<property name="name">
+			<value>Desktop</value>
+		</property>
+		<property name="subDirectory">
+			<value>C:/Users/USUARIO/OneDrive/Escritorio/clon/vr-phobia-exposure-system/Assets/_Project/Audio/PROYECTO_FMOD/Assets/aracnofobia/audios</value>
+		</property>
+		<property name="speakerFormat">
+			<value>5</value>
+		</property>
+	</object>
+</objects>

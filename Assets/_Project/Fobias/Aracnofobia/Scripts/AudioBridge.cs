@@ -20,14 +20,4 @@ public static class AudioBridge
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName(name, value);
 #endif
     }
-
-    /// <summary>Evento de un solo disparo en una posición 3D (ej: "event:/Spider/Footstep").</summary>
-    public static void PlayOneShot(string eventPath, Vector3 position)
-    {
-        if (string.IsNullOrEmpty(eventPath)) return;
-        if (LogCalls) Debug.Log($"[Audio] OneShot {eventPath} @ {position}");
-#if USE_FMOD
-        FMODUnity.RuntimeManager.PlayOneShot(eventPath, position);
-#endif
-    }
 }
