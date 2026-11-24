@@ -7,13 +7,13 @@ public enum SpiderState { Hidden, Idle, Walk, Run, Attack }
 /// <summary>
 /// Araña con 4 animaciones: Idle, Walk, Run, Attack.
 ///
-/// Comportamientos:
-///  - Orbitar:  da vueltas alrededor del jugador a un radio dado. Puede estar INVISIBLE
-///              (el GameObject sigue activo para que el sonido de sus patas se escuche).
-///              Alterna caminar / correr / pausas, cambia de sentido y, si está oculta,
-///              reaparece en otro ángulo tras una pausa (los pasos "cambian de dirección").
-///  - Aproximación final: aparece frente al jugador, camina lento, se detiene a mirarlo,
-///              se lanza (corre) y ataca.
+/// Comportamiento:
+///  - ESPIRAL CONTINUA: rodea al jugador sin parar (animación Walk) mientras el radio baja poco a poco.
+///    El radio lo controla el Director con ChangeOrbitRadius(). Puede estar INVISIBLE (solo se oye);
+///    el GameObject sigue activo para que el sonido de sus patas se escuche.
+///  - VISTA: cuando está visible y el jugador la ve (la cabeza, es decir el CenterEyeAnchor del
+///    OVRCameraRig, la tiene dentro de su campo de visión central), cambia a Run y va DIRECTO al
+///    jugador. Al llegar, ataca (Attack) y se dispara onBite.
 ///
 /// IMPORTANTE: este script debe estar en el MISMO objeto que el Animator
 /// si quieres usar Animation Events (AnimEvent_Bite / AnimEvent_Footstep).
@@ -23,7 +23,8 @@ public class SpiderController : MonoBehaviour
     enum Mode { None, Orbit, Manual }
 
     [Header("Referencias")]
-    [SerializeField] Transform player;                 // la cámara (cabeza) del XR Origin
+    [Tooltip("Arrastra aquí el CenterEyeAnchor del OVRCameraRig (la cabeza del jugador).")]
+    [SerializeField] Transform player;
     [SerializeField] Animator animator;
     [Tooltip("Si se deja vacío, se buscan todos los Renderers hijos.")]
     [SerializeField] Renderer[] renderers;
@@ -35,42 +36,43 @@ public class SpiderController : MonoBehaviour
     [SerializeField] string attackState = "Attack";
     [SerializeField] float crossFade = 0.2f;
 
-    [Header("Movimiento")]
-    [SerializeField] float walkSpeed = 1.5f;
-    [SerializeField] float runSpeed = 5f;
-    [SerializeField] float turnSpeed = 180f;
+    [Header("Movimiento (metros por segundo)")]
+    [Tooltip("Velocidad mientras rodea al jugador en espiral (animación Walk).")]
+    [SerializeField] float spiralSpeed = 4.5f;
+    [Tooltip("Velocidad de la embestida cuando ve al jugador (animación Run).")]
+    [SerializeField] float chargeSpeed = 10f;
+    [SerializeField] float turnSpeed = 360f;
     [Tooltip("Si el modelo mira hacia otro eje, corrige aquí (ej: 90, -90, 180).")]
     [SerializeField] float modelYawOffset = 0f;
     [SerializeField] float groundOffset = 0f;
 
-    [Header("Órbita")]
+    [Header("Sincronía de animación (evita que patine)")]
+    [Tooltip("Velocidad (m/s) a la que el clip Walk se ve natural. La animación se acelera en proporción a la velocidad real.")]
+    [SerializeField] float walkClipSpeed = 1.5f;
+    [Tooltip("Velocidad (m/s) a la que el clip Run se ve natural.")]
+    [SerializeField] float runClipSpeed = 5f;
+    [Tooltip("Tope de aceleración de la animación.")]
+    [SerializeField] float maxAnimatorSpeed = 2.5f;
+
+    [Header("Espiral")]
+    [Tooltip("Ondulación del radio, para que el recorrido no sea un círculo perfecto.")]
     [SerializeField] float radiusWobble = 1.5f;
     [SerializeField] float wobbleFrequency = 0.15f;
-    [Range(0f, 1f)][SerializeField] float pauseChance = 0.25f;
-    [Range(0f, 1f)][SerializeField] float runChance = 0.2f;
-    [Range(0f, 1f)][SerializeField] float reverseChance = 0.4f;
-    [Range(0f, 1f)][SerializeField] float repositionChance = 0.5f;
-    [SerializeField] Vector2 moveDuration = new Vector2(2f, 5f);
-    [SerializeField] Vector2 pauseDuration = new Vector2(1.5f, 4f);
 
-    [Header("Aproximación final y ataque")]
-    [SerializeField] float stareDistance = 3.5f;
-    [SerializeField] float stareDuration = 1.5f;
-
-    [Header("Espera por mirada (antes de lanzarse)")]
-    [Tooltip("La araña espera a que el jugador la mire antes de lanzarse.")]
-    [SerializeField] bool waitForGaze = true;
-    [Tooltip("Ángulo máximo entre hacia dónde mira el jugador y la araña. 40 es generoso en VR.")]
-    [SerializeField] float gazeAngle = 40f;
-    [Tooltip("Segundos seguidos que debe mirarla.")]
-    [SerializeField] float gazeHoldTime = 0.6f;
-    [Tooltip("Límite de espera. Si el jugador no mira, se lanza igual para no trabar la experiencia.")]
-    [SerializeField] float gazeMaxWait = 8f;
+    [Header("Detección: cuando el jugador la ve")]
+    [Tooltip("Ángulo máximo respecto a hacia dónde mira el jugador para considerar que la ve. El Quest 3 ve unos 55° a cada lado; 35° es la zona central.")]
+    [SerializeField] float sightAngle = 35f;
+    [Tooltip("Distancia máxima a la que cuenta como vista. Más allá, la niebla ya la oculta.")]
+    [SerializeField] float sightMaxDistance = 20f;
+    [Tooltip("Segundos seguidos que debe tenerla en la zona central para que se lance.")]
+    [SerializeField] float sightHoldTime = 0.3f;
     [Tooltip("Altura sobre el suelo del punto del cuerpo al que se apunta.")]
-    [SerializeField] float gazeHeight = 0.3f;
+    [SerializeField] float sightHeight = 0.3f;
+    [Tooltip("Al revelarse, espera a estar al menos a este ángulo (horizontal) fuera de la vista del jugador, para no aparecer de golpe delante de él.")]
+    [SerializeField] float revealMinAngle = 70f;
+
+    [Header("Ataque")]
     [SerializeField] float attackDistance = 1.6f;
-    [Tooltip("Si está activo, la araña corre el último tramo antes de morder.")]
-    [SerializeField] bool lungeWithRun = true;
     [Tooltip("Activo: el mordisco lo dispara el Animation Event AnimEvent_Bite. Inactivo: se usa biteDelay.")]
     [SerializeField] bool useAnimationEvent = false;
     [SerializeField] float biteDelay = 0.8f;
@@ -84,12 +86,13 @@ public class SpiderController : MonoBehaviour
     public SpiderState State { get; private set; } = SpiderState.Hidden;
     public bool IsVisible { get; private set; }
     public bool IsOrbiting => mode == Mode.Orbit;
+    public bool IsCharging => charging;
     public float DistanceToPlayer => player == null ? 0f : Vector3.Distance(player.position, transform.position);
 
     Mode mode = Mode.None;
-    float orbitRadius, orbitAngle, orbitDir = 1f, wobblePhase, currentSpeed;
+    float orbitRadius, orbitAngle, orbitDir = 1f, wobblePhase, currentSpeed, seenTime;
     Coroutine radiusRoutine;
-    bool biteFired;
+    bool biteFired, charging;
 
     void Awake()
     {
@@ -121,16 +124,22 @@ public class SpiderController : MonoBehaviour
         radiusRoutine = null;
         mode = Mode.None;
         currentSpeed = 0f;
+        charging = false;
+        biteFired = false;
+        seenTime = 0f;
         SetVisible(false);
         SetState(SpiderState.Idle);
+        SyncAnimatorSpeed(SpiderState.Idle, 0f);
     }
 
-    /// <summary>Empieza a rodear al jugador a 'radius' metros.</summary>
+    /// <summary>Empieza a rodear al jugador (espiral) desde 'radius' metros.</summary>
     public void BeginOrbit(float radius, bool visible)
     {
         StopAllCoroutines();
         radiusRoutine = null;
         biteFired = false;
+        charging = false;
+        seenTime = 0f;
 
         mode = Mode.Orbit;
         orbitRadius = radius;
@@ -140,24 +149,34 @@ public class SpiderController : MonoBehaviour
 
         SetVisible(visible);
         PlaceOnOrbit();
-        StartCoroutine(OrbitBehaviour());
+        SetMotion(SpiderState.Walk, spiralSpeed);
     }
 
-    /// <summary>Acerca (o aleja) la órbita de forma gradual.</summary>
+    /// <summary>Cambia el radio de forma gradual: si es menor que el actual, la órbita se vuelve espiral hacia el jugador.</summary>
     public void ChangeOrbitRadius(float target, float duration)
     {
         if (radiusRoutine != null) StopCoroutine(radiusRoutine);
         radiusRoutine = StartCoroutine(RadiusRoutine(target, duration));
     }
 
-    /// <summary>Aparece delante del jugador y ejecuta la secuencia final.</summary>
-    public void StartFinalApproach(float spawnDistance)
+    /// <summary>La hace visible, pero solo cuando está fuera de la vista del jugador (así no aparece de golpe).</summary>
+    public void RevealOutOfView()
     {
+        if (IsVisible) return;
+        StartCoroutine(RevealRoutine());
+    }
+
+    /// <summary>Corre directo al jugador y ataca. Se llama sola cuando el jugador la ve; el Director puede forzarla.</summary>
+    public void Charge()
+    {
+        if (charging) return;
+        charging = true;
+
         StopAllCoroutines();
         radiusRoutine = null;
-        biteFired = false;
         mode = Mode.Manual;
-        StartCoroutine(FinalApproachRoutine(spawnDistance));
+        SetVisible(true);
+        StartCoroutine(ChargeRoutine());
     }
 
     // Animation Events (opcionales)
@@ -173,63 +192,67 @@ public class SpiderController : MonoBehaviour
     void Update()
     {
         if (player == null) return;
-        if (mode == Mode.Orbit) UpdateOrbit();
+
+        if (mode == Mode.Orbit)
+        {
+            UpdateOrbit();
+            CheckSight();
+        }
+    }
+
+    float CurrentOrbitRadius()
+    {
+        // La ondulación se reduce al acercarse para no atravesar al jugador.
+        float wobble = Mathf.Min(radiusWobble, orbitRadius * 0.15f);
+        return Mathf.Max(1f, orbitRadius + Mathf.Sin(wobblePhase) * wobble);
     }
 
     void UpdateOrbit()
     {
-        if (currentSpeed > 0.01f) wobblePhase += Time.deltaTime * wobbleFrequency * Mathf.PI * 2f;
+        wobblePhase += Time.deltaTime * wobbleFrequency * Mathf.PI * 2f;
 
-        float r = Mathf.Max(1f, orbitRadius + Mathf.Sin(wobblePhase) * radiusWobble);
+        float r = CurrentOrbitRadius();
         orbitAngle += orbitDir * (currentSpeed / r) * Time.deltaTime;
 
         PlaceOnOrbit();
 
-        if (currentSpeed > 0.01f)
-        {
-            Vector3 tangent = orbitDir * new Vector3(Mathf.Cos(orbitAngle), 0f, -Mathf.Sin(orbitAngle));
-            FaceTowards(tangent, Time.deltaTime);
-        }
-        else
-        {
-            FaceTowards(player.position - transform.position, Time.deltaTime);
-        }
+        Vector3 tangent = orbitDir * new Vector3(Mathf.Cos(orbitAngle), 0f, -Mathf.Sin(orbitAngle));
+        FaceTowards(tangent, Time.deltaTime);
     }
 
     void PlaceOnOrbit()
     {
         if (player == null) return;
-        float r = Mathf.Max(1f, orbitRadius + Mathf.Sin(wobblePhase) * radiusWobble);
+        float r = CurrentOrbitRadius();
         Vector3 pos = player.position + new Vector3(Mathf.Sin(orbitAngle), 0f, Mathf.Cos(orbitAngle)) * r;
         transform.position = pos;
         SnapToGround();
     }
 
-    // ---------------------------------------------------------------- Rutinas
-
-    IEnumerator OrbitBehaviour()
+    // Si el jugador la ve (visible, cerca y en el centro de su vista) el tiempo suficiente, embiste.
+    void CheckSight()
     {
-        while (true)
+        if (!IsVisible || charging) return;
+
+        if (PlayerSeesSpider())
         {
-            if (Random.value < pauseChance)
-            {
-                SetMotion(SpiderState.Idle, 0f);
-                yield return new WaitForSeconds(Random.Range(pauseDuration.x, pauseDuration.y));
-
-                // Tras la pausa, si no se ve, reaparece en otro lado: los pasos vienen de otra dirección.
-                if (!IsVisible && Random.value < repositionChance)
-                    orbitAngle = Random.value * Mathf.PI * 2f;
-            }
-            else
-            {
-                if (Random.value < reverseChance) orbitDir *= -1f;
-
-                bool run = Random.value < runChance;
-                SetMotion(run ? SpiderState.Run : SpiderState.Walk, run ? runSpeed : walkSpeed);
-                yield return new WaitForSeconds(Random.Range(moveDuration.x, moveDuration.y));
-            }
+            seenTime += Time.deltaTime;
+            if (seenTime >= sightHoldTime) Charge();
+        }
+        else
+        {
+            seenTime = 0f;
         }
     }
+
+    bool PlayerSeesSpider()
+    {
+        Vector3 toSpider = transform.position + Vector3.up * sightHeight - player.position;
+        if (toSpider.magnitude > sightMaxDistance) return false;
+        return Vector3.Angle(player.forward, toSpider) <= sightAngle;
+    }
+
+    // ---------------------------------------------------------------- Rutinas
 
     IEnumerator RadiusRoutine(float target, float duration)
     {
@@ -245,60 +268,30 @@ public class SpiderController : MonoBehaviour
         radiusRoutine = null;
     }
 
-    IEnumerator FinalApproachRoutine(float spawnDistance)
+    IEnumerator RevealRoutine()
     {
-        // 1) Aparece delante del jugador, mirándolo (la niebla lo revela poco a poco).
-        Vector3 fwd = player.forward; fwd.y = 0f;
-        if (fwd.sqrMagnitude < 0.001f) fwd = Vector3.forward;
-        fwd.Normalize();
-
-        transform.position = player.position + fwd * spawnDistance;
-        SnapToGround();
-        FaceInstant(player.position - transform.position);
-        SetVisible(true);
-
-        // 2) Camina lento hacia el jugador.
-        SetMotion(SpiderState.Walk, walkSpeed);
-        while (FlatDistance() > stareDistance)
+        while (!IsVisible)
         {
-            MoveTowardsPlayer(walkSpeed);
-            yield return null;
-        }
-
-        // 3) Se detiene y lo mira.
-        SetMotion(SpiderState.Idle, 0f);
-        float t = 0f;
-        while (t < stareDuration)
-        {
-            t += Time.deltaTime;
-            FaceTowards(player.position - transform.position, Time.deltaTime);
-            yield return null;
-        }
-
-        // 3b) Espera a que el jugador la mire (con límite de tiempo).
-        if (waitForGaze)
-        {
-            float waited = 0f;
-            float held = 0f;
-            while (waited < gazeMaxWait && held < gazeHoldTime)
+            if (player == null || HorizontalAngleToSpider() >= revealMinAngle)
             {
-                waited += Time.deltaTime;
-                held = IsPlayerLookingAtSpider() ? held + Time.deltaTime : 0f;
-                FaceTowards(player.position - transform.position, Time.deltaTime);
-                yield return null;
+                SetVisible(true);
+                yield break;
             }
+            yield return null;
         }
+    }
 
-        // 4) Se lanza.
-        float speed = lungeWithRun ? runSpeed : walkSpeed;
-        SetMotion(lungeWithRun ? SpiderState.Run : SpiderState.Walk, speed);
+    IEnumerator ChargeRoutine()
+    {
+        // 1) Corre directo hacia el jugador.
+        SetMotion(SpiderState.Run, chargeSpeed);
         while (FlatDistance() > attackDistance)
         {
-            MoveTowardsPlayer(speed);
+            MoveTowardsPlayer(chargeSpeed);
             yield return null;
         }
 
-        // 5) Ataca.
+        // 2) Ataca.
         SetMotion(SpiderState.Attack, 0f);
         FaceInstant(player.position - transform.position);
 
@@ -323,6 +316,7 @@ public class SpiderController : MonoBehaviour
     {
         currentSpeed = speed;
         SetState(state);
+        SyncAnimatorSpeed(state, speed);
     }
 
     void SetState(SpiderState state)
@@ -342,11 +336,27 @@ public class SpiderController : MonoBehaviour
         if (!string.IsNullOrEmpty(name)) animator.CrossFadeInFixedTime(name, crossFade);
     }
 
-    bool IsPlayerLookingAtSpider()
+    // Acelera la animación en proporción a la velocidad real para que no parezca que patina.
+    void SyncAnimatorSpeed(SpiderState state, float speed)
     {
-        Vector3 target = transform.position + Vector3.up * gazeHeight;
-        Vector3 toSpider = target - player.position;
-        return Vector3.Angle(player.forward, toSpider) <= gazeAngle;
+        if (animator == null) return;
+
+        float reference = state == SpiderState.Walk ? walkClipSpeed
+                        : state == SpiderState.Run ? runClipSpeed
+                        : 0f;
+
+        animator.speed = reference > 0f
+            ? Mathf.Clamp(speed / reference, 0.5f, maxAnimatorSpeed)
+            : 1f;
+    }
+
+    // Ángulo horizontal entre hacia dónde mira el jugador y la dirección a la araña.
+    float HorizontalAngleToSpider()
+    {
+        Vector3 fwd = player.forward; fwd.y = 0f;
+        Vector3 toSpider = transform.position - player.position; toSpider.y = 0f;
+        if (fwd.sqrMagnitude < 0.0001f || toSpider.sqrMagnitude < 0.0001f) return 180f;
+        return Vector3.Angle(fwd, toSpider);
     }
 
     float FlatDistance()
