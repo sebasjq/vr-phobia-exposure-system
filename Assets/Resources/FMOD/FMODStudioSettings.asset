@@ -539,7 +539,7 @@ MonoBehaviour:
   sourceProjectPath: Assets/_Project/Audio/PROYECTO_FMOD/PROYECTO_FMOD.fspro
   sourceBankPath: Assets/_Project/Audio/PROYECTO_FMOD/Build
   sourceBankPathUnformatted: 
-  BankRefreshCooldown: 5
+  BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
   AutomaticEventLoading: 1
   BankLoadType: 0
@@ -564,6 +564,8 @@ MonoBehaviour:
   Banks:
   - Ambience
   - Ambience.assets
+  - aracnofobia
+  - aracnofobia.assets
   - Master.assets
   - Music
   - Music.assets
@@ -585,7 +587,7 @@ MonoBehaviour:
   SharedLibraryUpdateStage: 0
   SharedLibraryTimeSinceStart: 0
   CurrentVersion: 132096
-  HideSetupWizard: 0
+  HideSetupWizard: 1
   LastEventReferenceScanVersion: 132096
   Platforms:
   - {fileID: -7391450765200128815}

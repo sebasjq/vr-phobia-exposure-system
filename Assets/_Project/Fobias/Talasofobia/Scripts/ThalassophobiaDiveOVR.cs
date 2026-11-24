@@ -13,8 +13,27 @@ public class ThalassophobiaDiveOVR : MonoBehaviour
     [SerializeField, Range(0.01f, 1f)] private float pressThreshold = 0.5f;
     [SerializeField, Range(0f, 0.99f)] private float releaseThreshold = 0.35f;
 
+    [Header("Seabed collision (enable in the reef level)")]
+    [Tooltip("Activa esta opcion en niveles con fondo. Desactivada conserva la sumersion original.")]
+    [SerializeField] private bool stopAtSeabed;
+    [Tooltip("Selecciona solo las capas del suelo y de los obstaculos del fondo. Excluye el agua y el jugador.")]
+    [SerializeField] private LayerMask seabedLayers;
+    [Tooltip("CenterEyeAnchor. Si queda vacio, se intenta obtener del OVRCameraRig.")]
+    [SerializeField] private Transform head;
+    [Tooltip("Radio de la comprobacion del suelo, en metros.")]
+    [SerializeField, Min(0.01f)] private float probeRadius = 0.2f;
+    [Tooltip("Separacion minima entre la base virtual del jugador y el suelo, en metros.")]
+    [SerializeField, Min(0.001f)] private float floorClearance = 0.05f;
+
+    private OVRCameraRig rig;
     private float currentDepth;
     private bool gripHeld;
+    private bool warnedMissingLayers;
+
+    private void Awake()
+    {
+        rig = GetComponentInChildren<OVRCameraRig>();
+    }
 
     private void Update()
     {
@@ -30,10 +49,58 @@ public class ThalassophobiaDiveOVR : MonoBehaviour
         float targetDepth = gripHeld ? diveDepth : 0f;
         float speed = gripHeld ? descentSpeed : ascentSpeed;
         float nextDepth = Mathf.MoveTowards(currentDepth, targetDepth, speed * Time.deltaTime);
+        float depthDelta = nextDepth - currentDepth;
+
+        if (stopAtSeabed && depthDelta > 0f)
+            depthDelta = LimitDescent(depthDelta);
 
         // Move the entire rig. Never write to the tracked camera/CenterEyeAnchor.
-        transform.position += Vector3.down * (nextDepth - currentDepth);
-        currentDepth = nextDepth;
+        transform.position += Vector3.down * depthDelta;
+
+        // Only accumulate movement actually applied. Holding the grip at the
+        // bottom must not add depth that would cause an overshoot on ascent.
+        currentDepth = Mathf.Max(0f, currentDepth + depthDelta);
+    }
+
+    private float LimitDescent(float requestedDistance)
+    {
+        if (seabedLayers.value == 0)
+        {
+            if (!warnedMissingLayers)
+            {
+                Debug.LogWarning(
+                    "Talasofobia: Stop At Seabed esta activo. Asigna Seabed Layers para permitir el descenso.", this);
+                warnedMissingLayers = true;
+            }
+            return 0f;
+        }
+
+        if (head == null && rig != null)
+            head = rig.centerEyeAnchor;
+
+        float radius = Mathf.Max(0.01f, probeRadius);
+        float clearance = Mathf.Max(0.001f, floorClearance);
+
+        // With Floor Level tracking, the moving root defines the virtual floor.
+        // Use the tracked head's X/Z so the probe stays below the user even
+        // when they move physically away from the tracking origin.
+        Vector3 origin = head != null ? head.position : transform.position;
+        origin.y = transform.position.y + radius;
+
+        // A sweep does not detect colliders already overlapping its sphere.
+        // If overlapping, stop descending but still allow the normal ascent.
+        if (Physics.CheckSphere(origin, radius, seabedLayers,
+                QueryTriggerInteraction.Ignore))
+            return 0f;
+
+        if (Physics.SphereCast(origin, radius, Vector3.down,
+                out RaycastHit hit, requestedDistance + clearance,
+                seabedLayers, QueryTriggerInteraction.Ignore))
+        {
+            return Mathf.Clamp(hit.distance - clearance, 0f, requestedDistance);
+        }
+
+        return requestedDistance;
     }
 
     private void OnDisable()
@@ -41,6 +108,7 @@ public class ThalassophobiaDiveOVR : MonoBehaviour
         transform.position += Vector3.up * currentDepth;
         currentDepth = 0f;
         gripHeld = false;
+        warnedMissingLayers = false;
     }
 
     private void OnValidate()
