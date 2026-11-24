@@ -537,7 +537,7 @@ MonoBehaviour:
   HasSourceProject: 0
   HasPlatforms: 0
   sourceProjectPath: Assets/_Project/Audio/PROYECTO_FMOD/Assets/aracnofobia/audios/audios.fspro
-  sourceBankPath: Assets/_Project/Audio/PROYECTO_FMOD/Assets/aracnofobia/audios
+  sourceBankPath: Assets/_Project/Audio/PROYECTO_FMOD/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -559,8 +559,7 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks:
-  - Master
+  MasterBanks: []
   Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264

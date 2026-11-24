@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.04.00">
-	<object class="AudioFile" id="{d3b68958-2508-4be8-93d5-ebfdcf348e37}">
+	<object class="AudioFile" id="{e8ba5dbe-6d1a-44d3-9414-d58c64a01e28}">
 		<property name="assetPath">
-			<value>Efecto de sonido de viento.mp3</value>
+			<value>aracnofobia/audios/audios/Efecto de sonido de viento.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.100000000000001</value>
@@ -14,7 +14,7 @@
 			<value>5.0677551020408167</value>
 		</property>
 		<relationship name="masterAssetFolder">
-			<destination>{a434a317-111f-4d0a-9695-03e753afbb7f}</destination>
+			<destination>{ecffb85d-bf22-4e65-a764-bbd4bc3a14f0}</destination>
 		</relationship>
 	</object>
 </objects>

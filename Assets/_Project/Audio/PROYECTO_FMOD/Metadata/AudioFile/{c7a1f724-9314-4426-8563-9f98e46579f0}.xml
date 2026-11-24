@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.04.00">
-	<object class="AudioFile" id="{96f7ffa4-f7cd-4e2f-b164-22171f6c39d4}">
+	<object class="AudioFile" id="{c7a1f724-9314-4426-8563-9f98e46579f0}">
 		<property name="assetPath">
-			<value>Tarantula spider walks 4K close up Tarantula spider walking Sound effect Tarantula walks (1)-mono.mp3</value>
+			<value>aracnofobia/audios/audios/Tarantula spider walks 4K close up Tarantula spider walking Sound effect Tarantula walks (1)-mono.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
@@ -14,7 +14,7 @@
 			<value>7.6079999999999997</value>
 		</property>
 		<relationship name="masterAssetFolder">
-			<destination>{a434a317-111f-4d0a-9695-03e753afbb7f}</destination>
+			<destination>{ecffb85d-bf22-4e65-a764-bbd4bc3a14f0}</destination>
 		</relationship>
 	</object>
 </objects>
