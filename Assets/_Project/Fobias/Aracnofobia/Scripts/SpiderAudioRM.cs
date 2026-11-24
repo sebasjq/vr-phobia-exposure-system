@@ -14,7 +14,7 @@ using UnityEngine;
 /// Requiere FMOD Unity Integration y el símbolo USE_FMOD.
 /// </summary>
 
-public class SpiderAudioByMovement : MonoBehaviour
+public class SpiderAudioRM : MonoBehaviour
 {
 #if USE_FMOD
     [Header("Eventos FMOD")]
