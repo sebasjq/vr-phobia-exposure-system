@@ -346,7 +346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6434759411915008062, guid: f33134b19c4312a44b38416db336c4dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: 
+      value: Nivel 02 - Caverna
       objectReference: {fileID: 0}
     - target: {fileID: 6434759411915008062, guid: f33134b19c4312a44b38416db336c4dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
@@ -1611,7 +1611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6434759411915008062, guid: f33134b19c4312a44b38416db336c4dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: 
+      value: "Nivel 03 - Ata\xFAd"
       objectReference: {fileID: 0}
     - target: {fileID: 6434759411915008062, guid: f33134b19c4312a44b38416db336c4dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
@@ -3542,7 +3542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8465102766356768459, guid: bb571ad37a3461c4ebbcece6c304ef31, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: 
+      value: Nivel 01 - Ascensor
       objectReference: {fileID: 0}
     - target: {fileID: 8465102766356768459, guid: bb571ad37a3461c4ebbcece6c304ef31, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -4162,9 +4162,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2107438746}
-    - targetCorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2107438747}
     - targetCorrespondingSourceObject: {fileID: 100006, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2094630646}
@@ -4520,29 +4517,6 @@ MonoBehaviour:
   rain: 0
   wind: 0
   cover: 0
---- !u!114 &2107438747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915766830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34b728c9d09977845a016431eacd3e2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  pasosEvent:
-    Guid:
-      Data1: -1686568131
-      Data2: 1284399310
-      Data3: -1343436924
-      Data4: 1705804661
-    Path: event:/Player/Pasos_pasto
-  jugador: {fileID: 0}
-  velocidadMinima: 0.1
-  intervaloPasos: 0.5
-  volumen: 1000
 --- !u!114 &2107438748
 MonoBehaviour:
   m_ObjectHideFlags: 0
