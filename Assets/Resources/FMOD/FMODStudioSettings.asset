@@ -564,6 +564,8 @@ MonoBehaviour:
   Banks:
   - Ambience
   - Ambience.assets
+  - aracnofobia
+  - aracnofobia.assets
   - Master.assets
   - Music
   - Music.assets

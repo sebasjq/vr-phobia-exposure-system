@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.04.00">
+	<object class="ParameterPreset" id="{2eaae35c-e4b3-4c9d-8b05-8bffc4b077e2}">
+		<property name="name">
+			<value>viento</value>
+		</property>
+		<relationship name="folder">
+			<destination>{e0017a10-df0a-470c-ae26-9dcce13b9613}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{4fc5626d-a328-4d12-9281-7edd4ab19ab6}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{4fc5626d-a328-4d12-9281-7edd4ab19ab6}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>

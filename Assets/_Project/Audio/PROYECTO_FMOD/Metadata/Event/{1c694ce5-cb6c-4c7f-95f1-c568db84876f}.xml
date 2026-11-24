@@ -23,7 +23,7 @@ Recordings by David Nichols of Track Time Audio. Engine is a 1985 Mercedes-Benz 
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{3070ff09-75d9-42a7-9762-e82c662c9f1e}</destination>
+			<destination>{f5d38815-a58e-45ab-b5a6-2337652319be}</destination>
 		</relationship>
 		<relationship name="tags">
 			<destination>{2e419e5f-c6d0-4abd-871f-41d0600a0ac2}</destination>
@@ -61,6 +61,9 @@ Recordings by David Nichols of Track Time Audio. Engine is a 1985 Mercedes-Benz 
 		<relationship name="parameters">
 			<destination>{6968dae8-c2c3-4cbe-83c3-042998660434}</destination>
 			<destination>{7362b27d-218c-49c1-a1ba-fe784def5c0e}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{5dca691c-95f4-48dc-a882-c6a31ddf180b}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{a611468d-a808-4aa1-8f7b-2c5afdc27382}">

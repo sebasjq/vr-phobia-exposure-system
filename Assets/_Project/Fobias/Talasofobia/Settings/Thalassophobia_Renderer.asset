@@ -56,7 +56,7 @@ MonoBehaviour:
     m_Bits: 119
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 375
   m_TransparentLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: DibujarMandos
-    Event: 450
+    Event: 500
     filterSettings:
       RenderQueueType: 0
       LayerMask:
