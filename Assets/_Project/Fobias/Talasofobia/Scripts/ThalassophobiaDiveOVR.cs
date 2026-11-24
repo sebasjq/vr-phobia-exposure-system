@@ -29,10 +29,13 @@ public class ThalassophobiaDiveOVR : MonoBehaviour
     private float currentDepth;
     private bool gripHeld;
     private bool warnedMissingLayers;
+    private bool waitingForGripRelease;
+    private float surfaceHeight;
 
     private void Awake()
     {
         rig = GetComponentInChildren<OVRCameraRig>();
+        surfaceHeight = transform.position.y;
     }
 
     private void Update()
@@ -42,6 +45,14 @@ public class ThalassophobiaDiveOVR : MonoBehaviour
         float grip = OVRInput.Get(
             OVRInput.Axis1D.PrimaryHandTrigger,
             OVRInput.Controller.RTouch);
+
+        // A held grip from before a respawn must never start another dive.
+        if (waitingForGripRelease)
+        {
+            if (grip <= releaseThreshold) waitingForGripRelease = false;
+            return;
+        }
+        if (ExperienceTransition.IsBusy) return;
 
         // Hysteresis prevents small trigger changes from toggling the movement.
         gripHeld = gripHeld ? grip > releaseThreshold : grip >= pressThreshold;
@@ -54,12 +65,20 @@ public class ThalassophobiaDiveOVR : MonoBehaviour
         if (stopAtSeabed && depthDelta > 0f)
             depthDelta = LimitDescent(depthDelta);
 
+        // Never ascend above the surface, even if another script teleported the rig
+        // while this component still remembered its previous depth.
+        if (depthDelta < 0f)
+            depthDelta = -Mathf.Min(-depthDelta,
+                Mathf.Max(0f, surfaceHeight - transform.position.y));
+
         // Move the entire rig. Never write to the tracked camera/CenterEyeAnchor.
         transform.position += Vector3.down * depthDelta;
 
         // Only accumulate movement actually applied. Holding the grip at the
         // bottom must not add depth that would cause an overshoot on ascent.
         currentDepth = Mathf.Max(0f, currentDepth + depthDelta);
+        if (!gripHeld && transform.position.y >= surfaceHeight)
+            currentDepth = 0f;
     }
 
     private float LimitDescent(float requestedDistance)
@@ -105,10 +124,21 @@ public class ThalassophobiaDiveOVR : MonoBehaviour
 
     private void OnDisable()
     {
-        transform.position += Vector3.up * currentDepth;
+        float rise = Mathf.Min(currentDepth, Mathf.Max(0f, surfaceHeight - transform.position.y));
+        transform.position += Vector3.up * rise;
         currentDepth = 0f;
         gripHeld = false;
         warnedMissingLayers = false;
+        waitingForGripRelease = true;
+    }
+
+    // ExperienceSpawn invokes this AFTER restoring the rig's floor position.
+    public void OnExperienceRespawn()
+    {
+        currentDepth = 0f;
+        gripHeld = false;
+        surfaceHeight = transform.position.y;
+        waitingForGripRelease = true;
     }
 
     private void OnValidate()

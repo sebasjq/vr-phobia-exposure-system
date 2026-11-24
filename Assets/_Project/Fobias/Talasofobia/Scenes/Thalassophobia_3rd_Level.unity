@@ -136,6 +136,13 @@ MonoBehaviour:
   ascentSpeed: 1
   pressThreshold: 0.5
   releaseThreshold: 0.35
+  stopAtSeabed: 0
+  seabedLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  head: {fileID: 0}
+  probeRadius: 0.2
+  floorClearance: 0.05
 --- !u!114 &22318504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,9 +155,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82fbe7bdff7d0d4aab9b8ab294df053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoldYToExit
-  holdDuration: 2
+  holdDuration: 3
   fallbackMenuScene: Main_Menu_Scene
   fallbackExposureId: 
+  enableRestart: 1
+  restartHoldDuration: 3
+  experienceSpawn: {fileID: 0}
 --- !u!114 &22318505
 MonoBehaviour:
   m_ObjectHideFlags: 0
