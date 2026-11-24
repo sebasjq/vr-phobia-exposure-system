@@ -5497,7 +5497,11 @@ PrefabInstance:
       objectReference: {fileID: 729230653}
     - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
       propertyPath: exposurePanels.Array.size
+<<<<<<< Updated upstream
       value: 3
+=======
+      value: 5
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
       propertyPath: views.Array.data[3].canvasGroup
@@ -5516,6 +5520,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 985435167}
     - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: exposurePanels.Array.data[3].root
+      value: 
+      objectReference: {fileID: 1337874242}
+    - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
+      propertyPath: exposurePanels.Array.data[4].root
+      value: 
+      objectReference: {fileID: 1337874242}
+    - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
+>>>>>>> Stashed changes
       propertyPath: views.Array.data[3].glassRenderer
       value: 
       objectReference: {fileID: 14016628}
@@ -5540,6 +5555,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 985435166}
     - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: exposurePanels.Array.data[3].canvasGroup
+      value: 
+      objectReference: {fileID: 620864424}
+    - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
+      propertyPath: exposurePanels.Array.data[4].canvasGroup
+      value: 
+      objectReference: {fileID: 620864424}
+    - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
+>>>>>>> Stashed changes
       propertyPath: exposurePanels.Array.data[0].glassRenderer
       value: 
       objectReference: {fileID: 14016628}
@@ -5552,6 +5578,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 985435165}
     - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: exposurePanels.Array.data[3].glassRenderer
+      value: 
+      objectReference: {fileID: 921443670}
+    - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
+      propertyPath: exposurePanels.Array.data[4].glassRenderer
+      value: 
+      objectReference: {fileID: 921443670}
+    - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
+>>>>>>> Stashed changes
       propertyPath: exposurePanels.Array.data[0].rayInteractable
       value: 
       objectReference: {fileID: 729230648}
@@ -5564,6 +5601,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 985435168}
     - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: exposurePanels.Array.data[3].rayInteractable
+      value: 
+      objectReference: {fileID: 1337874237}
+    - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
+      propertyPath: exposurePanels.Array.data[4].rayInteractable
+      value: 
+      objectReference: {fileID: 1337874237}
+    - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
+>>>>>>> Stashed changes
       propertyPath: exposurePanels.Array.data[0].pokeInteractable
       value: 
       objectReference: {fileID: 729230652}
@@ -5575,6 +5623,17 @@ PrefabInstance:
       propertyPath: exposurePanels.Array.data[2].pokeInteractable
       value: 
       objectReference: {fileID: 985435169}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
+      propertyPath: exposurePanels.Array.data[3].pokeInteractable
+      value: 
+      objectReference: {fileID: 1337874241}
+    - target: {fileID: 47058437282024035, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
+      propertyPath: exposurePanels.Array.data[4].pokeInteractable
+      value: 
+      objectReference: {fileID: 1337874241}
+>>>>>>> Stashed changes
     - target: {fileID: 81528539628020771, guid: 2254f0ebc2b21884ca2753c00b030851, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
