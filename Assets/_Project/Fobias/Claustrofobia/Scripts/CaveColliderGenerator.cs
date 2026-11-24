@@ -415,6 +415,241 @@ public static class CaveColliderGenerator
         }
     }
 
+    [MenuItem("Tools/Claustrofobia/Completar colision interior de la caverna")]
+    private static void CompleteInteriorCollision()
+    {
+        if (EditorApplication.isPlayingOrWillChangePlaymode)
+        {
+            EditorUtility.DisplayDialog("Completar colision", "Sal de Play antes de corregir la caverna.", "Aceptar");
+            return;
+        }
+
+        GameObject environment = Selection.activeGameObject;
+        if (!IsSceneObject(environment))
+        {
+            EditorUtility.DisplayDialog("Completar colision",
+                "Selecciona Entorno_Caverna en la Hierarchy.", "Aceptar");
+            return;
+        }
+
+        Undo.IncrementCurrentGroup();
+        int undoGroup = Undo.GetCurrentGroup();
+        const string undoLabel = "Completar colision interior de caverna";
+        Undo.SetCurrentGroupName(undoLabel);
+        try
+        {
+            // La correccion ya comprobada bajo el OVR identifica el cuerpo de la cueva.
+            // Sus mallas hermanas forman los otros tramos del primer recinto.
+            // Los adornos de RootNode no se invierten indiscriminadamente.
+            var bodies = new HashSet<Transform>();
+            foreach (MeshCollider anchor in environment.GetComponentsInChildren<MeshCollider>(true))
+            {
+                MeshFilter filter = anchor.GetComponent<MeshFilter>();
+                if (filter == null || filter.sharedMesh == null || anchor.sharedMesh == null
+                    || anchor.sharedMesh == filter.sharedMesh || anchor.convex || anchor.isTrigger)
+                    continue;
+
+                string path = AssetDatabase.GetAssetPath(anchor.sharedMesh);
+                if (!path.StartsWith("Assets/GeneratedCaveColliders/", StringComparison.Ordinal)
+                    || !IsReversedCopy(filter.sharedMesh, anchor.sharedMesh))
+                    continue;
+
+                Transform parent = anchor.transform.parent;
+                if (parent != null && (parent == environment.transform
+                    || parent.IsChildOf(environment.transform)))
+                    bodies.Add(parent);
+            }
+
+            // El segundo recinto es otra malla: no es hermana de los 14 tramos
+            // anteriores. Identificar su cuerpo por el modelo y el nodo del GLB.
+            // Comprobar tambien que la franja inferior apunta hacia abajo.
+            int secondBodies = 0;
+            foreach (MeshFilter filter in environment.GetComponentsInChildren<MeshFilter>(true))
+            {
+                Transform parent = filter.transform.parent;
+                if (filter.sharedMesh == null || parent == null || parent.name != "Cube.026"
+                    || !(parent == environment.transform || parent.IsChildOf(environment.transform)))
+                    continue;
+                string modelPath = AssetDatabase.GetAssetPath(filter.sharedMesh);
+                if (!modelPath.EndsWith("/realistic_cave_2.0.glb", StringComparison.OrdinalIgnoreCase)
+                    || !HasDownwardLowerSurface(filter))
+                    continue;
+                bodies.Add(parent);
+                secondBodies++;
+            }
+            if (bodies.Count == 0)
+                throw new InvalidOperationException(
+                    "No encontre la correccion interior anterior dentro de la seleccion. "
+                    + "Selecciona Entorno_Caverna. Debe conservar el InteriorCollider.asset "
+                    + "que ya permite caminar al comenzar.");
+
+            const string folder = "Assets/GeneratedCaveColliders";
+            if (!AssetDatabase.IsValidFolder(folder))
+                AssetDatabase.CreateFolder("Assets", "GeneratedCaveColliders");
+            var copies = new Dictionary<Mesh, Mesh>();
+            int corrected = 0;
+            int preserved = 0;
+            int skipped = 0;
+            var names = new StringBuilder();
+            foreach (Transform body in bodies)
+            {
+                names.AppendLine(body.name);
+                // Cube contiene los 14 tramos del primer recinto; Cube.026, el segundo.
+                // No recorrer otros contenedores ni invertir objetos anidados.
+                foreach (Transform piece in body)
+                {
+                    MeshFilter filter = piece.GetComponent<MeshFilter>();
+                    if (filter == null || filter.sharedMesh == null)
+                        continue;
+
+                    Rigidbody rigidbody = piece.GetComponentInParent<Rigidbody>();
+                    foreach (MeshCollider target in piece.GetComponents<MeshCollider>())
+                    {
+                        Mesh source = filter.sharedMesh;
+                        if (!target.enabled || target.isTrigger || target.convex
+                            || target.sharedMesh == null || (rigidbody != null && !rigidbody.isKinematic))
+                        {
+                            skipped++;
+                            continue;
+                        }
+                        if (target.sharedMesh != source)
+                        {
+                            if (IsReversedCopy(source, target.sharedMesh)) preserved++;
+                            else skipped++;
+                            continue;
+                        }
+
+                        if (!copies.TryGetValue(source, out Mesh interior))
+                        {
+                            // Solo posiciones e indices: sin duplicar UV, tangentes o materiales.
+                            interior = new Mesh();
+                            interior.name = source.name + "_InteriorCollider";
+                            interior.indexFormat = source.indexFormat;
+                            interior.vertices = source.vertices;
+                            interior.subMeshCount = source.subMeshCount;
+                            for (int sub = 0; sub < source.subMeshCount; sub++)
+                            {
+                                if (source.GetTopology(sub) != MeshTopology.Triangles)
+                                    throw new InvalidOperationException("La malla no contiene solo triangulos: " + source.name);
+                                int[] indices = source.GetTriangles(sub);
+                                for (int i = 0; i < indices.Length; i += 3)
+                                {
+                                    int swap = indices[i + 1];
+                                    indices[i + 1] = indices[i + 2];
+                                    indices[i + 2] = swap;
+                                }
+                                interior.SetTriangles(indices, sub, false);
+                            }
+                            interior.RecalculateBounds();
+                            string path = AssetDatabase.GenerateUniqueAssetPath(folder + "/InteriorCollider.asset");
+                            AssetDatabase.CreateAsset(interior, path);
+                            copies.Add(source, interior);
+                        }
+
+                        Undo.RecordObject(target, undoLabel);
+                        target.sharedMesh = null;
+                        target.sharedMesh = interior;
+                        if (PrefabUtility.IsPartOfPrefabInstance(target))
+                            PrefabUtility.RecordPrefabInstancePropertyModifications(target);
+                        EditorSceneManager.MarkSceneDirty(target.gameObject.scene);
+                        corrected++;
+                    }
+                }
+            }
+            AssetDatabase.SaveAssets();
+            Physics.SyncTransforms();
+            string report = $"Escena: {environment.scene.name}\nCuerpos encontrados:\n{names}\n"
+                + $"Tramos corregidos ahora: {corrected}\nYa corregidos conservados: {preserved}\nOmitidos: {skipped}\n\n"
+                + $"Cuerpos de la segunda caverna identificados: {secondBodies}\n\n"
+                + (secondBodies > 0
+                    ? "Se ha incluido el cuerpo de la segunda caverna.\n"
+                    : "No se ha identificado el cuerpo de la segunda caverna en esta seleccion.\n")
+                + "Guarda la escena con Ctrl+S y prueba el recorrido en Play.\n"
+                + "Incluye la escena y todos los assets de GeneratedCaveColliders en Git.\n"
+                + "Ctrl+Z restaura los colliders anteriores. Repetir este comando conserva los ya corregidos.";
+            Debug.Log(report, environment);
+            EditorUtility.DisplayDialog("Colision interior completada", report, "Aceptar");
+        }
+        catch (Exception exception)
+        {
+            EditorUtility.DisplayDialog("Correccion interrumpida",
+                "Los cambios parciales pueden deshacerse con Ctrl+Z.\n\n" + exception.Message, "Aceptar");
+            Debug.LogException(exception);
+        }
+        finally
+        {
+            Undo.CollapseUndoOperations(undoGroup);
+        }
+    }
+
+    private static bool HasDownwardLowerSurface(MeshFilter filter)
+    {
+        Mesh source = filter.sharedMesh;
+        Vector3[] vertices = source.vertices;
+        if (vertices.Length == 0) return false;
+
+        float minY = float.PositiveInfinity;
+        float maxY = float.NegativeInfinity;
+        for (int i = 0; i < vertices.Length; i++)
+        {
+            vertices[i] = filter.transform.TransformPoint(vertices[i]);
+            minY = Mathf.Min(minY, vertices[i].y);
+            maxY = Mathf.Max(maxY, vertices[i].y);
+        }
+        float lowerLimit = minY + (maxY - minY) * 0.25f;
+        float downwardArea = 0f;
+        float upwardArea = 0f;
+        for (int sub = 0; sub < source.subMeshCount; sub++)
+        {
+            if (source.GetTopology(sub) != MeshTopology.Triangles) continue;
+            int[] indices = source.GetTriangles(sub);
+            for (int i = 0; i < indices.Length; i += 3)
+            {
+                Vector3 a = vertices[indices[i]];
+                Vector3 b = vertices[indices[i + 1]];
+                Vector3 c = vertices[indices[i + 2]];
+                if ((a.y + b.y + c.y) / 3f > lowerLimit) continue;
+                Vector3 normal = Vector3.Cross(b - a, c - a);
+                float area = normal.magnitude;
+                if (area < 0.000001f) continue;
+                float normalY = normal.y / area;
+                if (normalY < -0.5f) downwardArea += area;
+                else if (normalY > 0.5f) upwardArea += area;
+            }
+        }
+        return downwardArea > 0.001f && downwardArea > upwardArea * 2f;
+    }
+
+    private static bool IsReversedCopy(Mesh source, Mesh candidate)
+    {
+        if (source == candidate || source.vertexCount != candidate.vertexCount
+            || source.subMeshCount != candidate.subMeshCount)
+            return false;
+
+        Vector3[] originalVertices = source.vertices;
+        Vector3[] copyVertices = candidate.vertices;
+        for (int i = 0; i < originalVertices.Length; i++)
+            if (!originalVertices[i].Equals(copyVertices[i])) return false;
+
+        bool hasTriangles = false;
+        for (int sub = 0; sub < source.subMeshCount; sub++)
+        {
+            if (source.GetTopology(sub) != MeshTopology.Triangles
+                || candidate.GetTopology(sub) != MeshTopology.Triangles)
+                return false;
+            int[] original = source.GetTriangles(sub);
+            int[] reversed = candidate.GetTriangles(sub);
+            if (original.Length != reversed.Length) return false;
+            for (int i = 0; i < original.Length; i += 3)
+            {
+                if (original[i] != reversed[i] || original[i + 1] != reversed[i + 2]
+                    || original[i + 2] != reversed[i + 1]) return false;
+                if (original[i + 1] != original[i + 2]) hasTriangles = true;
+            }
+        }
+        return hasTriangles;
+    }
+
     private static bool IsSceneObject(GameObject obj)
     {
         return obj != null && !EditorUtility.IsPersistent(obj)
