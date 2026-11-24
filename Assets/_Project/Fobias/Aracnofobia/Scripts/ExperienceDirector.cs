@@ -7,8 +7,9 @@ using UnityEngine.Events;
 ///
 /// Fase 1: niebla mínima, sin araña, el viento sube PASO A PASO.
 /// Fase 2: la niebla sube de golpe, la araña (invisible) rodea al jugador de lejos.
-/// Fase 3: niebla máxima, la araña (invisible) se acerca por distintos lados,
-///         luego aparece de frente, lo mira, ataca y termina la experiencia.
+/// Fase 3: niebla máxima. La araña sigue en ESPIRAL (rodeando y acercándose sin pausas), se
+///         revela fuera de la vista del jugador y, cuando éste la ve, corre directo hacia él,
+///         ataca y termina la experiencia.
 ///
 /// Parámetros globales que recibe FMOD:
 ///   WindIntensity (0-1), FogDensity (0-1), ExperiencePhase (1-4), SpiderDistance (metros)
@@ -43,11 +44,14 @@ public class ExperienceDirector : MonoBehaviour
     [SerializeField] float phase3FogDensity = 0.08f;
     [SerializeField] float phase3FogRiseTime = 10f;
     [Range(0f, 1f)][SerializeField] float phase3Wind = 0.9f;
-    [Tooltip("Radio al que la araña (aún oculta) llega a rodear al jugador.")]
-    [SerializeField] float phase3OrbitRadius = 9f;
-    [SerializeField] float phase3CloseTime = 30f;
-    [Tooltip("A qué distancia, delante del jugador, aparece la araña.")]
-    [SerializeField] float phase3SpawnDistance = 14f;
+    [Tooltip("Radio final de la espiral, cerca del jugador.")]
+    [SerializeField] float phase3FinalRadius = 3f;
+    [Tooltip("Duración de la espiral en la fase 3: del radio con que acaba la fase 2 hasta el radio final.")]
+    [SerializeField] float phase3Duration = 45f;
+    [Tooltip("Segundos desde el inicio de la fase 3 para revelar la araña (solo se revela fuera de la vista del jugador).")]
+    [SerializeField] float phase3RevealDelay = 12f;
+    [Tooltip("Si el jugador nunca la ve, segundos extra tras terminar la espiral antes de que ataque igual.")]
+    [SerializeField] float phase3FinalWait = 6f;
     [Tooltip("Pausa entre el mordisco y el fin de la experiencia.")]
     [SerializeField] float endDelay = 1.5f;
 
@@ -62,6 +66,18 @@ public class ExperienceDirector : MonoBehaviour
 
     void Start()
     {
+        if (fog == null || wind == null || spider == null)
+        {
+            Debug.LogError(
+                "[ExperienceDirector] Faltan referencias en el Inspector: " +
+                (fog == null ? "Fog " : "") +
+                (wind == null ? "Wind " : "") +
+                (spider == null ? "Spider " : "") +
+                "(arrástralas al componente ExperienceDirector).", this);
+            enabled = false;
+            return;
+        }
+
         spider.onBite.AddListener(() => bitten = true);
         StartAt(1);
     }
@@ -136,12 +152,25 @@ public class ExperienceDirector : MonoBehaviour
         if (!spider.IsOrbiting)
             spider.BeginOrbit(phase2EndRadius, false);
 
-        spider.ChangeOrbitRadius(phase3OrbitRadius, phase3CloseTime);
-        yield return new WaitForSeconds(phase3CloseTime);
-
-        // La araña aparece de frente, se acerca, mira y ataca.
+        // La espiral continúa sin pausas: el radio baja poco a poco hasta el radio final.
         bitten = false;
-        spider.StartFinalApproach(phase3SpawnDistance);
+        spider.ChangeOrbitRadius(phase3FinalRadius, phase3Duration);
+
+        // Pasado un tiempo se revela, pero solo cuando está fuera de la vista del jugador.
+        yield return new WaitForSeconds(phase3RevealDelay);
+        spider.RevealOutOfView();
+
+        // Si el jugador la ve, la araña corre hacia él por su cuenta (SpiderController).
+        // Si nunca la ve, ataca al terminar la espiral más la espera final.
+        float timeout = Mathf.Max(0f, phase3Duration - phase3RevealDelay) + phase3FinalWait;
+        float waited = 0f;
+        while (!bitten && waited < timeout)
+        {
+            waited += Time.deltaTime;
+            yield return null;
+        }
+
+        if (!bitten) spider.Charge();
         yield return new WaitUntil(() => bitten);
 
         yield return new WaitForSeconds(endDelay);
