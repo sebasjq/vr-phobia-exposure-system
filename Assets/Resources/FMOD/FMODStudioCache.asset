@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9004245510319533608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Claustrofobia/Derrumbe
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Claustrofobia/Derrumbe
+  Guid:
+    Data1: -1456027766
+    Data2: 1167697172
+    Data3: 1182521993
+    Data4: -277930347
+  Banks:
+  - {fileID: -8636410611852100260}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 9000
 --- !u!114 &-8947102337071388129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +106,33 @@ MonoBehaviour:
   - {fileID: 5886613722863096350}
   - {fileID: 1016172757401057223}
   - {fileID: 765920850868308146}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-8733940181090174446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Claustrofobia/Heartbeat
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Claustrofobia/Heartbeat
+  Guid:
+    Data1: -1099346955
+    Data2: 1205588764
+    Data3: -1291499126
+    Data4: -2106928271
+  Banks:
+  - {fileID: -8636410611852100260}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 0
@@ -180,6 +234,24 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-8636410611852100260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Claustrofobia.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Claustrofobia.bank
+  Name: Claustrofobia
+  StudioPath: bank:/Claustrofobia
+  lastModified: 639311647035970019
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-8509222064217715986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +318,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Ambience.assets.bank
   Name: Ambience.assets
   StudioPath: bank:/Ambience.assets
-  lastModified: 639311349419661721
+  lastModified: 639311635524270943
   FileSizes: []
   Exists: 1
 --- !u!114 &-7992035951588350337
@@ -708,7 +780,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639311349424670359
+  lastModified: 639311635528488221
   FileSizes: []
   Exists: 1
 --- !u!114 &-5449723169775657075
@@ -823,7 +895,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/aracnofobia.bank
   Name: aracnofobia
   StudioPath: bank:/aracnofobia
-  lastModified: 639311360006469610
+  lastModified: 639311635524520124
   FileSizes: []
   Exists: 1
 --- !u!114 &-4880371880561777599
@@ -894,10 +966,10 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639311354039828596
+  lastModified: 639311647032757874
   FileSizes:
   - Name: 
-    Value: 3120
+    Value: 3496
   Exists: 1
 --- !u!114 &-4169831667181437243
 MonoBehaviour:
@@ -1069,6 +1141,33 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-3375710223545886497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Claustrofobia/Elevator Door Open
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Claustrofobia/Elevator Door Open
+  Guid:
+    Data1: 1996086148
+    Data2: 1160747528
+    Data3: 2092378005
+    Data4: 2097681002
+  Banks:
+  - {fileID: 8787893569384691814}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 21168
 --- !u!114 &-3143951659298773849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1112,7 +1211,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 639311349648827222
+  lastModified: 639311635699202499
   FileSizes: []
   Exists: 1
 --- !u!114 &-2799786436674958356
@@ -1335,6 +1434,33 @@ MonoBehaviour:
   MinDistance: 1.5
   MaxDistance: 30
   Length: 2000
+--- !u!114 &-1518703386559641508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Claustrofobia/Elevator Alarm
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Claustrofobia/Elevator Alarm
+  Guid:
+    Data1: -1727710224
+    Data2: 1129136857
+    Data3: 677270166
+    Data4: 581900397
+  Banks:
+  - {fileID: 8787893569384691814}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 22961
 --- !u!114 &-1503787180716193550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1429,7 +1555,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 639311349409540251
+  lastModified: 639311635516588261
   FileSizes: []
   Exists: 1
 --- !u!114 &-660895799180325465
@@ -1610,6 +1736,8 @@ MonoBehaviour:
   - {fileID: -2814763009980062638}
   - {fileID: 5009890360835132418}
   - {fileID: -5010965091754810780}
+  - {fileID: 1177785890342102664}
+  - {fileID: -8636410611852100260}
   EditorEvents:
   - {fileID: 6931139708948470573}
   - {fileID: -5204866155363994845}
@@ -1634,6 +1762,12 @@ MonoBehaviour:
   - {fileID: -7236182782874279151}
   - {fileID: 3775636467889209894}
   - {fileID: 3867423008763073268}
+  - {fileID: 3725328066610120449}
+  - {fileID: 350315216009941400}
+  - {fileID: -9004245510319533608}
+  - {fileID: -8733940181090174446}
+  - {fileID: -3375710223545886497}
+  - {fileID: -1518703386559641508}
   EditorParameters:
   - {fileID: 4014368598041155692}
   - {fileID: -6389699535936891723}
@@ -1642,7 +1776,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -4329947758296782381}
   cacheVersion: 132096
-  cacheTime: 639311360006469610
+  cacheTime: 639311651519453704
   SerializableEventsDict:
   - key: event:/Acrofobia/Monte
     index: 0
@@ -1690,6 +1824,18 @@ MonoBehaviour:
     index: 21
   - key: event:/UI/UI_Back
     index: 22
+  - key: event:/Claustrofobia/Elevator Impact
+    index: 23
+  - key: event:/Claustrofobia/Knocking door
+    index: 24
+  - key: event:/Claustrofobia/Derrumbe
+    index: 25
+  - key: event:/Claustrofobia/Heartbeat
+    index: 26
+  - key: event:/Claustrofobia/Elevator Door Open
+    index: 27
+  - key: event:/Claustrofobia/Elevator Alarm
+    index: 28
 --- !u!114 &19237051355956514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1786,6 +1932,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &350315216009941400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Claustrofobia/Knocking door
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Claustrofobia/Knocking door
+  Guid:
+    Data1: -981274567
+    Data2: 1128583987
+    Data3: -588155230
+    Data4: -5781324
+  Banks:
+  - {fileID: -8636410611852100260}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &386982058529204602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1821,7 +1994,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.assets.bank
   Name: Master.assets
   StudioPath: bank:/Master.assets
-  lastModified: 639311354039815785
+  lastModified: 639311647032726806
   FileSizes: []
   Exists: 1
 --- !u!114 &688856406188746055
@@ -2019,6 +2192,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &1177785890342102664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Claustrofobia.assets.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Claustrofobia.assets.bank
+  Name: Claustrofobia.assets
+  StudioPath: bank:/Claustrofobia.assets
+  lastModified: 639311647036627784
+  FileSizes: []
+  Exists: 1
 --- !u!114 &1819854593137001279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2089,7 +2280,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/UI.assets.bank
   Name: UI.assets
   StudioPath: bank:/UI.assets
-  lastModified: 639311349806262675
+  lastModified: 639311635819080021
   FileSizes: []
   Exists: 1
 --- !u!114 &2257766990608132269
@@ -2188,7 +2379,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Talasofobia.assets.bank
   Name: Talasofobia.assets
   StudioPath: bank:/Talasofobia.assets
-  lastModified: 639311349648509127
+  lastModified: 639311635698959177
   FileSizes: []
   Exists: 1
 --- !u!114 &3211572553987297157
@@ -2275,6 +2466,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &3725328066610120449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Claustrofobia/Elevator Impact
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Claustrofobia/Elevator Impact
+  Guid:
+    Data1: -200800399
+    Data2: 1074283749
+    Data3: 1555481479
+    Data4: -1226874382
+  Banks:
+  - {fileID: 8787893569384691814}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1800
 --- !u!114 &3775636467889209894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2606,7 +2824,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/aracnofobia.assets.bank
   Name: aracnofobia.assets
   StudioPath: bank:/aracnofobia.assets
-  lastModified: 639311354039528766
+  lastModified: 639311635528057955
   FileSizes: []
   Exists: 1
 --- !u!114 &5416424811239250363
@@ -2696,7 +2914,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Music.assets.bank
   Name: Music.assets
   StudioPath: bank:/Music.assets
-  lastModified: 639311349427933197
+  lastModified: 639311635531399672
   FileSizes: []
   Exists: 1
 --- !u!114 &5747565415468195666
@@ -2794,7 +3012,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Talasofobia.bank
   Name: Talasofobia
   StudioPath: bank:/Talasofobia
-  lastModified: 639311349440645727
+  lastModified: 639311635541511450
   FileSizes: []
   Exists: 1
 --- !u!114 &6089574867824849872
@@ -3222,7 +3440,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639311360006454550
+  lastModified: 639311647032585816
   FileSizes: []
   Exists: 1
 --- !u!114 &8450702566158695904
@@ -3267,7 +3485,7 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639311349428661537
+  lastModified: 639311651519052303
   FileSizes: []
   Exists: 1
 --- !u!114 &8877789546171299343
@@ -3337,6 +3555,6 @@ MonoBehaviour:
   Path: Assets/_Project/Audio/PROYECTO_FMOD/Build/SFX.assets.bank
   Name: SFX.assets
   StudioPath: bank:/SFX.assets
-  lastModified: 639311349440300603
+  lastModified: 639311651519453704
   FileSizes: []
   Exists: 1

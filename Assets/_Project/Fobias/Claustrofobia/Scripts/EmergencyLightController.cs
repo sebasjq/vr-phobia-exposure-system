@@ -11,10 +11,10 @@ public class EmergencyLightController : MonoBehaviour
     [SerializeField] private Renderer emergencyVisual;
 
     [Header("Parpadeo")]
-    [SerializeField] private float minIntensity = 0.2f;
-    [SerializeField] private float maxIntensity = 3f;
-    [SerializeField] private float minInterval = 0.08f;
-    [SerializeField] private float maxInterval = 0.35f;
+    [SerializeField] private float minIntensity = 1f;
+    [SerializeField] private float maxIntensity = 10f;
+    [SerializeField] private float minInterval = 0.02f;
+    [SerializeField] private float maxInterval = 0.07f;
 
     private Coroutine flickerRoutine;
     private Material visualMaterial;
