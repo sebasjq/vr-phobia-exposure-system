@@ -316,9 +316,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3178053464316034645, guid: c9b99f74e48bf574c95c3fcbeba0d11c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c9b99f74e48bf574c95c3fcbeba0d11c, type: 3}
       propertyPath: m_Name
-      value: beach
+      value: Beach
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744264399739107177, guid: c9b99f74e48bf574c95c3fcbeba0d11c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781789351514656672, guid: c9b99f74e48bf574c95c3fcbeba0d11c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639528734790441245, guid: c9b99f74e48bf574c95c3fcbeba0d11c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6493756373069103793, guid: c9b99f74e48bf574c95c3fcbeba0d11c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1941,9 +1961,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82fbe7bdff7d0d4aab9b8ab294df053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoldYToExit
-  holdDuration: 2
+  holdDuration: 3
   fallbackMenuScene: Main_Menu_Scene
   fallbackExposureId: 
+  enableRestart: 1
+  restartHoldDuration: 3
+  experienceSpawn: {fileID: 0}
 --- !u!1001 &847323220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3382,6 +3405,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 798634964}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1701409261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1701409263}
+  - component: {fileID: 1701409262}
+  m_Layer: 0
+  m_Name: Beach_Collision_Surface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!64 &1701409262
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701409261}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 06f17529085b53a4da8bb5cfb4e5736d, type: 2}
+--- !u!4 &1701409263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701409261}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.844748, y: -2.0915813, z: -13.133336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1812729309
 GameObject:
   m_ObjectHideFlags: 0
@@ -4490,3 +4567,4 @@ SceneRoots:
   - {fileID: 2023887808}
   - {fileID: 618968858866186733}
   - {fileID: 1278690499}
+  - {fileID: 1701409263}

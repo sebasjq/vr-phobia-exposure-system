@@ -66,6 +66,7 @@ public sealed class ExperienceTransition : MonoBehaviour
     [SerializeField] private Color barColor = new Color(0.85f, 0.85f, 0.85f, 1f);
     [SerializeField] private string loadingText = "Cargando Experiencia...";
     [SerializeField] private string leavingText = "Abandonando Experiencia...";
+    [SerializeField] private string restartingText = "Reiniciando Experiencia...";
     [SerializeField, Min(0.6f)] private float panelDistance = 1f;
 
     [Header("Mandos durante la transición")]
@@ -92,6 +93,8 @@ public sealed class ExperienceTransition : MonoBehaviour
     private float nextViewerSearchTime;
     private Coroutine cancelRoutine;
     private bool keepPreparationBlack;
+    private bool respawnTimeHeld;
+    private float savedRespawnTimeScale;
     private bool renderSceneForPreparation;
     private bool audioHeld;
     private bool revealingAudio;
@@ -178,6 +181,7 @@ public sealed class ExperienceTransition : MonoBehaviour
 
     private void OnDestroy()
     {
+        RestoreRespawnTime();
         RestoreAudio();
         RestoreControllerRenderingLayers();
         controllerOverlayPass?.Dispose();
@@ -194,9 +198,21 @@ public sealed class ExperienceTransition : MonoBehaviour
 
     public static void ShowExitProgress(float progress)
     {
+        ShowHoldProgress(progress, false);
+    }
+
+    public static void ShowRestartProgress(float progress)
+    {
+        ShowHoldProgress(progress, true);
+    }
+
+    private static void ShowHoldProgress(float progress, bool restarting)
+    {
         ExperienceTransition transition = GetOrCreate();
         if (!transition.Ready || IsBusy) return;
         transition.StopCancellation();
+        if (restarting) transition.HoldRespawnTime();
+        else transition.RestoreRespawnTime();
         transition.state = State.Holding;
         transition.canvas.enabled = true;
         // Always opaque black. Ignore any gray/alpha settings saved by older versions.
@@ -204,7 +220,7 @@ public sealed class ExperienceTransition : MonoBehaviour
         transition.CacheUiAudioIfNeeded();
         transition.HoldAudioForLoading();
         transition.content.SetActive(true);
-        transition.title.text = transition.leavingText;
+        transition.title.text = restarting ? transition.restartingText : transition.leavingText;
         transition.SetProgress(progress);
         transition.FollowCamera();
     }
@@ -223,6 +239,7 @@ public sealed class ExperienceTransition : MonoBehaviour
         ExperienceTransition transition = GetOrCreate();
         if (!transition.Ready || !transition.isActiveAndEnabled) return false;
         transition.StopCancellation();
+        transition.RestoreRespawnTime();
         bool wasHolding = transition.state == State.Holding;
         transition.state = State.Loading;
         // Lock menu navigation now; the existing click-audio callback can still complete.
@@ -230,6 +247,66 @@ public sealed class ExperienceTransition : MonoBehaviour
         // Lock synchronously, before the first coroutine frame, to reject repeated clicks.
         transition.StartCoroutine(transition.LoadScene(scene, showLoadingBar, wasHolding, onFailure));
         return true;
+    }
+
+    public static bool TryRespawn(ExperienceSpawn spawn)
+    {
+        if (IsBusy || spawn == null || !spawn.CanRespawn) return false;
+        ExperienceTransition transition = GetOrCreate();
+        if (!transition.Ready || !transition.isActiveAndEnabled) return false;
+        transition.StopCancellation();
+        transition.HoldRespawnTime();
+        transition.state = State.Loading;
+        transition.canvas.enabled = true;
+        transition.StartCoroutine(transition.Respawn(spawn));
+        return true;
+    }
+
+    private IEnumerator Respawn(ExperienceSpawn spawn)
+    {
+        CacheUiAudioIfNeeded();
+        HoldAudioForLoading();
+        keepPreparationBlack = true;
+        SetOpaqueBlack();
+        title.text = restartingText;
+        SetProgress(1f);
+        content.SetActive(true);
+        FollowCamera();
+        yield return WaitForViewerFrames(2);
+        yield return WaitUnscaled(completedBarHoldDuration);
+        content.SetActive(false);
+        yield return WaitUnscaled(entryBlackPause);
+
+        bool restored = false;
+        try { restored = spawn != null && spawn.TryRespawn(); }
+        catch (Exception exception) { Debug.LogException(exception, this); }
+        if (!restored)
+            Debug.LogWarning("No se pudo volver al punto inicial de ExperienceSpawn.", this);
+
+        // Prepare the view from the recovered position under the existing opaque overlay.
+        renderSceneForPreparation = true;
+        FollowCamera();
+        yield return WaitForScenePreparation();
+        renderSceneForPreparation = false;
+        FollowCamera();
+        yield return RevealPreparedScene(true);
+    }
+
+    private void HoldRespawnTime()
+    {
+        if (!respawnTimeHeld)
+        {
+            savedRespawnTimeScale = Time.timeScale;
+            respawnTimeHeld = true;
+        }
+        Time.timeScale = 0f;
+    }
+
+    private void RestoreRespawnTime()
+    {
+        if (!respawnTimeHeld) return;
+        Time.timeScale = savedRespawnTimeScale;
+        respawnTimeHeld = false;
     }
 
     private IEnumerator LoadScene(string scene, bool showLoadingBar, bool wasHolding, Action onFailure)
@@ -494,6 +571,7 @@ public sealed class ExperienceTransition : MonoBehaviour
 
     private void Hide()
     {
+        RestoreRespawnTime();
         keepPreparationBlack = false;
         renderSceneForPreparation = false;
         content.SetActive(false);
@@ -527,6 +605,7 @@ public sealed class ExperienceTransition : MonoBehaviour
 
     private void OnDisable()
     {
+        RestoreRespawnTime();
         renderSceneForPreparation = false;
         RestoreAudio();
         RestoreControllerRenderingLayers();
@@ -1394,3 +1473,4 @@ public sealed class ExperienceTransition : MonoBehaviour
         return image;
     }
 }
+

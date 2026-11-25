@@ -184619,9 +184619,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82fbe7bdff7d0d4aab9b8ab294df053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoldYToExit
-  holdDuration: 2
+  holdDuration: 3
   fallbackMenuScene: Main_Menu_Scene
   fallbackExposureId: 
+  enableRestart: 1
+  restartHoldDuration: 3
+  experienceSpawn: {fileID: 0}
 --- !u!114 &1608436566
 MonoBehaviour:
   m_ObjectHideFlags: 0
