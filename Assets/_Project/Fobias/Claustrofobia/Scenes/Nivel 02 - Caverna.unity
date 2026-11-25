@@ -186,8 +186,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -6689036041284674117, guid: 75f744b98ca95bd46b7584593d1f29e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 167521212}
   m_SourcePrefab: {fileID: -5645937942226959685, guid: 75f744b98ca95bd46b7584593d1f29e1, type: 3}
+--- !u!1 &167521211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6689036041284674117, guid: 75f744b98ca95bd46b7584593d1f29e1, type: 3}
+  m_PrefabInstance: {fileID: 167521210}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &167521212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167521211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0db6d2689cf1214999aff01f10129c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollapseAfterDelay
+  tiempoEspera: 15
+  objetosDerrumbe: []
+  sonidoDerrumbe:
+    Guid:
+      Data1: -1456027766
+      Data2: 1167697172
+      Data3: 1182521993
+      Data4: -277930347
+    Path: event:/Claustrofobia/Derrumbe
 --- !u!1 &289371478
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,8 +315,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -6689036041284674117, guid: 75f744b98ca95bd46b7584593d1f29e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 322242773}
   m_SourcePrefab: {fileID: -5645937942226959685, guid: 75f744b98ca95bd46b7584593d1f29e1, type: 3}
+--- !u!1 &322242772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6689036041284674117, guid: 75f744b98ca95bd46b7584593d1f29e1, type: 3}
+  m_PrefabInstance: {fileID: 322242771}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &322242773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322242772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0db6d2689cf1214999aff01f10129c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollapseAfterDelay
+  tiempoEspera: 20
+  objetosDerrumbe: []
+  sonidoDerrumbe:
+    Guid:
+      Data1: -1456027766
+      Data2: 1167697172
+      Data3: 1182521993
+      Data4: -277930347
+    Path: event:/Claustrofobia/Derrumbe
 --- !u!1 &335773541
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,8 +507,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -6689036041284674117, guid: 75f744b98ca95bd46b7584593d1f29e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 575150969}
   m_SourcePrefab: {fileID: -5645937942226959685, guid: 75f744b98ca95bd46b7584593d1f29e1, type: 3}
+--- !u!1 &575150968 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6689036041284674117, guid: 75f744b98ca95bd46b7584593d1f29e1, type: 3}
+  m_PrefabInstance: {fileID: 575150967}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &575150969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575150968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0db6d2689cf1214999aff01f10129c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollapseAfterDelay
+  tiempoEspera: 25
+  objetosDerrumbe: []
+  sonidoDerrumbe:
+    Guid:
+      Data1: -1456027766
+      Data2: 1167697172
+      Data3: 1182521993
+      Data4: -277930347
+    Path: event:/Claustrofobia/Derrumbe
 --- !u!1 &720024996
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,8 +859,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -6689036041284674117, guid: 1bc1a773db80e5f418d093275b704983, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 953728831}
   m_SourcePrefab: {fileID: -5645937942226959685, guid: 1bc1a773db80e5f418d093275b704983, type: 3}
+--- !u!1 &953728830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6689036041284674117, guid: 1bc1a773db80e5f418d093275b704983, type: 3}
+  m_PrefabInstance: {fileID: 953728829}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &953728831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953728830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0db6d2689cf1214999aff01f10129c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollapseAfterDelay
+  tiempoEspera: 5
+  objetosDerrumbe: []
+  sonidoDerrumbe:
+    Guid:
+      Data1: -1456027766
+      Data2: 1167697172
+      Data3: 1182521993
+      Data4: -277930347
+    Path: event:/Claustrofobia/Derrumbe
 --- !u!1 &961792707
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,6 +935,11 @@ GameObject:
   - component: {fileID: 1016215185}
   - component: {fileID: 1016215184}
   - component: {fileID: 1016215189}
+  - component: {fileID: 1016215190}
+<<<<<<< Updated upstream
+=======
+  - component: {fileID: 1016215191}
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: '[BuildingBlock] Camera Rig'
   m_TagString: Untagged
@@ -1013,6 +1134,38 @@ MonoBehaviour:
   velocidadMinima: 0.1
   intervaloPasos: 0.5
   volumen: 1000
+--- !u!114 &1016215190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016215183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+--- !u!114 &1016215191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016215183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c82fbe7bdff7d0d4aab9b8ab294df053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HoldYToExit
+  holdDuration: 2
+  fallbackMenuScene: Main_Menu_Scene
+  fallbackExposureId: 
+>>>>>>> Stashed changes
 --- !u!1 &1070014933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,6 +1590,69 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &1564109559
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1564109561}
+  - component: {fileID: 1564109560}
+  m_Layer: 0
+  m_Name: Derrumbe Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1564109560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564109559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1456027766
+      Data2: 1167697172
+      Data3: 1182521993
+      Data4: -277930347
+    Path: event:/Claustrofobia/Derrumbe
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!4 &1564109561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564109559}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3348, y: 253.07597, z: -3270}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1635422516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1447,8 +1663,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1635422519}
   - component: {fileID: 1635422518}
-  - component: {fileID: 1635422517}
   - component: {fileID: 1635422520}
+  - component: {fileID: 1635422521}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1456,14 +1672,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1635422517
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635422516}
-  m_Enabled: 0
 --- !u!20 &1635422518
 Camera:
   m_ObjectHideFlags: 0
@@ -1524,7 +1732,7 @@ Transform:
   m_GameObject: {fileID: 1635422516}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 2866, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1574,6 +1782,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1635422521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635422516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1001 &1880415193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1641,8 +1863,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -6689036041284674117, guid: 1bc1a773db80e5f418d093275b704983, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1880415195}
   m_SourcePrefab: {fileID: -5645937942226959685, guid: 1bc1a773db80e5f418d093275b704983, type: 3}
+--- !u!1 &1880415194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6689036041284674117, guid: 1bc1a773db80e5f418d093275b704983, type: 3}
+  m_PrefabInstance: {fileID: 1880415193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1880415195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880415194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0db6d2689cf1214999aff01f10129c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollapseAfterDelay
+  tiempoEspera: 10
+  objetosDerrumbe: []
+  sonidoDerrumbe:
+    Guid:
+      Data1: -1456027766
+      Data2: 1167697172
+      Data3: 1182521993
+      Data4: -277930347
+    Path: event:/Claustrofobia/Derrumbe
 --- !u!1 &1898909241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,3 +2091,4 @@ SceneRoots:
   - {fileID: 167521210}
   - {fileID: 322242771}
   - {fileID: 575150967}
+  - {fileID: 1564109561}

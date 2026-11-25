@@ -119,6 +119,74 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &201549844 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6689036041284674117, guid: 6e23fff40084dd0449cc57d15eb9c4e0, type: 3}
+  m_PrefabInstance: {fileID: 1435253975}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &216411804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 216411806}
+  - component: {fileID: 216411805}
+  m_Layer: 0
+  m_Name: Elevator Alarm Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &216411805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216411804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1371563827
+      Data2: 1087376549
+      Data3: -675197524
+      Data4: 1392585752
+    Path: event:/Claustrofobia/Elevator Alarm
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!4 &216411806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216411804}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -30, y: 64.2, z: 289.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &258397710
 GameObject:
   m_ObjectHideFlags: 0
@@ -5090,7 +5158,10 @@ MonoBehaviour:
   elevatorSmoke3: {fileID: 862873301}
   elevatorSmoke4: {fileID: 301081505}
   smokeDelay: 1.5
-  alarmEmitter: {fileID: 1603921800}
+  alarmEmitter: {fileID: 216411805}
+  alarmMaxSeconds: 6
+  delayAfterAlarm: 0.3
+  impactEmitter: {fileID: 1991074325}
   duration: 0.35
   positionIntensity: 0.025
   rotationIntensity: 0.8
@@ -5361,6 +5432,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2774220344278030320, guid: 6e23fff40084dd0449cc57d15eb9c4e0, type: 3}
   m_PrefabInstance: {fileID: 1435253975}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &697450061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201549844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b728c9d09977845a016431eacd3e2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepsFMOD
+  pasosEvent:
+    Guid:
+      Data1: -113589782
+      Data2: 1216761625
+      Data3: -1801535335
+      Data4: -964808462
+    Path: event:/Player/Pasos_Madera
+  jugador: {fileID: 0}
+  velocidadMinima: 0.1
+  intervaloPasos: 0.5
+  volumen: 1000
 --- !u!1 &706738445
 GameObject:
   m_ObjectHideFlags: 0
@@ -15496,7 +15590,15 @@ GameObject:
   - component: {fileID: 1016215186}
   - component: {fileID: 1016215185}
   - component: {fileID: 1016215184}
+<<<<<<< Updated upstream
+  - component: {fileID: 1016215191}
+  - component: {fileID: 1016215190}
+=======
   - component: {fileID: 1016215189}
+  - component: {fileID: 1016215190}
+  - component: {fileID: 1016215191}
+>>>>>>> Stashed changes
+  - component: {fileID: 1016215192}
   m_Layer: 0
   m_Name: '[BuildingBlock] Camera Rig'
   m_TagString: Untagged
@@ -15599,7 +15701,7 @@ MonoBehaviour:
   requestBodyTrackingPermissionOnStartup: 0
   requestFaceTrackingPermissionOnStartup: 0
   requestEyeTrackingPermissionOnStartup: 0
-  requestScenePermissionOnStartup: 0
+  requestScenePermissionOnStartup: 1
   requestRecordAudioPermissionOnStartup: 0
   requestPassthroughCameraAccessPermissionOnStartup: 0
   _localDimming: 1
@@ -15668,7 +15770,44 @@ Transform:
   - {fileID: 2105323037}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1016215189
+--- !u!114 &1016215190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016215183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b728c9d09977845a016431eacd3e2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  pasosEvent:
+    Guid:
+      Data1: -113589782
+      Data2: 1216761625
+      Data3: -1801535335
+      Data4: -964808462
+    Path: event:/Player/Pasos_Madera
+  jugador: {fileID: 1769112805}
+  velocidadMinima: 0.1
+  intervaloPasos: 0.5
+  volumen: 1000
+--- !u!114 &1016215191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016215183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
+--- !u!114 &1016215192
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15682,15 +15821,71 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FootstepsFMOD
   pasosEvent:
     Guid:
-      Data1: -113589782
-      Data2: 1216761625
-      Data3: -1801535335
-      Data4: -964808462
-    Path: event:/Player/Pasos_Madera
-  jugador: {fileID: 2105323040}
+      Data1: -991884041
+      Data2: 1210102373
+      Data3: 436297646
+      Data4: -1525222402
+    Path: event:/Player/Pasos_Menu
+  jugador: {fileID: 0}
+  velocidadMinima: 0.1
+  intervaloPasos: 0.5
+<<<<<<< Updated upstream
+  volumen: 1
+=======
+  volumen: 1000
+--- !u!114 &1016215190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016215183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b728c9d09977845a016431eacd3e2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepsFMOD
+  pasosEvent:
+    Guid:
+      Data1: -1686568131
+      Data2: 1284399310
+      Data3: -1343436924
+      Data4: 1705804661
+    Path: event:/Player/Pasos_pasto
+  jugador: {fileID: 0}
   velocidadMinima: 0.1
   intervaloPasos: 0.5
   volumen: 1000
+--- !u!114 &1016215191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016215183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
+--- !u!114 &1016215192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016215183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c82fbe7bdff7d0d4aab9b8ab294df053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HoldYToExit
+  holdDuration: 2
+  fallbackMenuScene: Main_Menu_Scene
+  fallbackExposureId: 
+>>>>>>> Stashed changes
 --- !u!1 &1063683977
 GameObject:
   m_ObjectHideFlags: 0
@@ -16270,7 +16465,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2774220344278030320, guid: 6e23fff40084dd0449cc57d15eb9c4e0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1857594744}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -6689036041284674117, guid: 6e23fff40084dd0449cc57d15eb9c4e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 697450061}
   m_SourcePrefab: {fileID: -5645937942226959685, guid: 6e23fff40084dd0449cc57d15eb9c4e0, type: 3}
 --- !u!1 &1450852794
 GameObject:
@@ -16564,69 +16762,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.9999998, y: 0.023951238, z: 1}
   m_Center: {x: 0, y: -0.44189885, z: 0}
---- !u!1 &1603921799
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1603921801}
-  - component: {fileID: 1603921800}
-  m_Layer: 0
-  m_Name: Elevator Alarm Source
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1603921800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603921799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
---- !u!4 &1603921801
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603921799}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47.42, y: 83.28, z: 271.57}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1635422516
 GameObject:
   m_ObjectHideFlags: 0
@@ -16637,8 +16772,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1635422519}
   - component: {fileID: 1635422518}
-  - component: {fileID: 1635422517}
   - component: {fileID: 1635422520}
+  - component: {fileID: 1635422521}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -16646,14 +16781,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1635422517
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635422516}
-  m_Enabled: 0
 --- !u!20 &1635422518
 Camera:
   m_ObjectHideFlags: 0
@@ -16714,7 +16841,7 @@ Transform:
   m_GameObject: {fileID: 1635422516}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.01, y: 50.640003, z: 222.33}
+  m_LocalPosition: {x: -25.01, y: 50.640003, z: -240}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16764,6 +16891,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1635422521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635422516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &1659233865
 GameObject:
   m_ObjectHideFlags: 0
@@ -16789,7 +16930,7 @@ Transform:
   m_GameObject: {fileID: 1659233865}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 253.42352, y: 0, z: -286.07083}
+  m_LocalPosition: {x: -31.8, y: 54.2, z: 289.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16994,6 +17135,11 @@ MonoBehaviour:
   maxIntensity: 3
   minInterval: 0.08
   maxInterval: 0.35
+--- !u!4 &1769112805 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3903482227020464136, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+  m_PrefabInstance: {fileID: 2105323036}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1857594743
 GameObject:
   m_ObjectHideFlags: 0
@@ -22305,6 +22451,18 @@ PrefabInstance:
       propertyPath: _ovrCameraRig
       value: 
       objectReference: {fileID: 1016215186}
+    - target: {fileID: 7834255314859882876, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 78.44709
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834255314859882876, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 78.44709
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834255314859882876, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 78.44709
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22341,11 +22499,6 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 2063f481-1b63-4eda-9ee8-a00df98536bc
     _installationVariants: []
---- !u!4 &2105323040 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3903482225864869175, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
-  m_PrefabInstance: {fileID: 2105323036}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2122824077
 GameObject:
   m_ObjectHideFlags: 0
@@ -22422,7 +22575,7 @@ MonoBehaviour:
   endTime: 7
   doorCollider: {fileID: 718186319}
   failureEffects: {fileID: 364157339}
-  doorOpenEmitter: {fileID: 0}
+  doorOpenEmitter: {fileID: 414770922}
 --- !u!111 &2128427256 stripped
 Animation:
   m_CorrespondingSourceObject: {fileID: 8681642452852674115, guid: 28b7f581dc1bbf748a264c3b3f2b5aeb, type: 3}
@@ -22446,4 +22599,4 @@ SceneRoots:
   - {fileID: 1659233866}
   - {fileID: 1991074326}
   - {fileID: 414770923}
-  - {fileID: 1603921801}
+  - {fileID: 216411806}
