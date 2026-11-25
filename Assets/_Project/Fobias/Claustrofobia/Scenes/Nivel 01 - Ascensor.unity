@@ -5670,6 +5670,9 @@ MonoBehaviour:
   elevatorSmoke4: {fileID: 301081505}
   smokeDelay: 1.5
   alarmEmitter: {fileID: 1603921800}
+  alarmMaxSeconds: 6
+  delayAfterAlarm: 0.3
+  impactEmitter: {fileID: 1991074325}
   duration: 0.35
   positionIntensity: 0.025
   rotationIntensity: 0.8
@@ -19238,11 +19241,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1371563827
+      Data2: 1087376549
+      Data3: -675197524
+      Data4: 1392585752
+    Path: event:/Claustrofobia/Elevator Alarm
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -19251,9 +19254,9 @@ MonoBehaviour:
   Preload: 0
   NonRigidbodyVelocity: 0
   Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &1603921801
 Transform:
   m_ObjectHideFlags: 0
@@ -19263,7 +19266,7 @@ Transform:
   m_GameObject: {fileID: 1603921799}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47.42, y: 83.28, z: 271.57}
+  m_LocalPosition: {x: -30, y: 64.2, z: 289.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25518,7 +25521,7 @@ MonoBehaviour:
   endTime: 7
   doorCollider: {fileID: 718186319}
   failureEffects: {fileID: 364157339}
-  doorOpenEmitter: {fileID: 0}
+  doorOpenEmitter: {fileID: 414770922}
 --- !u!111 &2128427256 stripped
 Animation:
   m_CorrespondingSourceObject: {fileID: 8681642452852674115, guid: 28b7f581dc1bbf748a264c3b3f2b5aeb, type: 3}
