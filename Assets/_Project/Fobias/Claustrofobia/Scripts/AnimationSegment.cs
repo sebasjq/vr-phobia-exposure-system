@@ -1,8 +1,10 @@
 
 using UnityEngine;
+using FMODUnity;
 
 public class AnimationSegment : MonoBehaviour
 {
+    [Header("Animación")]
     [SerializeField] private Animation anim;
     [SerializeField] private string clipName = "Animation";
 
@@ -15,6 +17,9 @@ public class AnimationSegment : MonoBehaviour
 
     [Header("Efectos de avería")]
     [SerializeField] private ElevatorFailureEffects failureEffects;
+
+    [Header("Audio FMOD")]
+    [SerializeField] private StudioEventEmitter doorOpenEmitter;
 
     private AnimationState state;
     private bool isPlayingSegment;
@@ -58,6 +63,10 @@ public class AnimationSegment : MonoBehaviour
         state.speed = 1f;
         anim.Play(clipName);
         state.time = startTime;
+
+        // Reproducir sonido de apertura de puertas.
+        if (doorOpenEmitter != null)
+            doorOpenEmitter.Play();
 
         isPlayingSegment = true;
     }
